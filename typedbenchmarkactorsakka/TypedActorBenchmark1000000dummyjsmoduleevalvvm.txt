@@ -1,0 +1,64 @@
+[info] welcome to sbt 1.5.3 (GraalVM Community Java 11.0.11)
+[info] loading settings for project typedbenchmarkactorsakka-build-build-build from metals.sbt ...
+[info] loading project definition from /Users/tanjimhossain/Bytes/actorbench/typedbenchmarkactorsakka/project/project/project
+[info] loading settings for project typedbenchmarkactorsakka-build-build from metals.sbt ...
+[info] loading project definition from /Users/tanjimhossain/Bytes/actorbench/typedbenchmarkactorsakka/project/project
+[success] Generated .bloop/typedbenchmarkactorsakka-build-build.json
+[success] Total time: 1 s, completed Jun 4, 2021, 2:57:30 PM
+[info] loading settings for project typedbenchmarkactorsakka-build from metals.sbt,plugins.sbt ...
+[info] loading project definition from /Users/tanjimhossain/Bytes/actorbench/typedbenchmarkactorsakka/project
+[success] Generated .bloop/typedbenchmarkactorsakka-build.json
+[success] Total time: 0 s, completed Jun 4, 2021, 2:57:31 PM
+[info] loading settings for project root from build.sbt ...
+[info] set current project to scala3-simple (in build file:/Users/tanjimhossain/Bytes/actorbench/typedbenchmarkactorsakka/)
+[warn] sbt 0.13 shell syntax is deprecated; use slash syntax instead: Jmh / run
+[info] compiling 12 Java sources to /Users/tanjimhossain/Bytes/actorbench/typedbenchmarkactorsakka/target/scala-3.0.0/classes ...
+[info] done compiling
+[error] java.io.FileNotFoundException: /Users/tanjimhossain/Bytes/actorbench/typedbenchmarkactorsakka/target/scala-3.0.0/classes/akka/actor/typed/jmh_generated/TypedActorBenchmark_jmhType_B3.class (No such file or directory)
+[error] 	at java.base/java.io.FileInputStream.open0(Native Method)
+[error] 	at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
+[error] 	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+[error] 	at sbt.io.Using$.$anonfun$fileInputStream$1(Using.scala:98)
+[error] 	at sbt.io.Using$$anon$3.openImpl(Using.scala:86)
+[error] 	at sbt.io.OpenFile.open(Using.scala:53)
+[error] 	at sbt.io.OpenFile.open$(Using.scala:47)
+[error] 	at sbt.io.Using$$anon$3.open(Using.scala:85)
+[error] 	at sbt.io.Using$$anon$3.open(Using.scala:85)
+[error] 	at sbt.io.Using.apply(Using.scala:25)
+[error] 	at sbt.io.IO$.transfer(IO.scala:448)
+[error] 	at sbt.io.IO$.addFileEntry$1(IO.scala:710)
+[error] 	at sbt.io.IO$.$anonfun$writeZip$6(IO.scala:718)
+[error] 	at sbt.io.IO$.$anonfun$writeZip$6$adapted(IO.scala:718)
+[error] 	at scala.collection.immutable.List.foreach(List.scala:431)
+[error] 	at sbt.io.IO$.writeZip(IO.scala:718)
+[error] 	at sbt.io.IO$.$anonfun$archive$2(IO.scala:668)
+[error] 	at sbt.io.IO$.$anonfun$archive$2$adapted(IO.scala:665)
+[error] 	at sbt.io.IO$.$anonfun$withZipOutput$1(IO.scala:765)
+[error] 	at sbt.io.IO$.$anonfun$withZipOutput$1$adapted(IO.scala:745)
+[error] 	at sbt.io.Using.apply(Using.scala:27)
+[error] 	at sbt.io.IO$.withZipOutput(IO.scala:745)
+[error] 	at sbt.io.IO$.archive(IO.scala:665)
+[error] 	at sbt.io.IO$.jar(IO.scala:630)
+[error] 	at sbt.Package$.makeJar(Package.scala:228)
+[error] 	at sbt.Package$.$anonfun$apply$4(Package.scala:151)
+[error] 	at sbt.Package$.$anonfun$apply$4$adapted(Package.scala:149)
+[error] 	at sbt.util.Tracked$.$anonfun$outputChangedW$1(Tracked.scala:128)
+[error] 	at sbt.Package$.apply(Package.scala:161)
+[error] 	at sbt.Defaults$.$anonfun$packageTask$1(Defaults.scala:1867)
+[error] 	at scala.Function1.$anonfun$compose$1(Function1.scala:49)
+[error] 	at sbt.internal.util.$tilde$greater.$anonfun$$u2219$1(TypeFunctions.scala:62)
+[error] 	at sbt.std.Transform$$anon$4.work(Transform.scala:68)
+[error] 	at sbt.Execute.$anonfun$submit$2(Execute.scala:282)
+[error] 	at sbt.internal.util.ErrorHandling$.wideConvert(ErrorHandling.scala:23)
+[error] 	at sbt.Execute.work(Execute.scala:291)
+[error] 	at sbt.Execute.$anonfun$submit$1(Execute.scala:282)
+[error] 	at sbt.ConcurrentRestrictions$$anon$4.$anonfun$submitValid$1(ConcurrentRestrictions.scala:265)
+[error] 	at sbt.CompletionService$$anon$2.call(CompletionService.scala:64)
+[error] 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+[error] 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+[error] 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+[error] 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+[error] 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+[error] 	at java.base/java.lang.Thread.run(Thread.java:829)
+[error] (Compile / packageBin) java.io.FileNotFoundException: /Users/tanjimhossain/Bytes/actorbench/typedbenchmarkactorsakka/target/scala-3.0.0/classes/akka/actor/typed/jmh_generated/TypedActorBenchmark_jmhType_B3.class (No such file or directory)
+[error] Total time: 2 s, completed Jun 4, 2021, 2:57:34 PM

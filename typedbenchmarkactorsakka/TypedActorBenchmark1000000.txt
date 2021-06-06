@@ -1,0 +1,125 @@
+[info] welcome to sbt 1.5.3 (GraalVM Community Java 11.0.11)
+[info] loading settings for project typedbenchmarkactorsakka-build-build-build from metals.sbt ...
+[info] loading project definition from /Users/tanjimhossain/Bytes/actorbench/typedbenchmarkactorsakka/project/project/project
+[info] loading settings for project typedbenchmarkactorsakka-build-build from metals.sbt ...
+[info] loading project definition from /Users/tanjimhossain/Bytes/actorbench/typedbenchmarkactorsakka/project/project
+[success] Generated .bloop/typedbenchmarkactorsakka-build-build.json
+[success] Total time: 0 s, completed Jun 4, 2021, 2:38:33 PM
+[info] loading settings for project typedbenchmarkactorsakka-build from metals.sbt,plugins.sbt ...
+[info] loading project definition from /Users/tanjimhossain/Bytes/actorbench/typedbenchmarkactorsakka/project
+[success] Generated .bloop/typedbenchmarkactorsakka-build.json
+[success] Total time: 0 s, completed Jun 4, 2021, 2:38:34 PM
+[info] loading settings for project root from build.sbt ...
+[info] set current project to scala3-simple (in build file:/Users/tanjimhossain/Bytes/actorbench/typedbenchmarkactorsakka/)
+[warn] sbt 0.13 shell syntax is deprecated; use slash syntax instead: Jmh / run
+[info] compiling 1 Scala source to /Users/tanjimhossain/Bytes/actorbench/typedbenchmarkactorsakka/target/scala-3.0.0/classes ...
+[info] done compiling
+[info] running org.openjdk.jmh.generators.bytecode.JmhBytecodeGenerator /Users/tanjimhossain/Bytes/actorbench/typedbenchmarkactorsakka/target/scala-3.0.0/classes /Users/tanjimhossain/Bytes/actorbench/typedbenchmarkactorsakka/target/scala-3.0.0/src_managed/jmh /Users/tanjimhossain/Bytes/actorbench/typedbenchmarkactorsakka/target/scala-3.0.0/resource_managed/jmh default
+Processing 46 classes from /Users/tanjimhossain/Bytes/actorbench/typedbenchmarkactorsakka/target/scala-3.0.0/classes with "reflection" generator
+Writing out Java source to /Users/tanjimhossain/Bytes/actorbench/typedbenchmarkactorsakka/target/scala-3.0.0/src_managed/jmh and resources to /Users/tanjimhossain/Bytes/actorbench/typedbenchmarkactorsakka/target/scala-3.0.0/resource_managed/jmh
+[info] compiling 12 Java sources to /Users/tanjimhossain/Bytes/actorbench/typedbenchmarkactorsakka/target/scala-3.0.0/classes ...
+[info] done compiling
+[info] running (fork) org.openjdk.jmh.Main -i 3 -wi 3 -f 1 .*TypedActorBenchmark
+[info] # JMH version: 1.32
+[info] # VM version: JDK 11.0.11, OpenJDK 64-Bit Server VM, 11.0.11+8-jvmci-21.1-b05
+[info] # VM invoker: /Users/tanjimhossain/.asdf/installs/java/graalvm-21.1.0+java11/bin/java
+[info] # VM options: -XX:+UnlockExperimentalVMOptions -XX:+EnableJVMCIProduct -XX:-UnlockExperimentalVMOptions -XX:ThreadPriorityPolicy=1
+[info] # Blackhole mode: full + dont-inline hint
+[info] # Warmup: 3 iterations, 5 s each
+[info] # Measurement: 3 iterations, 15 s each
+[info] # Timeout: 10 min per iteration
+[info] # Threads: 1 thread, will synchronize iterations
+[info] # Benchmark mode: Throughput, ops/time
+[info] # Benchmark: akka.actor.typed.TypedActorBenchmark.echo
+[info] # Parameters: (batchSize = 50, dispatcher = fjp-dispatcher, mailbox = akka.dispatch.SingleConsumerOnlyUnboundedMailbox, tpt = 50)
+[info] # Run progress: 0.00% complete, ETA 00:02:00
+[info] # Fork: 1 of 1
+[info] OpenJDK 64-Bit Server VM warning: -XX:ThreadPriorityPolicy=1 may require system level permission, e.g., being the root user. If the necessary permission is not possessed, changes to priority will be silently ignored.
+[info] # Warmup Iteration   1: 14:38:41.745 [TypedActorBenchmark-akka.actor.default-dispatcher-3] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+[error] SLF4J: A number (1) of logging calls during the initialization phase have been intercepted and are
+[error] SLF4J: now being replayed. These are subject to the filtering rules of the underlying logging system.
+[error] SLF4J: See also http://www.slf4j.org/codes.html#replay
+[info]   256000000 messages by 512 actors took 5503 ms, 46.51 M msg/s
+[info] 45988483.085 ops/s
+[info] # Warmup Iteration   2:   256000000 messages by 512 actors took 4431 ms, 57.76 M msg/s
+[info]   256000000 messages by 512 actors took 4330 ms, 59.11 M msg/s
+[info] 58128545.484 ops/s
+[info] # Warmup Iteration   3:   256000000 messages by 512 actors took 4413 ms, 58.00 M msg/s
+[info]   256000000 messages by 512 actors took 4309 ms, 59.40 M msg/s
+[info] 58604965.137 ops/s
+[info] Iteration   1:   256000000 messages by 512 actors took 4294 ms, 59.61 M msg/s
+[info]   256000000 messages by 512 actors took 4285 ms, 59.74 M msg/s
+[info]   256000000 messages by 512 actors took 4295 ms, 59.60 M msg/s
+[info]   256000000 messages by 512 actors took 4318 ms, 59.27 M msg/s
+[info] 59491642.280 ops/s
+[info] Iteration   2:   256000000 messages by 512 actors took 4307 ms, 59.43 M msg/s
+[info]   256000000 messages by 512 actors took 4436 ms, 57.71 M msg/s
+[info]   256000000 messages by 512 actors took 4444 ms, 57.60 M msg/s
+[info]   256000000 messages by 512 actors took 4325 ms, 59.19 M msg/s
+[info] 58419763.162 ops/s
+[info] Iteration   3:   256000000 messages by 512 actors took 4372 ms, 58.55 M msg/s
+[info]   256000000 messages by 512 actors took 4300 ms, 59.53 M msg/s
+[info]   256000000 messages by 512 actors took 4296 ms, 59.58 M msg/s
+[info]   256000000 messages by 512 actors took 4319 ms, 59.27 M msg/s
+[info] 59184531.281 ops/s
+[info] Result "akka.actor.typed.TypedActorBenchmark.echo":
+[info]   59031978.907 ±(99.9%) 10070227.222 ops/s [Average]
+[info]   (min, avg, max) = (58419763.162, 59031978.907, 59491642.280), stdev = 551983.135
+[info]   CI (99.9%): [48961751.685, 69102206.130] (assumes normal distribution)
+[info] # JMH version: 1.32
+[info] # VM version: JDK 11.0.11, OpenJDK 64-Bit Server VM, 11.0.11+8-jvmci-21.1-b05
+[info] # VM invoker: /Users/tanjimhossain/.asdf/installs/java/graalvm-21.1.0+java11/bin/java
+[info] # VM options: -XX:+UnlockExperimentalVMOptions -XX:+EnableJVMCIProduct -XX:-UnlockExperimentalVMOptions -XX:ThreadPriorityPolicy=1
+[info] # Blackhole mode: full + dont-inline hint
+[info] # Warmup: 3 iterations, 5 s each
+[info] # Measurement: 3 iterations, 15 s each
+[info] # Timeout: 10 min per iteration
+[info] # Threads: 1 thread, will synchronize iterations
+[info] # Benchmark mode: Throughput, ops/time
+[info] # Benchmark: akka.actor.typed.TypedActorBenchmark.echo
+[info] # Parameters: (batchSize = 50, dispatcher = fjp-dispatcher, mailbox = akka.dispatch.UnboundedMailbox, tpt = 50)
+[info] # Run progress: 50.00% complete, ETA 00:01:16
+[info] # Fork: 1 of 1
+[info] OpenJDK 64-Bit Server VM warning: -XX:ThreadPriorityPolicy=1 may require system level permission, e.g., being the root user. If the necessary permission is not possessed, changes to priority will be silently ignored.
+[info] # Warmup Iteration   1: 14:39:57.905 [TypedActorBenchmark-akka.actor.default-dispatcher-3] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+[error] SLF4J: A number (1) of logging calls during the initialization phase have been intercepted and are
+[error] SLF4J: now being replayed. These are subject to the filtering rules of the underlying logging system.
+[error] SLF4J: See also http://www.slf4j.org/codes.html#replay
+[info]   256000000 messages by 512 actors took 4316 ms, 59.31 M msg/s
+[info]   256000000 messages by 512 actors took 4253 ms, 60.18 M msg/s
+[info] 59126972.042 ops/s
+[info] # Warmup Iteration   2:   256000000 messages by 512 actors took 4315 ms, 59.32 M msg/s
+[info]   256000000 messages by 512 actors took 4259 ms, 60.10 M msg/s
+[info] 59542052.778 ops/s
+[info] # Warmup Iteration   3:   256000000 messages by 512 actors took 4130 ms, 61.98 M msg/s
+[info]   256000000 messages by 512 actors took 4139 ms, 61.85 M msg/s
+[info] 61843211.767 ops/s
+[info] Iteration   1:   256000000 messages by 512 actors took 4098 ms, 62.45 M msg/s
+[info]   256000000 messages by 512 actors took 4108 ms, 62.31 M msg/s
+[info]   256000000 messages by 512 actors took 4126 ms, 62.03 M msg/s
+[info]   256000000 messages by 512 actors took 4124 ms, 62.06 M msg/s
+[info] 62147922.449 ops/s
+[info] Iteration   2:   256000000 messages by 512 actors took 4121 ms, 62.12 M msg/s
+[info]   256000000 messages by 512 actors took 4153 ms, 61.63 M msg/s
+[info]   256000000 messages by 512 actors took 4414 ms, 57.99 M msg/s
+[info]   256000000 messages by 512 actors took 4142 ms, 61.80 M msg/s
+[info] 60785194.921 ops/s
+[info] Iteration   3:   256000000 messages by 512 actors took 4134 ms, 61.92 M msg/s
+[info]   256000000 messages by 512 actors took 4104 ms, 62.37 M msg/s
+[info]   256000000 messages by 512 actors took 4209 ms, 60.82 M msg/s
+[info]   256000000 messages by 512 actors took 4123 ms, 62.09 M msg/s
+[info] 61757838.549 ops/s
+[info] Result "akka.actor.typed.TypedActorBenchmark.echo":
+[info]   61563651.973 ±(99.9%) 12803635.097 ops/s [Average]
+[info]   (min, avg, max) = (60785194.921, 61563651.973, 62147922.449), stdev = 701810.444
+[info]   CI (99.9%): [48760016.876, 74367287.070] (assumes normal distribution)
+[info] # Run complete. Total time: 00:02:32
+[info] REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+[info] why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+[info] experiments, perform baseline and negative tests that provide experimental control, make sure
+[info] the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+[info] Do not assume the numbers tell you what you want them to tell.
+[info] Benchmark                 (batchSize)    (dispatcher)                                         (mailbox)  (tpt)   Mode  Cnt         Score          Error  Units
+[info] TypedActorBenchmark.echo           50  fjp-dispatcher  akka.dispatch.SingleConsumerOnlyUnboundedMailbox     50  thrpt    3  59031978.907 ± 10070227.222  ops/s
+[info] TypedActorBenchmark.echo           50  fjp-dispatcher                    akka.dispatch.UnboundedMailbox     50  thrpt    3  61563651.973 ± 12803635.097  ops/s
+[success] Total time: 159 s (02:39), completed Jun 4, 2021, 2:41:13 PM

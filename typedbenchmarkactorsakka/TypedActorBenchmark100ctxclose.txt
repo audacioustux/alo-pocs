@@ -1,0 +1,677 @@
+[info] welcome to sbt 1.5.3 (Oracle Corporation Java 11.0.11)
+[info] loading settings for project typedbenchmarkactorsakka-build-build-build from metals.sbt ...
+[info] loading project definition from /Users/tanjimhossain/Bytes/actorbench/typedbenchmarkactorsakka/project/project/project
+[info] loading settings for project typedbenchmarkactorsakka-build-build from metals.sbt ...
+[info] loading project definition from /Users/tanjimhossain/Bytes/actorbench/typedbenchmarkactorsakka/project/project
+[success] Generated .bloop/typedbenchmarkactorsakka-build-build.json
+[success] Total time: 0 s, completed Jun 5, 2021, 9:06:32 PM
+[info] loading settings for project typedbenchmarkactorsakka-build from metals.sbt,plugins.sbt ...
+[info] loading project definition from /Users/tanjimhossain/Bytes/actorbench/typedbenchmarkactorsakka/project
+[success] Generated .bloop/typedbenchmarkactorsakka-build.json
+[success] Total time: 0 s, completed Jun 5, 2021, 9:06:33 PM
+[info] loading settings for project root from build.sbt ...
+[info] set current project to scala3-simple (in build file:/Users/tanjimhossain/Bytes/actorbench/typedbenchmarkactorsakka/)
+[info] compiling 1 Scala source to /Users/tanjimhossain/Bytes/actorbench/typedbenchmarkactorsakka/target/scala-3.0.0/classes ...
+[info] done compiling
+[info] running org.openjdk.jmh.generators.bytecode.JmhBytecodeGenerator /Users/tanjimhossain/Bytes/actorbench/typedbenchmarkactorsakka/target/scala-3.0.0/classes /Users/tanjimhossain/Bytes/actorbench/typedbenchmarkactorsakka/target/scala-3.0.0/src_managed/jmh /Users/tanjimhossain/Bytes/actorbench/typedbenchmarkactorsakka/target/scala-3.0.0/resource_managed/jmh default
+Processing 56 classes from /Users/tanjimhossain/Bytes/actorbench/typedbenchmarkactorsakka/target/scala-3.0.0/classes with "reflection" generator
+Writing out Java source to /Users/tanjimhossain/Bytes/actorbench/typedbenchmarkactorsakka/target/scala-3.0.0/src_managed/jmh and resources to /Users/tanjimhossain/Bytes/actorbench/typedbenchmarkactorsakka/target/scala-3.0.0/resource_managed/jmh
+[info] compiling 17 Java sources to /Users/tanjimhossain/Bytes/actorbench/typedbenchmarkactorsakka/target/scala-3.0.0/classes ...
+[info] done compiling
+[info] running (fork) org.openjdk.jmh.Main -i 3 -wi 3 -f 1 .*TypedActorBenchmark
+[info] # JMH version: 1.32
+[info] # VM version: JDK 11.0.11, Java HotSpot(TM) 64-Bit Server VM, 11.0.11+9-LTS-jvmci-21.1-b05
+[info] # VM invoker: /Users/tanjimhossain/Downloads/graal/graalvm-ee-java11-21.1.0/Contents/Home/bin/java
+[info] # VM options: -XX:+UnlockExperimentalVMOptions -XX:+EnableJVMCIProduct -XX:-UnlockExperimentalVMOptions -XX:ThreadPriorityPolicy=1
+[info] # Blackhole mode: full + dont-inline hint
+[info] # Warmup: 3 iterations, 5 s each
+[info] # Measurement: 3 iterations, 15 s each
+[info] # Timeout: 10 min per iteration
+[info] # Threads: 1 thread, will synchronize iterations
+[info] # Benchmark mode: Throughput, ops/time
+[info] # Benchmark: bench.TypedActorBenchmark.echo
+[info] # Parameters: (batchSize = 50, dispatcher = fjp-dispatcher, mailbox = akka.dispatch.SingleConsumerOnlyUnboundedMailbox, tpt = 50)
+[info] # Run progress: 0.00% complete, ETA 00:02:00
+[info] # Fork: 1 of 1
+[info] Java HotSpot(TM) 64-Bit Server VM warning: -XX:ThreadPriorityPolicy=1 may require system level permission, e.g., being the root user. If the necessary permission is not possessed, changes to priority will be silently ignored.
+[info] # Warmup Iteration   1: 21:06:42.380 [TypedActorBenchmark-akka.actor.default-dispatcher-3] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+[error] SLF4J: A number (1) of logging calls during the initialization phase have been intercepted and are
+[error] SLF4J: now being replayed. These are subject to the filtering rules of the underlying logging system.
+[error] SLF4J: See also http://www.slf4j.org/codes.html#replay
+[info]   25600 messages by 512 actors took 1635 ms, 0.02 M msg/s
+[info]   25600 messages by 512 actors took 681 ms, 0.04 M msg/s
+[info]   25600 messages by 512 actors took 540 ms, 0.05 M msg/s
+[info]   25600 messages by 512 actors took 572 ms, 0.04 M msg/s
+[info]   25600 messages by 512 actors took 516 ms, 0.05 M msg/s
+[info]   25600 messages by 512 actors took 406 ms, 0.06 M msg/s
+[info]   25600 messages by 512 actors took 352 ms, 0.07 M msg/s
+[info]   25600 messages by 512 actors took 290 ms, 0.09 M msg/s
+[info] 40000.114 ops/s
+[info] # Warmup Iteration   2:   25600 messages by 512 actors took 312 ms, 0.08 M msg/s
+[info]   25600 messages by 512 actors took 266 ms, 0.10 M msg/s
+[info]   25600 messages by 512 actors took 208 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 202 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 274 ms, 0.09 M msg/s
+[info]   25600 messages by 512 actors took 198 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 212 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 219 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 201 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 197 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 201 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 188 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 196 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 191 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 221 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 225 ms, 0.11 M msg/s
+[info]   25600 messages by 512 actors took 197 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 190 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 194 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 194 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 210 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 188 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 197 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 214 ms, 0.12 M msg/s
+[info] 118673.499 ops/s
+[info] # Warmup Iteration   3:   25600 messages by 512 actors took 195 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 184 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 223 ms, 0.11 M msg/s
+[info]   25600 messages by 512 actors took 226 ms, 0.11 M msg/s
+[info]   25600 messages by 512 actors took 232 ms, 0.11 M msg/s
+[info]   25600 messages by 512 actors took 183 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 184 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 231 ms, 0.11 M msg/s
+[info]   25600 messages by 512 actors took 181 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 175 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 182 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 211 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 193 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 179 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 179 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 168 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 187 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 198 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 195 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 175 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 206 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 182 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 182 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 182 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 177 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 196 ms, 0.13 M msg/s
+[info] 131788.384 ops/s
+[info] Iteration   1:   25600 messages by 512 actors took 184 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 187 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 181 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 189 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 177 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 198 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 184 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 185 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 183 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 243 ms, 0.11 M msg/s
+[info]   25600 messages by 512 actors took 251 ms, 0.10 M msg/s
+[info]   25600 messages by 512 actors took 193 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 181 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 182 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 178 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 184 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 207 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 200 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 187 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 169 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 178 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 185 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 182 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 188 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 188 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 178 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 182 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 182 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 199 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 189 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 179 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 177 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 185 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 201 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 189 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 175 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 180 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 205 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 188 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 198 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 255 ms, 0.10 M msg/s
+[info]   25600 messages by 512 actors took 227 ms, 0.11 M msg/s
+[info]   25600 messages by 512 actors took 228 ms, 0.11 M msg/s
+[info]   25600 messages by 512 actors took 180 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 186 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 182 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 187 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 188 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 177 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 175 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 182 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 187 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 191 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 177 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 177 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 186 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 184 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 195 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 174 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 177 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 182 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 178 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 185 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 187 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 184 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 181 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 199 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 188 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 174 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 176 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 180 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 197 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 189 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 179 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 174 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 213 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 184 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 191 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 190 ms, 0.13 M msg/s
+[info] 134504.839 ops/s
+[info] Iteration   2:   25600 messages by 512 actors took 201 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 192 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 177 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 178 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 168 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 210 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 186 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 177 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 171 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 170 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 180 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 184 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 224 ms, 0.11 M msg/s
+[info]   25600 messages by 512 actors took 196 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 194 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 173 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 174 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 201 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 182 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 182 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 172 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 172 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 201 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 184 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 177 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 177 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 171 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 203 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 176 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 176 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 172 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 171 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 205 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 195 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 184 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 173 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 195 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 188 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 172 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 178 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 181 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 174 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 169 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 195 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 185 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 164 ms, 0.16 M msg/s
+[info]   25600 messages by 512 actors took 205 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 184 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 184 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 187 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 183 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 180 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 174 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 184 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 186 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 184 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 184 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 184 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 192 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 189 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 203 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 187 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 181 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 192 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 184 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 179 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 185 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 173 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 200 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 182 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 179 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 183 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 186 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 194 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 174 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 184 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 179 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 193 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 189 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 179 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 179 ms, 0.14 M msg/s
+[info] 137945.069 ops/s
+[info] Iteration   3:   25600 messages by 512 actors took 186 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 195 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 191 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 173 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 204 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 187 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 173 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 185 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 173 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 202 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 191 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 173 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 176 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 203 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 175 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 178 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 168 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 178 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 205 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 182 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 187 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 176 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 180 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 176 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 186 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 187 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 180 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 182 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 183 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 185 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 189 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 177 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 176 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 180 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 190 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 187 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 176 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 196 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 196 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 197 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 179 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 238 ms, 0.11 M msg/s
+[info]   25600 messages by 512 actors took 211 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 212 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 187 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 199 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 193 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 181 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 172 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 201 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 191 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 165 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 200 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 181 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 176 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 175 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 217 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 240 ms, 0.11 M msg/s
+[info]   25600 messages by 512 actors took 230 ms, 0.11 M msg/s
+[info]   25600 messages by 512 actors took 192 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 175 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 175 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 194 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 187 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 166 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 173 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 182 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 193 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 187 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 178 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 173 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 204 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 186 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 232 ms, 0.11 M msg/s
+[info]   25600 messages by 512 actors took 190 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 173 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 170 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 202 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 179 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 179 ms, 0.14 M msg/s
+[info] 135341.727 ops/s
+[info] Result "bench.TypedActorBenchmark.echo":
+[info]   135930.545 ±(99.9%) 32731.220 ops/s [Average]
+[info]   (min, avg, max) = (134504.839, 135930.545, 137945.069), stdev = 1794.109
+[info]   CI (99.9%): [103199.325, 168661.765] (assumes normal distribution)
+[info] # JMH version: 1.32
+[info] # VM version: JDK 11.0.11, Java HotSpot(TM) 64-Bit Server VM, 11.0.11+9-LTS-jvmci-21.1-b05
+[info] # VM invoker: /Users/tanjimhossain/Downloads/graal/graalvm-ee-java11-21.1.0/Contents/Home/bin/java
+[info] # VM options: -XX:+UnlockExperimentalVMOptions -XX:+EnableJVMCIProduct -XX:-UnlockExperimentalVMOptions -XX:ThreadPriorityPolicy=1
+[info] # Blackhole mode: full + dont-inline hint
+[info] # Warmup: 3 iterations, 5 s each
+[info] # Measurement: 3 iterations, 15 s each
+[info] # Timeout: 10 min per iteration
+[info] # Threads: 1 thread, will synchronize iterations
+[info] # Benchmark mode: Throughput, ops/time
+[info] # Benchmark: bench.TypedActorBenchmark.echo
+[info] # Parameters: (batchSize = 50, dispatcher = fjp-dispatcher, mailbox = akka.dispatch.UnboundedMailbox, tpt = 50)
+[info] # Run progress: 50.00% complete, ETA 00:01:01
+[info] # Fork: 1 of 1
+[info] Java HotSpot(TM) 64-Bit Server VM warning: -XX:ThreadPriorityPolicy=1 may require system level permission, e.g., being the root user. If the necessary permission is not possessed, changes to priority will be silently ignored.
+[info] # Warmup Iteration   1: 21:07:44.027 [TypedActorBenchmark-akka.actor.default-dispatcher-3] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+[error] SLF4J: A number (1) of logging calls during the initialization phase have been intercepted and are
+[error] SLF4J: now being replayed. These are subject to the filtering rules of the underlying logging system.
+[error] SLF4J: See also http://www.slf4j.org/codes.html#replay
+[info]   25600 messages by 512 actors took 1525 ms, 0.02 M msg/s
+[info]   25600 messages by 512 actors took 610 ms, 0.04 M msg/s
+[info]   25600 messages by 512 actors took 498 ms, 0.05 M msg/s
+[info]   25600 messages by 512 actors took 470 ms, 0.05 M msg/s
+[info]   25600 messages by 512 actors took 535 ms, 0.05 M msg/s
+[info]   25600 messages by 512 actors took 437 ms, 0.06 M msg/s
+[info]   25600 messages by 512 actors took 383 ms, 0.07 M msg/s
+[info]   25600 messages by 512 actors took 422 ms, 0.06 M msg/s
+[info]   25600 messages by 512 actors took 384 ms, 0.07 M msg/s
+[info] 42846.680 ops/s
+[info] # Warmup Iteration   2:   25600 messages by 512 actors took 343 ms, 0.07 M msg/s
+[info]   25600 messages by 512 actors took 285 ms, 0.09 M msg/s
+[info]   25600 messages by 512 actors took 229 ms, 0.11 M msg/s
+[info]   25600 messages by 512 actors took 236 ms, 0.11 M msg/s
+[info]   25600 messages by 512 actors took 216 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 226 ms, 0.11 M msg/s
+[info]   25600 messages by 512 actors took 238 ms, 0.11 M msg/s
+[info]   25600 messages by 512 actors took 208 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 194 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 219 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 197 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 218 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 253 ms, 0.10 M msg/s
+[info]   25600 messages by 512 actors took 333 ms, 0.08 M msg/s
+[info]   25600 messages by 512 actors took 238 ms, 0.11 M msg/s
+[info]   25600 messages by 512 actors took 248 ms, 0.10 M msg/s
+[info]   25600 messages by 512 actors took 180 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 243 ms, 0.11 M msg/s
+[info]   25600 messages by 512 actors took 191 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 228 ms, 0.11 M msg/s
+[info]   25600 messages by 512 actors took 195 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 252 ms, 0.10 M msg/s
+[info] 107463.730 ops/s
+[info] # Warmup Iteration   3:   25600 messages by 512 actors took 256 ms, 0.10 M msg/s
+[info]   25600 messages by 512 actors took 195 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 205 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 203 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 195 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 190 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 185 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 264 ms, 0.10 M msg/s
+[info]   25600 messages by 512 actors took 198 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 269 ms, 0.09 M msg/s
+[info]   25600 messages by 512 actors took 231 ms, 0.11 M msg/s
+[info]   25600 messages by 512 actors took 207 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 197 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 224 ms, 0.11 M msg/s
+[info]   25600 messages by 512 actors took 202 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 185 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 185 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 183 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 189 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 213 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 179 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 220 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 186 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 179 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 165 ms, 0.15 M msg/s
+[info] 124296.837 ops/s
+[info] Iteration   1:   25600 messages by 512 actors took 204 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 200 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 179 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 185 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 186 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 191 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 189 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 205 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 200 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 184 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 265 ms, 0.10 M msg/s
+[info]   25600 messages by 512 actors took 197 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 234 ms, 0.11 M msg/s
+[info]   25600 messages by 512 actors took 222 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 184 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 187 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 181 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 273 ms, 0.09 M msg/s
+[info]   25600 messages by 512 actors took 252 ms, 0.10 M msg/s
+[info]   25600 messages by 512 actors took 194 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 212 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 201 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 189 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 188 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 195 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 200 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 187 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 187 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 188 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 164 ms, 0.16 M msg/s
+[info]   25600 messages by 512 actors took 216 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 194 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 186 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 181 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 182 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 206 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 201 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 201 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 191 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 183 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 177 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 186 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 192 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 189 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 186 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 198 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 197 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 212 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 186 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 187 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 187 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 184 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 198 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 189 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 192 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 185 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 192 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 202 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 179 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 215 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 189 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 189 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 180 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 184 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 212 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 186 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 190 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 189 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 197 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 193 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 186 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 187 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 188 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 184 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 196 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 220 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 179 ms, 0.14 M msg/s
+[info] 129915.014 ops/s
+[info] Iteration   2:   25600 messages by 512 actors took 209 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 194 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 175 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 217 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 187 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 184 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 180 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 180 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 210 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 196 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 198 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 180 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 185 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 186 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 209 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 200 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 199 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 184 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 172 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 191 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 184 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 220 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 194 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 186 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 191 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 181 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 202 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 185 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 182 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 182 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 186 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 189 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 180 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 205 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 187 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 202 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 198 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 185 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 209 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 184 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 182 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 160 ms, 0.16 M msg/s
+[info]   25600 messages by 512 actors took 189 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 198 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 194 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 180 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 182 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 191 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 211 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 206 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 197 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 188 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 191 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 184 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 193 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 204 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 170 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 182 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 183 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 188 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 187 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 179 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 189 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 194 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 184 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 186 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 187 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 196 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 196 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 185 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 185 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 186 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 180 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 181 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 192 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 192 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 191 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 185 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 191 ms, 0.13 M msg/s
+[info] 133620.915 ops/s
+[info] Iteration   3:   25600 messages by 512 actors took 222 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 194 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 178 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 203 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 208 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 201 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 180 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 180 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 187 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 203 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 197 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 189 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 196 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 191 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 183 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 184 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 197 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 196 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 185 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 179 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 189 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 189 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 213 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 195 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 200 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 188 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 186 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 197 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 189 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 195 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 182 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 217 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 199 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 174 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 182 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 195 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 198 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 179 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 187 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 189 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 207 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 190 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 181 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 177 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 183 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 214 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 195 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 242 ms, 0.11 M msg/s
+[info]   25600 messages by 512 actors took 224 ms, 0.11 M msg/s
+[info]   25600 messages by 512 actors took 204 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 196 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 185 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 184 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 213 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 189 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 188 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 186 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 189 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 188 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 180 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 184 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 213 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 186 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 186 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 190 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 186 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 201 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 187 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 192 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 186 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 189 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 199 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 208 ms, 0.12 M msg/s
+[info]   25600 messages by 512 actors took 198 ms, 0.13 M msg/s
+[info]   25600 messages by 512 actors took 187 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 175 ms, 0.15 M msg/s
+[info]   25600 messages by 512 actors took 188 ms, 0.14 M msg/s
+[info]   25600 messages by 512 actors took 174 ms, 0.15 M msg/s
+[info] 131786.098 ops/s
+[info] Result "bench.TypedActorBenchmark.echo":
+[info]   131774.009 ±(99.9%) 33805.260 ops/s [Average]
+[info]   (min, avg, max) = (129915.014, 131774.009, 133620.915), stdev = 1852.980
+[info]   CI (99.9%): [97968.749, 165579.269] (assumes normal distribution)
+[info] # Run complete. Total time: 00:02:04
+[info] REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+[info] why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+[info] experiments, perform baseline and negative tests that provide experimental control, make sure
+[info] the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+[info] Do not assume the numbers tell you what you want them to tell.
+[info] Benchmark                 (batchSize)    (dispatcher)                                         (mailbox)  (tpt)   Mode  Cnt       Score       Error  Units
+[info] TypedActorBenchmark.echo           50  fjp-dispatcher  akka.dispatch.SingleConsumerOnlyUnboundedMailbox     50  thrpt    3  135930.545 ± 32731.220  ops/s
+[info] TypedActorBenchmark.echo           50  fjp-dispatcher                    akka.dispatch.UnboundedMailbox     50  thrpt    3  131774.009 ± 33805.260  ops/s
+[success] Total time: 132 s (02:12), completed Jun 5, 2021, 9:08:46 PM

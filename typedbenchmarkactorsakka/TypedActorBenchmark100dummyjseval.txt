@@ -1,0 +1,123 @@
+[info] welcome to sbt 1.5.3 (Oracle Corporation Java 11.0.11)
+[info] loading settings for project typedbenchmarkactorsakka-build-build-build from metals.sbt ...
+[info] loading project definition from /Users/tanjimhossain/Bytes/actorbench/typedbenchmarkactorsakka/project/project/project
+[info] loading settings for project typedbenchmarkactorsakka-build-build from metals.sbt ...
+[info] loading project definition from /Users/tanjimhossain/Bytes/actorbench/typedbenchmarkactorsakka/project/project
+[success] Generated .bloop/typedbenchmarkactorsakka-build-build.json
+[success] Total time: 0 s, completed Jun 5, 2021, 9:02:57 PM
+[info] loading settings for project typedbenchmarkactorsakka-build from metals.sbt,plugins.sbt ...
+[info] loading project definition from /Users/tanjimhossain/Bytes/actorbench/typedbenchmarkactorsakka/project
+[success] Generated .bloop/typedbenchmarkactorsakka-build.json
+[success] Total time: 0 s, completed Jun 5, 2021, 9:02:58 PM
+[info] loading settings for project root from build.sbt ...
+[info] set current project to scala3-simple (in build file:/Users/tanjimhossain/Bytes/actorbench/typedbenchmarkactorsakka/)
+[info] compiling 17 Java sources to /Users/tanjimhossain/Bytes/actorbench/typedbenchmarkactorsakka/target/scala-3.0.0/classes ...
+[info] done compiling
+[info] running (fork) org.openjdk.jmh.Main -i 3 -wi 3 -f 1 .*TypedActorBenchmark
+[info] # JMH version: 1.32
+[info] # VM version: JDK 11.0.11, Java HotSpot(TM) 64-Bit Server VM, 11.0.11+9-LTS-jvmci-21.1-b05
+[info] # VM invoker: /Users/tanjimhossain/Downloads/graal/graalvm-ee-java11-21.1.0/Contents/Home/bin/java
+[info] # VM options: -XX:+UnlockExperimentalVMOptions -XX:+EnableJVMCIProduct -XX:-UnlockExperimentalVMOptions -XX:ThreadPriorityPolicy=1
+[info] # Blackhole mode: full + dont-inline hint
+[info] # Warmup: 3 iterations, 5 s each
+[info] # Measurement: 3 iterations, 15 s each
+[info] # Timeout: 10 min per iteration
+[info] # Threads: 1 thread, will synchronize iterations
+[info] # Benchmark mode: Throughput, ops/time
+[info] # Benchmark: bench.TypedActorBenchmark.echo
+[info] # Parameters: (batchSize = 50, dispatcher = fjp-dispatcher, mailbox = akka.dispatch.SingleConsumerOnlyUnboundedMailbox, tpt = 50)
+[info] # Run progress: 0.00% complete, ETA 00:02:00
+[info] # Fork: 1 of 1
+[info] Java HotSpot(TM) 64-Bit Server VM warning: -XX:ThreadPriorityPolicy=1 may require system level permission, e.g., being the root user. If the necessary permission is not possessed, changes to priority will be silently ignored.
+[info] # Warmup Iteration   1: 21:03:02.430 [TypedActorBenchmark-akka.actor.default-dispatcher-3] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+[error] SLF4J: A number (1) of logging calls during the initialization phase have been intercepted and are
+[error] SLF4J: now being replayed. These are subject to the filtering rules of the underlying logging system.
+[error] SLF4J: See also http://www.slf4j.org/codes.html#replay
+[info]   25600 messages by 512 actors took 8138 ms, 0.00 M msg/s
+[info] 3118.162 ops/s
+[info] # Warmup Iteration   2:   25600 messages by 512 actors took 6173 ms, 0.00 M msg/s
+[info] 4130.654 ops/s
+[info] # Warmup Iteration   3:   25600 messages by 512 actors took 5511 ms, 0.00 M msg/s
+[info] 4639.226 ops/s
+[info] Iteration   1:   25600 messages by 512 actors took 4783 ms, 0.01 M msg/s
+[info]   25600 messages by 512 actors took 3453 ms, 0.01 M msg/s
+[info]   25600 messages by 512 actors took 3041 ms, 0.01 M msg/s
+[info]   25600 messages by 512 actors took 3010 ms, 0.01 M msg/s
+[info]   25600 messages by 512 actors took 3048 ms, 0.01 M msg/s
+[info] 7372.741 ops/s
+[info] Iteration   2:   25600 messages by 512 actors took 3012 ms, 0.01 M msg/s
+[info]   25600 messages by 512 actors took 2927 ms, 0.01 M msg/s
+[info]   25600 messages by 512 actors took 3036 ms, 0.01 M msg/s
+[info]   25600 messages by 512 actors took 3030 ms, 0.01 M msg/s
+[info]   25600 messages by 512 actors took 3059 ms, 0.01 M msg/s
+[info] 8486.547 ops/s
+[info] Iteration   3:   25600 messages by 512 actors took 2969 ms, 0.01 M msg/s
+[info]   25600 messages by 512 actors took 3064 ms, 0.01 M msg/s
+[info]   25600 messages by 512 actors took 2905 ms, 0.01 M msg/s
+[info]   25600 messages by 512 actors took 2995 ms, 0.01 M msg/s
+[info]   25600 messages by 512 actors took 2994 ms, 0.01 M msg/s
+[info]   25600 messages by 512 actors took 2957 ms, 0.01 M msg/s
+[info] 8582.771 ops/s
+[info] Result "bench.TypedActorBenchmark.echo":
+[info]   8147.353 ±(99.9%) 12269.945 ops/s [Average]
+[info]   (min, avg, max) = (7372.741, 8147.353, 8582.771), stdev = 672.557
+[info]   CI (99.9%): [≈ 0, 20417.298] (assumes normal distribution)
+[info] # JMH version: 1.32
+[info] # VM version: JDK 11.0.11, Java HotSpot(TM) 64-Bit Server VM, 11.0.11+9-LTS-jvmci-21.1-b05
+[info] # VM invoker: /Users/tanjimhossain/Downloads/graal/graalvm-ee-java11-21.1.0/Contents/Home/bin/java
+[info] # VM options: -XX:+UnlockExperimentalVMOptions -XX:+EnableJVMCIProduct -XX:-UnlockExperimentalVMOptions -XX:ThreadPriorityPolicy=1
+[info] # Blackhole mode: full + dont-inline hint
+[info] # Warmup: 3 iterations, 5 s each
+[info] # Measurement: 3 iterations, 15 s each
+[info] # Timeout: 10 min per iteration
+[info] # Threads: 1 thread, will synchronize iterations
+[info] # Benchmark mode: Throughput, ops/time
+[info] # Benchmark: bench.TypedActorBenchmark.echo
+[info] # Parameters: (batchSize = 50, dispatcher = fjp-dispatcher, mailbox = akka.dispatch.UnboundedMailbox, tpt = 50)
+[info] # Run progress: 50.00% complete, ETA 00:01:11
+[info] # Fork: 1 of 1
+[info] Java HotSpot(TM) 64-Bit Server VM warning: -XX:ThreadPriorityPolicy=1 may require system level permission, e.g., being the root user. If the necessary permission is not possessed, changes to priority will be silently ignored.
+[info] # Warmup Iteration   1: 21:04:14.242 [TypedActorBenchmark-akka.actor.default-dispatcher-3] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+[error] SLF4J: A number (1) of logging calls during the initialization phase have been intercepted and are
+[error] SLF4J: now being replayed. These are subject to the filtering rules of the underlying logging system.
+[error] SLF4J: See also http://www.slf4j.org/codes.html#replay
+[info]   25600 messages by 512 actors took 7679 ms, 0.00 M msg/s
+[info] 3295.309 ops/s
+[info] # Warmup Iteration   2:   25600 messages by 512 actors took 6026 ms, 0.00 M msg/s
+[info] 4233.460 ops/s
+[info] # Warmup Iteration   3:   25600 messages by 512 actors took 5354 ms, 0.00 M msg/s
+[info] 4763.939 ops/s
+[info] Iteration   1:   25600 messages by 512 actors took 4726 ms, 0.01 M msg/s
+[info]   25600 messages by 512 actors took 3318 ms, 0.01 M msg/s
+[info]   25600 messages by 512 actors took 2904 ms, 0.01 M msg/s
+[info]   25600 messages by 512 actors took 2882 ms, 0.01 M msg/s
+[info]   25600 messages by 512 actors took 2875 ms, 0.01 M msg/s
+[info] 7646.122 ops/s
+[info] Iteration   2:   25600 messages by 512 actors took 2836 ms, 0.01 M msg/s
+[info]   25600 messages by 512 actors took 2866 ms, 0.01 M msg/s
+[info]   25600 messages by 512 actors took 2897 ms, 0.01 M msg/s
+[info]   25600 messages by 512 actors took 2815 ms, 0.01 M msg/s
+[info]   25600 messages by 512 actors took 2828 ms, 0.01 M msg/s
+[info]   25600 messages by 512 actors took 2842 ms, 0.01 M msg/s
+[info] 8979.055 ops/s
+[info] Iteration   3:   25600 messages by 512 actors took 2960 ms, 0.01 M msg/s
+[info]   25600 messages by 512 actors took 2780 ms, 0.01 M msg/s
+[info]   25600 messages by 512 actors took 2924 ms, 0.01 M msg/s
+[info]   25600 messages by 512 actors took 2914 ms, 0.01 M msg/s
+[info]   25600 messages by 512 actors took 2797 ms, 0.01 M msg/s
+[info]   25600 messages by 512 actors took 2939 ms, 0.01 M msg/s
+[info] 8863.085 ops/s
+[info] Result "bench.TypedActorBenchmark.echo":
+[info]   8496.088 ±(99.9%) 13470.654 ops/s [Average]
+[info]   (min, avg, max) = (7646.122, 8496.088, 8979.055), stdev = 738.372
+[info]   CI (99.9%): [≈ 0, 21966.742] (assumes normal distribution)
+[info] # Run complete. Total time: 00:02:23
+[info] REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+[info] why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+[info] experiments, perform baseline and negative tests that provide experimental control, make sure
+[info] the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+[info] Do not assume the numbers tell you what you want them to tell.
+[info] Benchmark                 (batchSize)    (dispatcher)                                         (mailbox)  (tpt)   Mode  Cnt     Score       Error  Units
+[info] TypedActorBenchmark.echo           50  fjp-dispatcher  akka.dispatch.SingleConsumerOnlyUnboundedMailbox     50  thrpt    3  8147.353 ± 12269.945  ops/s
+[info] TypedActorBenchmark.echo           50  fjp-dispatcher                    akka.dispatch.UnboundedMailbox     50  thrpt    3  8496.088 ± 13470.654  ops/s
+[success] Total time: 146 s (02:26), completed Jun 5, 2021, 9:05:25 PM

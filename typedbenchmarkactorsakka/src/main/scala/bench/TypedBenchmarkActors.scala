@@ -12,38 +12,36 @@ import akka.Done
 import akka.actor.typed.scaladsl.ActorContext
 import akka.actor.typed.scaladsl.Behaviors
 
-import org.graalvm.polyglot.*
-import java.io.PrintWriter
 import akka.actor.typed.ActorRef
 import akka.actor.typed.Behavior
 import akka.actor.typed.Props
 
 object TypedBenchmarkActors {
+  import org.graalvm.polyglot.*
 
   // to avoid benchmark to be dominated by allocations of message
   // we pass the respondTo actor ref into the behavior
   case object Message
 
+  final val polyCtx = Context
+    .newBuilder()
+    .allowAllAccess(true)
+    .option("engine.Mode", "throughput")
+    .build()
+
+  final val jsSource = Source
+    .newBuilder(
+      "js",
+      "",
+      "dummymodule"
+    )
+    .build()
+
   private def echoBehavior(
       respondTo: ActorRef[Message.type]
   ): Behavior[Message.type] = Behaviors.receive { (_, _) =>
-    val polyCtx = Context
-      .newBuilder()
-      .allowAllAccess(true)
-      .option("engine.Mode", "throughput")
-      .build()
     polyCtx.eval("js", "")
-    polyCtx.eval(
-      Source
-        .newBuilder(
-          "js",
-          "",
-          "dummymodule"
-        )
-        .build()
-    )
-    // new PrintWriter("somelog") { write(value.asString()); close }
-    polyCtx.close()
+    polyCtx.eval(jsSource)
 
     respondTo ! Message
     Behaviors.same

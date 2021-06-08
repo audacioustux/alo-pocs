@@ -3,6 +3,7 @@
  */
 package bench
 
+import org.graalvm.polyglot.*
 import java.util.concurrent.TimeUnit
 
 import scala.concurrent.Await

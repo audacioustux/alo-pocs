@@ -4,6 +4,7 @@
 
 package bench
 
+import org.graalvm.polyglot._
 import java.util.concurrent.CountDownLatch
 
 import scala.concurrent.duration._
@@ -17,13 +18,13 @@ import akka.actor.typed.Behavior
 import akka.actor.typed.Props
 
 object TypedBenchmarkActors {
-  import org.graalvm.polyglot.*
 
   // to avoid benchmark to be dominated by allocations of message
   // we pass the respondTo actor ref into the behavior
   case object Message
 
-  final val polyCtx = Context
+  // val araara = ArrayList[String]();
+  val polyCtx = Context
     .newBuilder()
     .allowAllAccess(true)
     .option("engine.Mode", "throughput")
@@ -37,7 +38,7 @@ object TypedBenchmarkActors {
     )
     .build()
 
-  private def echoBehavior(
+  def echoBehavior(
       respondTo: ActorRef[Message.type]
   ): Behavior[Message.type] = Behaviors.receive { (_, _) =>
     polyCtx.eval("js", "")

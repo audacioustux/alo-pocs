@@ -4,6 +4,7 @@
 
 package bench
 
+import org.graalvm.polyglot._
 import java.util.concurrent.CountDownLatch
 
 import scala.concurrent.duration._
@@ -15,7 +16,6 @@ import akka.actor.typed.scaladsl.Behaviors
 import akka.actor.typed.ActorRef
 import akka.actor.typed.Behavior
 import akka.actor.typed.Props
-import org.graalvm.polyglot._
 
 object TypedBenchmarkActors {
 

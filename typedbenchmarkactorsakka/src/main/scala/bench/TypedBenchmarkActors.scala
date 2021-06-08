@@ -4,7 +4,6 @@
 
 package bench
 
-import org.graalvm.polyglot._
 import java.util.concurrent.CountDownLatch
 
 import scala.concurrent.duration._
@@ -16,6 +15,7 @@ import akka.actor.typed.scaladsl.Behaviors
 import akka.actor.typed.ActorRef
 import akka.actor.typed.Behavior
 import akka.actor.typed.Props
+import org.graalvm.polyglot._
 
 object TypedBenchmarkActors {
 
@@ -23,24 +23,23 @@ object TypedBenchmarkActors {
   // we pass the respondTo actor ref into the behavior
   case object Message
 
-  // val araara = ArrayList[String]();
-  val polyCtx = Context
-    .newBuilder()
-    .allowAllAccess(true)
-    .option("engine.Mode", "throughput")
-    .build()
-
-  final val jsSource = Source
-    .newBuilder(
-      "js",
-      "",
-      "dummymodule"
-    )
-    .build()
-
   def echoBehavior(
       respondTo: ActorRef[Message.type]
   ): Behavior[Message.type] = Behaviors.receive { (_, _) =>
+    val polyCtx = Context
+      .newBuilder()
+      .allowAllAccess(true)
+      .option("engine.Mode", "throughput")
+      .build()
+
+    val jsSource = Source
+      .newBuilder(
+        "js",
+        "",
+        "dummymodule"
+      )
+      .build()
+
     polyCtx.eval("js", "")
     polyCtx.eval(jsSource)
 

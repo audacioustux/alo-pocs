@@ -1,4 +1,4 @@
-package org.openjdk.jmh.samples
+package bench
 import java.util.concurrent.TimeUnit
 import org.openjdk.jmh.annotations._
 import org.graalvm.polyglot.*
@@ -15,21 +15,21 @@ import org.graalvm.polyglot.*
   batchSize = 1
 )
 class PolyCtxBench {
-  val polyCtx = Context
-    .newBuilder()
-    .allowAllAccess(true)
-    .option("engine.Mode", "throughput")
-    .build()
-  val jsSource = Source
-    .newBuilder(
-      "js",
-      "Math.random()",
-      "dummymodule"
-    )
-    .build()
-
   @Benchmark
   def wellHelloThere(): Unit = {
+    val polyCtx = Context
+      .newBuilder()
+      .allowAllAccess(true)
+      .option("engine.Mode", "throughput")
+      .build()
+    val jsSource = Source
+      .newBuilder(
+        "js",
+        "Math.random()",
+        "dummymodule"
+      )
+      .build()
+
     polyCtx.eval("js", "")
     polyCtx.eval(jsSource)
     ()

@@ -10,8 +10,7 @@ lazy val root = project
     version := "0.1.0",
     scalaVersion := scala3Version,
 
-    Compile / runMain := Defaults.runMainTask(Compile / fullClasspath, Compile /
-    run / runner).evaluated,
+    Compile / runMain := Defaults.runMainTask(Compile / fullClasspath, Compile / run / runner).evaluated,
 
     libraryDependencies += "org.graalvm.sdk" % "graal-sdk" % "21.1.0",
     libraryDependencies += ("com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion).cross(CrossVersion.for3Use2_13),

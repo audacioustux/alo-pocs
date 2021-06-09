@@ -22,23 +22,23 @@ object TypedBenchmarkActors {
   // to avoid benchmark to be dominated by allocations of message
   // we pass the respondTo actor ref into the behavior
   case object Message
-  val polyCtx = Context
-    .newBuilder()
-    .allowAllAccess(true)
-    .option("engine.Mode", "throughput")
-    .build()
-
-  val jsSource = Source
-    .newBuilder(
-      "js",
-      "",
-      "dummymodule"
-    )
-    .build()
 
   def echoBehavior(
       respondTo: ActorRef[Message.type]
   ): Behavior[Message.type] = Behaviors.receive { (_, _) =>
+    val polyCtx = Context
+      .newBuilder()
+      .allowAllAccess(true)
+      .option("engine.Mode", "throughput")
+      .build()
+
+    val jsSource = Source
+      .newBuilder(
+        "js",
+        "",
+        "dummymodule"
+      )
+      .build()
     polyCtx.eval("js", "")
     polyCtx.eval(jsSource)
 

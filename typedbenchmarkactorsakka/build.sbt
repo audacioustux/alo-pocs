@@ -12,7 +12,7 @@ lazy val root = project
 
     Compile / runMain := Defaults.runMainTask(Compile / fullClasspath, Compile / run / runner).evaluated,
 
-    libraryDependencies += "org.graalvm.sdk" % "graal-sdk" % "21.1.0",
+    libraryDependencies += "org.graalvm.sdk" % "graal-sdk" % "21.1.0" % "provided",
     libraryDependencies += ("com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion).cross(CrossVersion.for3Use2_13),
     libraryDependencies += ("com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % Test).cross(CrossVersion.for3Use2_13),
     libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3",

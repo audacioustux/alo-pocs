@@ -62,6 +62,7 @@ object TypedBenchmarkActors {
       Behaviors.receiveMessage { _ =>
         batch -= 1
         if (batch <= 0 && !sendBatch()) {
+          polyCtx.close()
           onDone ! Done
           Behaviors.stopped
         } else {

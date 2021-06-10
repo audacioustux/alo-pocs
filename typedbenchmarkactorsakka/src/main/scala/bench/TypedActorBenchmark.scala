@@ -18,7 +18,7 @@ import akka.actor.typed.ActorSystem
 object TypedActorBenchmark {
   // Constants because they are used in annotations
   final val threads = 4 // update according to cpu
-  final val numMessagesPerActorPair = 10 // messages per actor pair
+  final val numMessagesPerActorPair = 25000 // messages per actor pair
 
   final val numActors = 512
   final val totalMessages = numMessagesPerActorPair * numActors / 2

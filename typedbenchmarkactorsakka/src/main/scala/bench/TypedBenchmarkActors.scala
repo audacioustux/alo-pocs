@@ -26,22 +26,6 @@ object TypedBenchmarkActors {
   def echoBehavior(
       respondTo: ActorRef[Message.type]
   ): Behavior[Message.type] = Behaviors.receive { (_, _) =>
-    val polyCtx = Context
-      .newBuilder()
-      .allowAllAccess(true)
-      .option("engine.Mode", "throughput")
-      .build()
-
-    val jsSource = Source
-      .newBuilder(
-        "js",
-        "",
-        "dummymodule"
-      )
-      .build()
-    polyCtx.eval("js", "")
-    polyCtx.eval(jsSource)
-
     respondTo ! Message
     Behaviors.same
   }
@@ -50,10 +34,13 @@ object TypedBenchmarkActors {
       messagesPerPair: Int,
       onDone: ActorRef[Done],
       batchSize: Int,
-      childProps: Props
+      childProps: Props,
+      polyCtx: Context,
+      jsSource: Source
   ): Behavior[Message.type] =
     Behaviors.setup { ctx =>
-      val echo = ctx.spawn(echoBehavior(ctx.self), "echo", childProps)
+      val echo =
+        ctx.spawn(echoBehavior(ctx.self), "echo", childProps)
       var left = messagesPerPair / 2
       var batch = 0
 
@@ -61,6 +48,7 @@ object TypedBenchmarkActors {
         if (left > 0) {
           var i = 0
           while (i < batchSize) {
+            polyCtx.eval(jsSource)
             echo ! Message
             i += 1
           }
@@ -123,12 +111,30 @@ object TypedBenchmarkActors {
         val props =
           Props.empty.withDispatcherFromConfig("akka.actor." + dispatcher)
         val pairs = (1 to numPairs).map { _ =>
+          val polyCtx = Context
+            .newBuilder()
+            .allowAllAccess(true)
+            .option("engine.Mode", "throughput")
+            .build()
+          polyCtx.eval("js", "")
+
+          val jsSource =
+            Source
+              .newBuilder(
+                "js",
+                "",
+                "dummymodule"
+              )
+              .build()
+
           ctx.spawnAnonymous(
             echoSender(
               messagesPerPair,
               ctx.self.narrow[Done],
               batchSize,
-              props
+              props,
+              polyCtx,
+              jsSource
             ),
             props
           )

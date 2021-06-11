@@ -1,0 +1,82 @@
+[info] welcome to sbt 1.5.3 (Oracle Corporation Java 1.8.0_291)
+[info] loading settings for project typedbenchmarkactorsakka-build-build-build from metals.sbt ...
+[info] loading project definition from /Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/project/project/project
+[info] loading settings for project typedbenchmarkactorsakka-build-build from metals.sbt ...
+[info] loading project definition from /Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/project/project
+[success] Generated .bloop/typedbenchmarkactorsakka-build-build.json
+[success] Total time: 0 s, completed Jun 10, 2021 10:31:22 PM
+[info] loading settings for project typedbenchmarkactorsakka-build from metals.sbt,plugins.sbt ...
+[info] loading project definition from /Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/project
+[success] Generated .bloop/typedbenchmarkactorsakka-build.json
+[success] Total time: 0 s, completed Jun 10, 2021 10:31:22 PM
+[info] loading settings for project root from build.sbt ...
+[info] set current project to scala3-simple (in build file:/Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/)
+[info] compiling 3 Scala sources to /Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/target/scala-3.0.0/classes ...
+[info] done compiling
+[info] running org.openjdk.jmh.generators.bytecode.JmhBytecodeGenerator /Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/target/scala-3.0.0/classes /Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/target/scala-3.0.0/src_managed/jmh /Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/target/scala-3.0.0/resource_managed/jmh default
+Processing 32 classes from /Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/target/scala-3.0.0/classes with "reflection" generator
+Writing out Java source to /Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/target/scala-3.0.0/src_managed/jmh and resources to /Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/target/scala-3.0.0/resource_managed/jmh
+[info] compiling 1 Scala source to /Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/target/scala-3.0.0/test-classes ...
+[info] done compiling
+[info] compiling 5 Java sources to /Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/target/scala-3.0.0/classes ...
+[warn] Error reading API from class file: bench.jmh_generated.TypedActorBenchmark_jmhType_B3 : java.lang.UnsupportedClassVersionError: bench/jmh_generated/TypedActorBenchmark_jmhType_B3 has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0
+[warn] Error reading API from class file: bench.jmh_generated.TypedActorBenchmark_echo_jmhTest : java.lang.UnsupportedClassVersionError: bench/jmh_generated/TypedActorBenchmark_echo_jmhTest has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0
+[warn] Error reading API from class file: bench.jmh_generated.TypedActorBenchmark_jmhType_B2 : java.lang.UnsupportedClassVersionError: bench/jmh_generated/TypedActorBenchmark_jmhType_B2 has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0
+[warn] Error reading API from class file: bench.jmh_generated.TypedActorBenchmark_jmhType_B1 : java.lang.UnsupportedClassVersionError: bench/jmh_generated/TypedActorBenchmark_jmhType_B1 has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0
+[warn] Error reading API from class file: bench.jmh_generated.TypedActorBenchmark_jmhType : java.lang.UnsupportedClassVersionError: bench/jmh_generated/TypedActorBenchmark_jmhType has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0
+[info] done compiling
+[info] running (fork) org.openjdk.jmh.Main -i 3 -wi 3 -f 1 .*TypedActorBenchmark
+[info] # JMH version: 1.32
+[info] # VM version: JDK 11.0.11, Java HotSpot(TM) 64-Bit Server VM, 11.0.11+9-LTS-jvmci-21.1-b05
+[info] # VM invoker: /Users/tanjimhossain/Downloads/graal/graalvm-ee-java11-21.1.0/Contents/Home/bin/java
+[info] # VM options: -XX:+UnlockExperimentalVMOptions -XX:+EnableJVMCIProduct -XX:-UnlockExperimentalVMOptions -XX:ThreadPriorityPolicy=1
+[info] # Blackhole mode: full + dont-inline hint
+[info] # Warmup: 3 iterations, 5 s each
+[info] # Measurement: 3 iterations, 15 s each
+[info] # Timeout: 10 min per iteration
+[info] # Threads: 1 thread, will synchronize iterations
+[info] # Benchmark mode: Throughput, ops/time
+[info] # Benchmark: bench.TypedActorBenchmark.echo
+[info] # Parameters: (batchSize = 50, dispatcher = fjp-dispatcher, mailbox = akka.dispatch.SingleConsumerOnlyUnboundedMailbox, tpt = 50)
+[info] # Run progress: 0.00% complete, ETA 00:02:00
+[info] # Fork: 1 of 1
+[info] # Warmup Iteration   1: 22:31:32.682 [TypedActorBenchmark-akka.actor.default-dispatcher-3] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+[error] SLF4J: A number (1) of logging calls during the initialization phase have been intercepted and are
+[error] SLF4J: now being replayed. These are subject to the filtering rules of the underlying logging system.
+[error] SLF4J: See also http://www.slf4j.org/codes.html#replay
+[info] Exception: java.lang.OutOfMemoryError thrown from the UncaughtExceptionHandler in thread "Libgraal MBean Registration"
+[error] Uncaught error from thread [TypedActorBenchmark-akka.actor.default-dispatcher-7]: Java heap space, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[TypedActorBenchmark]
+[error] java.lang.OutOfMemoryError: Java heap space
+[error] Caused by: Attached Guest Language Frames (0)
+[info] <failure: VM prematurely exited before JMH had finished with it, explicit System.exit was called?>
+[info] 22:36:07.342 [TypedActorBenchmark-akka.actor.default-dispatcher-6] ERROR akka.actor.ActorSystemImpl - Uncaught error from thread [TypedActorBenchmark-akka.actor.default-dispatcher-7]: Java heap space, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[TypedActorBenchmark]
+[info] java.lang.OutOfMemoryError: Java heap space
+[info] Caused by: com.oracle.truffle.api.TruffleStackTrace$LazyStackTrace: null
+[info] <forked VM failed with exit code 255>
+[info] <stdout last='20 lines'>
+[info] </stdout>
+[info] <stderr last='20 lines'>
+[info] Exception: java.lang.OutOfMemoryError thrown from the UncaughtExceptionHandler in thread "Libgraal MBean Registration"
+[info] </stderr>
+[info] # JMH version: 1.32
+[info] # VM version: JDK 11.0.11, Java HotSpot(TM) 64-Bit Server VM, 11.0.11+9-LTS-jvmci-21.1-b05
+[info] # VM invoker: /Users/tanjimhossain/Downloads/graal/graalvm-ee-java11-21.1.0/Contents/Home/bin/java
+[info] # VM options: -XX:+UnlockExperimentalVMOptions -XX:+EnableJVMCIProduct -XX:-UnlockExperimentalVMOptions -XX:ThreadPriorityPolicy=1
+[info] # Blackhole mode: full + dont-inline hint
+[info] # Warmup: 3 iterations, 5 s each
+[info] # Measurement: 3 iterations, 15 s each
+[info] # Timeout: 10 min per iteration
+[info] # Threads: 1 thread, will synchronize iterations
+[info] # Benchmark mode: Throughput, ops/time
+[info] # Benchmark: bench.TypedActorBenchmark.echo
+[info] # Parameters: (batchSize = 50, dispatcher = fjp-dispatcher, mailbox = akka.dispatch.UnboundedMailbox, tpt = 50)
+[info] # Run progress: 0.00% complete, ETA 00:02:00
+[info] # Fork: 1 of 1
+[info] # Warmup Iteration   1: 22:37:20.530 [TypedActorBenchmark-akka.actor.default-dispatcher-3] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+[error] SLF4J: A number (1) of logging calls during the initialization phase have been intercepted and are
+[error] SLF4J: now being replayed. These are subject to the filtering rules of the underlying logging system.
+[error] SLF4J: See also http://www.slf4j.org/codes.html#replay
+
+[warn] Canceling execution...
+[error] Cancelled: Jmh / run -i 3 -wi 3 -f 1 .*TypedActorBenchmark
+[error] Use 'last' for the full log.

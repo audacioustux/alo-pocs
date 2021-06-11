@@ -1,0 +1,196 @@
+[info] welcome to sbt 1.5.3 (Oracle Corporation Java 1.8.0_291)
+[info] loading settings for project typedbenchmarkactorsakka-build-build-build from metals.sbt ...
+[info] loading project definition from /Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/project/project/project
+[info] loading settings for project typedbenchmarkactorsakka-build-build from metals.sbt ...
+[info] loading project definition from /Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/project/project
+[success] Generated .bloop/typedbenchmarkactorsakka-build-build.json
+[success] Total time: 0 s, completed Jun 10, 2021 10:17:39 PM
+[info] loading settings for project typedbenchmarkactorsakka-build from metals.sbt,plugins.sbt ...
+[info] loading project definition from /Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/project
+[success] Generated .bloop/typedbenchmarkactorsakka-build.json
+[success] Total time: 0 s, completed Jun 10, 2021 10:17:39 PM
+[info] loading settings for project root from build.sbt ...
+[info] set current project to scala3-simple (in build file:/Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/)
+[info] compiling 3 Scala sources to /Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/target/scala-3.0.0/classes ...
+[info] done compiling
+[info] compiling 1 Scala source to /Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/target/scala-3.0.0/test-classes ...
+[info] running org.openjdk.jmh.generators.bytecode.JmhBytecodeGenerator /Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/target/scala-3.0.0/classes /Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/target/scala-3.0.0/src_managed/jmh /Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/target/scala-3.0.0/resource_managed/jmh default
+Processing 32 classes from /Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/target/scala-3.0.0/classes with "reflection" generator
+Writing out Java source to /Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/target/scala-3.0.0/src_managed/jmh and resources to /Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/target/scala-3.0.0/resource_managed/jmh
+[info] done compiling
+[info] compiling 5 Java sources to /Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/target/scala-3.0.0/classes ...
+[warn] Error reading API from class file: bench.jmh_generated.TypedActorBenchmark_jmhType_B3 : java.lang.UnsupportedClassVersionError: bench/jmh_generated/TypedActorBenchmark_jmhType_B3 has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0
+[warn] Error reading API from class file: bench.jmh_generated.TypedActorBenchmark_echo_jmhTest : java.lang.UnsupportedClassVersionError: bench/jmh_generated/TypedActorBenchmark_echo_jmhTest has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0
+[warn] Error reading API from class file: bench.jmh_generated.TypedActorBenchmark_jmhType_B2 : java.lang.UnsupportedClassVersionError: bench/jmh_generated/TypedActorBenchmark_jmhType_B2 has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0
+[warn] Error reading API from class file: bench.jmh_generated.TypedActorBenchmark_jmhType_B1 : java.lang.UnsupportedClassVersionError: bench/jmh_generated/TypedActorBenchmark_jmhType_B1 has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0
+[warn] Error reading API from class file: bench.jmh_generated.TypedActorBenchmark_jmhType : java.lang.UnsupportedClassVersionError: bench/jmh_generated/TypedActorBenchmark_jmhType has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0
+[info] done compiling
+[info] running (fork) org.openjdk.jmh.Main -i 3 -wi 3 -f 1 .*TypedActorBenchmark
+[info] # JMH version: 1.32
+[info] # VM version: JDK 11.0.11, Java HotSpot(TM) 64-Bit Server VM, 11.0.11+9-LTS-jvmci-21.1-b05
+[info] # VM invoker: /Users/tanjimhossain/Downloads/graal/graalvm-ee-java11-21.1.0/Contents/Home/bin/java
+[info] # VM options: -XX:+UnlockExperimentalVMOptions -XX:+EnableJVMCIProduct -XX:-UnlockExperimentalVMOptions -XX:ThreadPriorityPolicy=1
+[info] # Blackhole mode: full + dont-inline hint
+[info] # Warmup: 3 iterations, 5 s each
+[info] # Measurement: 3 iterations, 15 s each
+[info] # Timeout: 10 min per iteration
+[info] # Threads: 1 thread, will synchronize iterations
+[info] # Benchmark mode: Throughput, ops/time
+[info] # Benchmark: bench.TypedActorBenchmark.echo
+[info] # Parameters: (batchSize = 50, dispatcher = fjp-dispatcher, mailbox = akka.dispatch.SingleConsumerOnlyUnboundedMailbox, tpt = 50)
+[info] # Run progress: 0.00% complete, ETA 00:02:00
+[info] # Fork: 1 of 1
+[info] # Warmup Iteration   1: 22:17:50.013 [TypedActorBenchmark-akka.actor.default-dispatcher-3] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+[error] SLF4J: A number (1) of logging calls during the initialization phase have been intercepted and are
+[error] SLF4J: now being replayed. These are subject to the filtering rules of the underlying logging system.
+[error] SLF4J: See also http://www.slf4j.org/codes.html#replay
+[info]   6400000 messages by 512 actors took 1914 ms, 3.34 M msg/s
+[info]   6400000 messages by 512 actors took 1055 ms, 6.07 M msg/s
+[info] 2270501.665 ops/s
+[info] # Warmup Iteration   2:   6400000 messages by 512 actors took 1317 ms, 4.86 M msg/s
+[info]   6400000 messages by 512 actors took 607 ms, 10.53 M msg/s
+[info]   6400000 messages by 512 actors took 810 ms, 7.90 M msg/s
+[info]   6400000 messages by 512 actors took 627 ms, 10.19 M msg/s
+[info] 4497826.406 ops/s
+[info] # Warmup Iteration   3:   6400000 messages by 512 actors took 911 ms, 7.02 M msg/s
+[info]   6400000 messages by 512 actors took 632 ms, 10.13 M msg/s
+[info]   6400000 messages by 512 actors took 766 ms, 8.35 M msg/s
+[info]   6400000 messages by 512 actors took 663 ms, 9.65 M msg/s
+[info]   6400000 messages by 512 actors took 718 ms, 8.91 M msg/s
+[info] 5506452.814 ops/s
+[info] Iteration   1:   6400000 messages by 512 actors took 841 ms, 7.61 M msg/s
+[info]   6400000 messages by 512 actors took 609 ms, 10.51 M msg/s
+[info]   6400000 messages by 512 actors took 638 ms, 10.03 M msg/s
+[info]   6400000 messages by 512 actors took 689 ms, 9.29 M msg/s
+[info]   6400000 messages by 512 actors took 679 ms, 9.42 M msg/s
+[info]   6400000 messages by 512 actors took 972 ms, 6.58 M msg/s
+[info]   6400000 messages by 512 actors took 840 ms, 7.61 M msg/s
+[info]   6400000 messages by 512 actors took 1017 ms, 6.29 M msg/s
+[info]   6400000 messages by 512 actors took 833 ms, 7.68 M msg/s
+[info]   6400000 messages by 512 actors took 1059 ms, 6.04 M msg/s
+[info]   6400000 messages by 512 actors took 797 ms, 8.03 M msg/s
+[info]   6400000 messages by 512 actors took 877 ms, 7.29 M msg/s
+[info]   6400000 messages by 512 actors took 875 ms, 7.31 M msg/s
+[info] 5335141.537 ops/s
+[info] Iteration   2:   6400000 messages by 512 actors took 897 ms, 7.13 M msg/s
+[info]   6400000 messages by 512 actors took 964 ms, 6.64 M msg/s
+[info]   6400000 messages by 512 actors took 687 ms, 9.31 M msg/s
+[info]   6400000 messages by 512 actors took 695 ms, 9.20 M msg/s
+[info]   6400000 messages by 512 actors took 870 ms, 7.35 M msg/s
+[info]   6400000 messages by 512 actors took 797 ms, 8.03 M msg/s
+[info]   6400000 messages by 512 actors took 787 ms, 8.13 M msg/s
+[info]   6400000 messages by 512 actors took 898 ms, 7.13 M msg/s
+[info]   6400000 messages by 512 actors took 785 ms, 8.15 M msg/s
+[info]   6400000 messages by 512 actors took 842 ms, 7.60 M msg/s
+[info]   6400000 messages by 512 actors took 997 ms, 6.42 M msg/s
+[info]   6400000 messages by 512 actors took 1011 ms, 6.33 M msg/s
+[info]   6400000 messages by 512 actors took 960 ms, 6.67 M msg/s
+[info] 5432304.194 ops/s
+[info] Iteration   3:   6400000 messages by 512 actors took 1026 ms, 6.24 M msg/s
+[info]   6400000 messages by 512 actors took 894 ms, 7.15 M msg/s
+[info]   6400000 messages by 512 actors took 894 ms, 7.15 M msg/s
+[info]   6400000 messages by 512 actors took 916 ms, 6.99 M msg/s
+[info]   6400000 messages by 512 actors took 6048 ms, 1.06 M msg/s
+[info]   6400000 messages by 512 actors took 893 ms, 7.16 M msg/s
+[info]   6400000 messages by 512 actors took 1004 ms, 6.37 M msg/s
+[info]   6400000 messages by 512 actors took 928 ms, 6.89 M msg/s
+[info] 3387065.191 ops/s
+[info] <JMH had finished, but forked VM did not exit, are there stray running threads? Waiting 24 seconds more...>
+[info] Non-finished threads:
+[info] Thread[DestroyJavaVM,5,main]
+[info] <JMH had finished, but forked VM did not exit, are there stray running threads? Waiting 19 seconds more...>
+[info] Non-finished threads:
+[info] Thread[DestroyJavaVM,5,main]
+[info] Result "bench.TypedActorBenchmark.echo":
+[info]   4718170.307 ±(99.9%) 21049499.125 ops/s [Average]
+[info]   (min, avg, max) = (3387065.191, 4718170.307, 5432304.194), stdev = 1153794.075
+[info]   CI (99.9%): [≈ 0, 25767669.433] (assumes normal distribution)
+[info] # JMH version: 1.32
+[info] # VM version: JDK 11.0.11, Java HotSpot(TM) 64-Bit Server VM, 11.0.11+9-LTS-jvmci-21.1-b05
+[info] # VM invoker: /Users/tanjimhossain/Downloads/graal/graalvm-ee-java11-21.1.0/Contents/Home/bin/java
+[info] # VM options: -XX:+UnlockExperimentalVMOptions -XX:+EnableJVMCIProduct -XX:-UnlockExperimentalVMOptions -XX:ThreadPriorityPolicy=1
+[info] # Blackhole mode: full + dont-inline hint
+[info] # Warmup: 3 iterations, 5 s each
+[info] # Measurement: 3 iterations, 15 s each
+[info] # Timeout: 10 min per iteration
+[info] # Threads: 1 thread, will synchronize iterations
+[info] # Benchmark mode: Throughput, ops/time
+[info] # Benchmark: bench.TypedActorBenchmark.echo
+[info] # Parameters: (batchSize = 50, dispatcher = fjp-dispatcher, mailbox = akka.dispatch.UnboundedMailbox, tpt = 50)
+[info] # Run progress: 50.00% complete, ETA 00:01:19
+[info] # Fork: 1 of 1
+[info] # Warmup Iteration   1: 22:19:09.052 [TypedActorBenchmark-akka.actor.default-dispatcher-3] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+[error] SLF4J: A number (1) of logging calls during the initialization phase have been intercepted and are
+[error] SLF4J: now being replayed. These are subject to the filtering rules of the underlying logging system.
+[error] SLF4J: See also http://www.slf4j.org/codes.html#replay
+[info]   6400000 messages by 512 actors took 1653 ms, 3.87 M msg/s
+[info]   6400000 messages by 512 actors took 1181 ms, 5.42 M msg/s
+[info] 2432402.095 ops/s
+[info] # Warmup Iteration   2:   6400000 messages by 512 actors took 874 ms, 7.32 M msg/s
+[info]   6400000 messages by 512 actors took 725 ms, 8.82 M msg/s
+[info]   6400000 messages by 512 actors took 836 ms, 7.65 M msg/s
+[info]   6400000 messages by 512 actors took 661 ms, 9.68 M msg/s
+[info] 4867823.837 ops/s
+[info] # Warmup Iteration   3:   6400000 messages by 512 actors took 690 ms, 9.26 M msg/s
+[info]   6400000 messages by 512 actors took 701 ms, 9.12 M msg/s
+[info]   6400000 messages by 512 actors took 578 ms, 11.07 M msg/s
+[info]   6400000 messages by 512 actors took 854 ms, 7.49 M msg/s
+[info]   6400000 messages by 512 actors took 653 ms, 9.80 M msg/s
+[info] 5556109.621 ops/s
+[info] Iteration   1:   6400000 messages by 512 actors took 755 ms, 8.47 M msg/s
+[info]   6400000 messages by 512 actors took 656 ms, 9.75 M msg/s
+[info]   6400000 messages by 512 actors took 652 ms, 9.80 M msg/s
+[info]   6400000 messages by 512 actors took 819 ms, 7.81 M msg/s
+[info]   6400000 messages by 512 actors took 879 ms, 7.28 M msg/s
+[info]   6400000 messages by 512 actors took 857 ms, 7.46 M msg/s
+[info]   6400000 messages by 512 actors took 916 ms, 6.99 M msg/s
+[info]   6400000 messages by 512 actors took 800 ms, 7.99 M msg/s
+[info]   6400000 messages by 512 actors took 842 ms, 7.59 M msg/s
+[info]   6400000 messages by 512 actors took 1078 ms, 5.94 M msg/s
+[info]   6400000 messages by 512 actors took 775 ms, 8.25 M msg/s
+[info]   6400000 messages by 512 actors took 996 ms, 6.43 M msg/s
+[info]   6400000 messages by 512 actors took 638 ms, 10.02 M msg/s
+[info] 5281406.360 ops/s
+[info] Iteration   2:   6400000 messages by 512 actors took 901 ms, 7.10 M msg/s
+[info]   6400000 messages by 512 actors took 698 ms, 9.17 M msg/s
+[info]   6400000 messages by 512 actors took 777 ms, 8.23 M msg/s
+[info]   6400000 messages by 512 actors took 847 ms, 7.56 M msg/s
+[info]   6400000 messages by 512 actors took 788 ms, 8.12 M msg/s
+[info]   6400000 messages by 512 actors took 842 ms, 7.60 M msg/s
+[info]   6400000 messages by 512 actors took 822 ms, 7.78 M msg/s
+[info]   6400000 messages by 512 actors took 832 ms, 7.69 M msg/s
+[info]   6400000 messages by 512 actors took 911 ms, 7.02 M msg/s
+[info]   6400000 messages by 512 actors took 1109 ms, 5.77 M msg/s
+[info]   6400000 messages by 512 actors took 938 ms, 6.82 M msg/s
+[info]   6400000 messages by 512 actors took 905 ms, 7.07 M msg/s
+[info]   6400000 messages by 512 actors took 890 ms, 7.18 M msg/s
+[info] 5377624.576 ops/s
+[info] Iteration   3:   6400000 messages by 512 actors took 972 ms, 6.58 M msg/s
+[info]   6400000 messages by 512 actors took 874 ms, 7.32 M msg/s
+[info]   6400000 messages by 512 actors took 927 ms, 6.90 M msg/s
+[info]   6400000 messages by 512 actors took 968 ms, 6.61 M msg/s
+[info]   6400000 messages by 512 actors took 6018 ms, 1.06 M msg/s
+[info]   6400000 messages by 512 actors took 1040 ms, 6.15 M msg/s
+[info]   6400000 messages by 512 actors took 805 ms, 7.95 M msg/s
+[info]   6400000 messages by 512 actors took 949 ms, 6.74 M msg/s
+[info] 3380032.988 ops/s
+[info] <JMH had finished, but forked VM did not exit, are there stray running threads? Waiting 24 seconds more...>
+[info] Non-finished threads:
+[info] Thread[DestroyJavaVM,5,main]
+[info] <JMH had finished, but forked VM did not exit, are there stray running threads? Waiting 19 seconds more...>
+[info] Non-finished threads:
+[info] Thread[DestroyJavaVM,5,main]
+[info] Result "bench.TypedActorBenchmark.echo":
+[info]   4679687.975 ±(99.9%) 20552683.559 ops/s [Average]
+[info]   (min, avg, max) = (3380032.988, 4679687.975, 5377624.576), stdev = 1126561.938
+[info]   CI (99.9%): [≈ 0, 25232371.534] (assumes normal distribution)
+[info] # Run complete. Total time: 00:02:37
+[info] REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+[info] why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+[info] experiments, perform baseline and negative tests that provide experimental control, make sure
+[info] the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+[info] Do not assume the numbers tell you what you want them to tell.
+[info] Benchmark                 (batchSize)    (dispatcher)                                         (mailbox)  (tpt)   Mode  Cnt        Score          Error  Units
+[info] TypedActorBenchmark.echo           50  fjp-dispatcher  akka.dispatch.SingleConsumerOnlyUnboundedMailbox     50  thrpt    3  4718170.307 ± 21049499.125  ops/s
+[info] TypedActorBenchmark.echo           50  fjp-dispatcher                    akka.dispatch.UnboundedMailbox     50  thrpt    3  4679687.975 ± 20552683.559  ops/s
+[success] Total time: 166 s (02:46), completed Jun 10, 2021 10:20:26 PM

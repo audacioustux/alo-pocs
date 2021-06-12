@@ -1,0 +1,15 @@
+[info] welcome to sbt 1.5.3 (Oracle Corporation Java 1.8.0_291)
+[info] loading settings for project typedbenchmarkactorsakka-build from metals.sbt,plugins.sbt ...
+[info] loading project definition from /Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/project
+[info] loading settings for project root from build.sbt ...
+[info] set current project to scala3-simple (in build file:/Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/)
+[info] compiling 7 Scala sources to /Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/target/scala-3.0.0/classes ...
+[info] done compiling
+[info] running org.openjdk.jmh.generators.bytecode.JmhBytecodeGenerator /Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/target/scala-3.0.0/classes /Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/target/scala-3.0.0/src_managed/jmh /Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/target/scala-3.0.0/resource_managed/jmh default
+[info] compiling 1 Scala source to /Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/target/scala-3.0.0/test-classes ...
+Processing 66 classes from /Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/target/scala-3.0.0/classes with "reflection" generator
+Writing out Java source to /Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/target/scala-3.0.0/src_managed/jmh and resources to /Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/target/scala-3.0.0/resource_managed/jmh
+[info] done compiling
+[error] Nonzero exit code: 1
+[error] (Jmh / generateJmhSourcesAndResources) Nonzero exit code: 1
+[error] Total time: 8 s, completed Jun 12, 2021 11:58:17 PM

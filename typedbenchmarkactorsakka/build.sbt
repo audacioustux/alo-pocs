@@ -10,8 +10,8 @@ lazy val root = project
     version := "0.1.0",
     scalaVersion := scala3Version,
     
-    javaOptions ++= Seq("-Xmx16G", "-verbose:gc", "-XX:+UseG1GC"),
-    // javaOptions ++= Seq("-Xmx16G"),
+    // javaOptions ++= Seq("-Xmx16G", "-verbose:gc", "-XX:+UseG1GC"),
+    javaOptions ++= Seq("-Xmx16G"),
     // javaHome := Some(file("/Library/Java/JavaVirtualMachines/graalvm-ee-java11-21.1.0/Contents/Home")),
     javaHome := Some(file("/Users/tanjimhossain/Downloads/graal/graalvm-ee-java11-21.1.0/Contents/Home")),
 

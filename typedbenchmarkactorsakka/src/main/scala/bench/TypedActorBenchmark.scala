@@ -22,10 +22,10 @@ import akka.actor.typed.ActorSystem
 object TypedActorBenchmark {
   // Constants because they are used in annotations
   final val threads = 4 // update according to cpu
-  final val numMessagesPerActorPair = 1 // messages per actor pair
+  final val numMessagesPerActorPair = 1024 * 4 // messages per actor pair
 
-  final val numActors = 1000000
-  final val totalMessages = numMessagesPerActorPair * numActors / 2
+  final val numActors = 1024 * 1023
+  final val totalMessages = numMessagesPerActorPair * (numActors / 2)
   final val timeout = 5.minutes
 }
 
@@ -33,10 +33,10 @@ object TypedActorBenchmark {
 @BenchmarkMode(Array(Mode.Throughput))
 @Fork(1)
 @Threads(1)
-@Warmup(iterations = 1, time = 1, timeUnit = TimeUnit.SECONDS, batchSize = 1)
+@Warmup(iterations = 10, time = 5, timeUnit = TimeUnit.SECONDS, batchSize = 1)
 @Measurement(
-  iterations = 1,
-  time = 1,
+  iterations = 10,
+  time = 15,
   timeUnit = TimeUnit.SECONDS,
   batchSize = 1
 )

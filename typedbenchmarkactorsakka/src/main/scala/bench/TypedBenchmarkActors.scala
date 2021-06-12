@@ -25,7 +25,6 @@ object TypedBenchmarkActors {
   private def echoBehavior(
       respondTo: ActorRef[Message.type]
   ): Behavior[Message.type] = Behaviors.receive { (_, _) =>
-    println("henlo")
     respondTo ! Message
     Behaviors.same
   }

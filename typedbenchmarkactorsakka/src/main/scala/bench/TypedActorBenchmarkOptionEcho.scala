@@ -15,13 +15,13 @@ import org.openjdk.jmh.annotations._
 import akka.actor.typed.scaladsl.AskPattern._
 import akka.actor.typed.ActorSystem
 
-object TypedActorBenchmarkEchoSender {
+object TypedActorBenchmarkOptionEcho {
   // Constants because they are used in annotations
   final val threads = 4 // update according to cpu
-  final val numMessagesPerActorPair = 512 // messages per actor pair
+  final val numMessagesPerActorPair = 1024 * 4 // messages per actor pair
 
-  final val numActors = 1000000
-  final val totalMessages = numMessagesPerActorPair * numActors / 2
+  final val numActors = 1024 * 1023
+  final val totalMessages = numMessagesPerActorPair * (numActors / 2)
   final val timeout = 100.minutes
 }
 
@@ -36,9 +36,9 @@ object TypedActorBenchmarkEchoSender {
   timeUnit = TimeUnit.SECONDS,
   batchSize = 1
 )
-class TypedActorBenchmarkEchoSender {
-  import TypedActorBenchmarkEchoSender._
-  import TypedBenchmarkActorsEchoSender._
+class TypedActorBenchmarkOptionEcho {
+  import TypedActorBenchmarkOptionEcho._
+  import TypedBenchmarkActorsOptionEcho._
 
   @Param(Array("50"))
   var tpt = 0
@@ -67,7 +67,7 @@ class TypedActorBenchmarkEchoSender {
   def setup(): Unit = {
     BenchmarkActors.requireRightNumberOfCores(threads)
     system = ActorSystem(
-      TypedBenchmarkActorsEchoSender.echoActorsSupervisor(
+      TypedBenchmarkActorsOptionEcho.echoActorsSupervisor(
         numMessagesPerActorPair,
         numActors,
         dispatcher,
@@ -116,7 +116,10 @@ class TypedActorBenchmarkEchoSender {
   @Benchmark
   @OperationsPerInvocation(totalMessages)
   def echo(): Unit = {
-    Await.result(system.ask(TypedBenchmarkActorsEchoSender.Start.apply), timeout)
+    Await.result(
+      system.ask(TypedBenchmarkActorsOptionEcho.Start.apply),
+      timeout
+    )
   }
 
 }

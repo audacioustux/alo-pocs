@@ -1,0 +1,14 @@
+[info] welcome to sbt 1.5.3 (Oracle Corporation Java 1.8.0_291)
+[info] loading settings for project typedbenchmarkactorsakka-build-build-build from metals.sbt ...
+[info] loading project definition from /Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/project/project/project
+[info] loading settings for project typedbenchmarkactorsakka-build-build from metals.sbt ...
+[info] loading project definition from /Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/project/project
+[success] Generated .bloop/typedbenchmarkactorsakka-build-build.json
+[success] Total time: 1 s, completed Jun 12, 2021 12:54:26 AM
+[info] loading settings for project typedbenchmarkactorsakka-build from metals.sbt,plugins.sbt ...
+[info] loading project definition from /Users/tanjimhossain/Bytes/poc-wormhole/typedbenchmarkactorsakka/project
+
+[warn] Canceling execution...
+[error] Cancelled: loadp
+[error] Use 'last' for the full log.
+[warn] Project loading failed: (r)etry, (q)uit, (l)ast, or (i)gnore? (default: r)

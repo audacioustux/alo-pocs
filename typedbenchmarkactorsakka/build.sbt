@@ -10,10 +10,10 @@ lazy val root = project
     version := "0.1.0",
     scalaVersion := scala3Version,
     
-    javaOptions ++= Seq("-XX:+CMSClassUnloadingEnabled", "-XX:MaxPermSize=20G", "-Xmx20G", "-Xms20G"),
+    javaOptions ++= Seq("-Xmx16G", "-verbose:gc", "-XX:+UseG1GC"),
+    // javaOptions ++= Seq("-Xmx16G"),
     // javaHome := Some(file("/Library/Java/JavaVirtualMachines/graalvm-ee-java11-21.1.0/Contents/Home")),
     javaHome := Some(file("/Users/tanjimhossain/Downloads/graal/graalvm-ee-java11-21.1.0/Contents/Home")),
-    // run / javaHome := Some(file("/Users/tanjimhossain/Downloads/graal/graalvm-ee-java11-21.1.0/Contents/Home")),
 
     libraryDependencies += ("com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion).cross(CrossVersion.for3Use2_13),
     libraryDependencies += ("com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % Test).cross(CrossVersion.for3Use2_13),

@@ -1,9 +1,9 @@
 /*
  * Copyright (C) 2014-2021 Lightbend Inc. <https://www.lightbend.com>
  */
+
 package bench
 
-import org.graalvm.polyglot._
 import java.util.concurrent.TimeUnit
 
 import scala.concurrent.Await
@@ -13,26 +13,30 @@ import com.typesafe.config.ConfigFactory
 import org.openjdk.jmh.annotations._
 
 import akka.actor.typed.scaladsl.AskPattern._
+
+import akka.actor.typed.ActorRef
+import akka.actor.typed.Behavior
+import akka.actor.typed.Props
 import akka.actor.typed.ActorSystem
 
 object TypedActorBenchmark {
   // Constants because they are used in annotations
   final val threads = 4 // update according to cpu
-  final val numMessagesPerActorPair = 512 // messages per actor pair
+  final val numMessagesPerActorPair = 1 // messages per actor pair
 
   final val numActors = 1000000
   final val totalMessages = numMessagesPerActorPair * numActors / 2
-  final val timeout = 100.minutes
+  final val timeout = 5.minutes
 }
 
 @State(Scope.Benchmark)
 @BenchmarkMode(Array(Mode.Throughput))
 @Fork(1)
 @Threads(1)
-@Warmup(iterations = 10, time = 5, timeUnit = TimeUnit.SECONDS, batchSize = 1)
+@Warmup(iterations = 1, time = 1, timeUnit = TimeUnit.SECONDS, batchSize = 1)
 @Measurement(
-  iterations = 10,
-  time = 15,
+  iterations = 1,
+  time = 1,
   timeUnit = TimeUnit.SECONDS,
   batchSize = 1
 )
@@ -110,13 +114,16 @@ class TypedActorBenchmark {
   @TearDown(Level.Trial)
   def shutdown(): Unit = {
     system.terminate()
-    Await.ready(system.whenTerminated, 15.seconds)
+    Await.ready(system.whenTerminated, 2.minutes)
   }
 
   @Benchmark
   @OperationsPerInvocation(totalMessages)
   def echo(): Unit = {
-    Await.result(system.ask(TypedBenchmarkActors.Start.apply), timeout)
+    Await.result(
+      system.ask(TypedBenchmarkActors.Start.apply),
+      timeout
+    )
   }
 
 }

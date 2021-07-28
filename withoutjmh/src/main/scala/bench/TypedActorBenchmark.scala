@@ -10,7 +10,6 @@ import scala.concurrent.Await
 import scala.concurrent.duration._
 
 import com.typesafe.config.ConfigFactory
-import org.openjdk.jmh.annotations._
 
 import akka.actor.typed.scaladsl.AskPattern._
 
@@ -26,48 +25,41 @@ object TypedActorBenchmark {
 
   final val numActors = 1000000
   final val totalMessages = numMessagesPerActorPair * (numActors / 2)
-  final val timeout = 5.minutes
+  final val timeout = 100.minutes
+
+  @main def start(): Unit = {
+    System.out.println(ProcessHandle.current().pid())
+    Thread.sleep(20000)
+    (1 to 10).map { n =>
+      System.out.println(n)
+      val system = new TypedActorBenchmark
+      system.setup()
+      system.echo()
+      System.gc()
+      Thread.sleep(5000)
+      system.shutdown()
+      System.gc()
+      Thread.sleep(2000)
+    }
+  }
 }
 
-@State(Scope.Benchmark)
-@BenchmarkMode(Array(Mode.Throughput))
-@Fork(1)
-@Threads(1)
-@Warmup(iterations = 0, time = 5, timeUnit = TimeUnit.SECONDS, batchSize = 1)
-@Measurement(
-  iterations = 1,
-  time = 15,
-  timeUnit = TimeUnit.SECONDS,
-  batchSize = 1
-)
 class TypedActorBenchmark {
   import TypedActorBenchmark._
   import TypedBenchmarkActors._
 
-  @Param(Array("50"))
-  var tpt = 0
+  var tpt = 50
 
-  @Param(Array("50"))
-  var batchSize = 0
+  var batchSize = 50
 
-  @Param(
-    Array(
-      "akka.dispatch.SingleConsumerOnlyUnboundedMailbox",
-      "akka.dispatch.UnboundedMailbox"
-    )
-  )
-  var mailbox = ""
+  var mailbox = "akka.dispatch.SingleConsumerOnlyUnboundedMailbox"
 
-  @Param(
-    Array("fjp-dispatcher")
-  ) //  @Param(Array("fjp-dispatcher", "affinity-dispatcher"))
-  var dispatcher = ""
+  var dispatcher = "fjp-dispatcher"
 
   implicit var system: ActorSystem[Start] = _
 
   implicit val askTimeout: akka.util.Timeout = akka.util.Timeout(timeout)
 
-  @Setup(Level.Trial)
   def setup(): Unit = {
     BenchmarkActors.requireRightNumberOfCores(threads)
     system = ActorSystem(
@@ -111,14 +103,11 @@ class TypedActorBenchmark {
     )
   }
 
-  @TearDown(Level.Trial)
   def shutdown(): Unit = {
     system.terminate()
     Await.ready(system.whenTerminated, 2.minutes)
   }
 
-  @Benchmark
-  @OperationsPerInvocation(totalMessages)
   def echo(): Unit = {
     Await.result(
       system.ask(TypedBenchmarkActors.Start.apply),

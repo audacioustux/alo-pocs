@@ -18,6 +18,10 @@ import akka.actor.typed.Behavior
 import akka.actor.typed.Props
 
 object TypedBenchmarkActorsEchoSender {
+  val polyEngine = Engine
+    .newBuilder()
+    .option("engine.Mode", "throughput")
+    .build()
 
   // to avoid benchmark to be dominated by allocations of message
   // we pass the respondTo actor ref into the behavior
@@ -114,8 +118,8 @@ object TypedBenchmarkActorsEchoSender {
         val pairs = (1 to numPairs).map { _ =>
           val polyCtx = Context
             .newBuilder()
+            .engine(polyEngine)
             .allowAllAccess(true)
-            .option("engine.Mode", "throughput")
             .build()
           polyCtx.eval("js", "")
 

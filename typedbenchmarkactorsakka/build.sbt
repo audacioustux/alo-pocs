@@ -11,9 +11,9 @@ lazy val root = project
     scalaVersion := scala3Version,
     
     // javaOptions ++= Seq("-Xmx16G", "-verbose:gc", "-XX:+UseG1GC"),
-    javaOptions ++= Seq("-Xmx16G"),
+    javaOptions ++= Seq("-Xmn16G", "-Xmx16G", "-Xms16G"),
     // javaHome := Some(file("/Library/Java/JavaVirtualMachines/graalvm-ee-java11-21.1.0/Contents/Home")),
-    javaHome := Some(file("/Users/tanjimhossain/Downloads/graal/graalvm-ee-java11-21.1.0/Contents/Home")),
+    javaHome := Some(file("/Library/Java/JavaVirtualMachines/graalvm-ee-java16-21.1.0/Contents/Home")),
 
     libraryDependencies += ("com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion).cross(CrossVersion.for3Use2_13),
     libraryDependencies += ("com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % Test).cross(CrossVersion.for3Use2_13),

@@ -15,9 +15,13 @@ import akka.actor.typed.scaladsl.Behaviors
 import akka.actor.typed.ActorRef
 import akka.actor.typed.Behavior
 import akka.actor.typed.Props
+import akka.actor.typed.PostStop
+
+import org.graalvm.polyglot._
 
 object TypedBenchmarkActors {
 
+  var engine: Engine = _
   // to avoid benchmark to be dominated by allocations of message
   // we pass the respondTo actor ref into the behavior
   case object Message
@@ -26,6 +30,10 @@ object TypedBenchmarkActors {
       respondTo: ActorRef[Message.type]
   ): Behavior[Message.type] = Behaviors.receive { (_, _) =>
     respondTo ! Message
+
+    val ctx = Context.newBuilder().engine(engine).build();
+    ctx.eval("js", "");
+    ctx.close();
 
     Behaviors.same
   }
@@ -105,6 +113,8 @@ object TypedBenchmarkActors {
 
     Behaviors
       .setup[Any] { ctx =>
+        engine = Engine.newBuilder().build()
+
         val props =
           Props.empty.withDispatcherFromConfig("akka.actor." + dispatcher)
         val pairs = (1 to numPairs).map { _ =>
@@ -121,19 +131,23 @@ object TypedBenchmarkActors {
         val startNanoTime = System.nanoTime()
         pairs.foreach(_ ! Message)
         var interactionsLeft = numPairs
-        Behaviors.receiveMessagePartial { case Done =>
-          interactionsLeft -= 1
-          if (interactionsLeft == 0) {
-            val totalNumMessages = numPairs * messagesPerPair
-            printProgress(totalNumMessages, numActors, startNanoTime)
-            respondTo ! Completed(startNanoTime)
-            // Behaviors.stopped
-            Behaviors.same
-          } else {
+        Behaviors
+          .receiveMessagePartial { case Done =>
+            interactionsLeft -= 1
+            if (interactionsLeft == 0) {
+              val totalNumMessages = numPairs * messagesPerPair
+              printProgress(totalNumMessages, numActors, startNanoTime)
+              respondTo ! Completed(startNanoTime)
+              // Behaviors.stopped
+              Behaviors.same
+            } else {
+              Behaviors.same
+            }
+          }
+          .receiveSignal { case (context, PostStop) =>
+            engine.close()
             Behaviors.same
           }
-
-        }
       }
       .narrow[Unit]
   }

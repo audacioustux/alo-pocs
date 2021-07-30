@@ -1,0 +1,143 @@
+{
+    "version": "1.4.0",
+    "project": {
+        "name": "graalisolatehello",
+        "directory": "/Users/tanjimhossain/Bytes/poc-wormhole/javatests",
+        "workspaceDir": "/Users/tanjimhossain/Bytes/poc-wormhole/javatests",
+        "sources": [
+            "/Users/tanjimhossain/Bytes/poc-wormhole/javatests/src/main/java"
+        ],
+        "dependencies": [
+            
+        ],
+        "classpath": [
+            "/Users/tanjimhossain/Bytes/poc-wormhole/javatests/target/classes",
+            "/Users/tanjimhossain/.m2/repository/org/graalvm/sdk/graal-sdk/21.1.0/graal-sdk-21.1.0.jar"
+        ],
+        "out": "/Users/tanjimhossain/Bytes/poc-wormhole/javatests/target",
+        "classesDir": "/Users/tanjimhossain/Bytes/poc-wormhole/javatests/target/classes",
+        "resources": [
+            
+        ],
+        "scala": {
+            "organization": "org.scala-lang",
+            "name": "scala-compiler",
+            "version": "0.0.0",
+            "options": [
+                
+            ],
+            "jars": [
+                
+            ],
+            "setup": {
+                "order": "java->scala",
+                "addLibraryToBootClasspath": true,
+                "addCompilerToClasspath": false,
+                "addExtraJarsToClasspath": false,
+                "manageBootClasspath": true,
+                "filterLibraryFromClasspath": true
+            }
+        },
+        "java": {
+            "options": [
+                "-g",
+                "-target",
+                "16",
+                "-source",
+                "16",
+                "-encoding",
+                "UTF-8"
+            ]
+        },
+        "test": {
+            "frameworks": [
+                {
+                    "names": [
+                        "com.novocode.junit.JUnitFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "org.scalatest.tools.Framework",
+                        "org.scalatest.tools.ScalaTestFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "org.scalacheck.ScalaCheckFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "org.specs.runner.SpecsFramework",
+                        "org.specs2.runner.Specs2Framework",
+                        "org.specs2.runner.SpecsFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "utest.runner.Framework"
+                    ]
+                },
+                {
+                    "names": [
+                        "munit.Framework"
+                    ]
+                }
+            ],
+            "options": {
+                "excludes": [
+                    
+                ],
+                "arguments": [
+                    {
+                        "args": [
+                            "-v",
+                            "-a"
+                        ],
+                        "framework": {
+                            "names": [
+                                "com.novocode.junit.JUnitFramework"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "platform": {
+            "name": "jvm",
+            "config": {
+                "home": "/Library/Java/JavaVirtualMachines/graalvm-ee-java16-21.1.0/Contents/Home",
+                "options": [
+                    
+                ]
+            },
+            "mainClass": [
+                
+            ]
+        },
+        "resolution": {
+            "modules": [
+                {
+                    "organization": "org.graalvm.sdk",
+                    "name": "graal-sdk",
+                    "version": "21.1.0",
+                    "artifacts": [
+                        {
+                            "name": "graal-sdk",
+                            "path": "/Users/tanjimhossain/.m2/repository/org/graalvm/sdk/graal-sdk/21.1.0/graal-sdk-21.1.0.jar"
+                        },
+                        {
+                            "name": "graal-sdk",
+                            "classifier": "sources",
+                            "path": "/Users/tanjimhossain/.m2/repository/org/graalvm/sdk/graal-sdk/21.1.0/graal-sdk-21.1.0-sources.jar"
+                        }
+                    ]
+                }
+            ]
+        },
+        "tags": [
+            "library"
+        ]
+    }
+}

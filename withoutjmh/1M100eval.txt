@@ -1,0 +1,48 @@
+??? sbt run                                                                                                                        ??
+[info] welcome to sbt 1.5.2 (Oracle Corporation Java 16.0.1)
+[info] loading global plugins from /Users/tanjimhossain/.sbt/1.0/plugins
+[info] loading settings for project withoutjmh-build-build from metals.sbt ...
+[info] loading project definition from /Users/tanjimhossain/Bytes/poc-wormhole/withoutjmh/project/project
+[info] loading settings for project withoutjmh-build from metals.sbt ...
+[info] loading project definition from /Users/tanjimhossain/Bytes/poc-wormhole/withoutjmh/project
+[success] Generated .bloop/withoutjmh-build.json
+[success] Total time: 0 s, completed Jul 29, 2021, 10:49:34 PM
+[info] loading settings for project root from build.sbt ...
+[info] set current project to withoutjmh (in build file:/Users/tanjimhossain/Bytes/poc-wormhole/withoutjmh/)
+[info] compiling 1 Scala source to /Users/tanjimhossain/Bytes/poc-wormhole/withoutjmh/target/scala-3.0.0/classes ...
+[info] running (fork) bench.start
+[info] 33017
+[info] 1
+[info] 22:50:00.551 [TypedActorBenchmark-akka.actor.default-dispatcher-3] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+[error] SLF4J: A number (1) of logging calls during the initialization phase have been intercepted and are
+[error] SLF4J: now being replayed. These are subject to the filtering rules of the underlying logging system.
+[error] SLF4J: See also http://www.slf4j.org/codes.html#replay
+[info]   50000000 messages by 1000000 actors took 1453640 ms, 0.03 M msg/s
+[info] 2
+[info] 23:14:29.865 [TypedActorBenchmark-akka.actor.default-dispatcher-3] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+[info]   50000000 messages by 1000000 actors took 1440462 ms, 0.03 M msg/s
+[info] 3
+[info] 23:38:44.406 [TypedActorBenchmark-akka.actor.default-dispatcher-3] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+[info]   50000000 messages by 1000000 actors took 1465007 ms, 0.03 M msg/s
+[info] 4
+[info] 00:03:25.043 [TypedActorBenchmark-akka.actor.default-dispatcher-3] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+[info]   50000000 messages by 1000000 actors took 1492572 ms, 0.03 M msg/s
+[info] 5
+[info] 00:28:31.131 [TypedActorBenchmark-akka.actor.default-dispatcher-3] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+[info]   50000000 messages by 1000000 actors took 1454986 ms, 0.03 M msg/s
+[info] 6
+[info] 00:52:59.830 [TypedActorBenchmark-akka.actor.default-dispatcher-3] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+[info]   50000000 messages by 1000000 actors took 1439834 ms, 0.03 M msg/s
+[info] 7
+[info] 01:17:13.113 [TypedActorBenchmark-akka.actor.default-dispatcher-3] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+[info]   50000000 messages by 1000000 actors took 1459249 ms, 0.03 M msg/s
+[info] 8
+[info] 01:41:45.991 [TypedActorBenchmark-akka.actor.default-dispatcher-3] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+[info]   50000000 messages by 1000000 actors took 1455153 ms, 0.03 M msg/s
+[info] 9
+[info] 02:06:14.783 [TypedActorBenchmark-akka.actor.default-dispatcher-3] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+[info]   50000000 messages by 1000000 actors took 1486846 ms, 0.03 M msg/s
+[info] 10
+[info] 02:31:15.162 [TypedActorBenchmark-akka.actor.default-dispatcher-6] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+[info]   50000000 messages by 1000000 actors took 1440988 ms, 0.03 M msg/s
+[success] Total time: 14755 s (04:05:55), completed Jul 30, 2021, 2:55:29 AM

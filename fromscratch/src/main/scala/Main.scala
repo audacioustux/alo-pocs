@@ -80,76 +80,77 @@
 //         this
 //     }
 // }
-// import akka.persistence.typed.scaladsl.EventSourcedBehavior
-// import akka.persistence.typed.PersistenceId
-// import akka.actor.typed._
-// import akka.actor.typed.scaladsl._
-// import com.typesafe.config.ConfigFactory
-//
-// object MyPersistentBehavior {
-//   sealed trait Command
-//   sealed trait Event
-//   final case class State()
-//
-//   def apply(): Behavior[Command] =
-//     EventSourcedBehavior[Command, Event, State](
-//       persistenceId = PersistenceId.ofUniqueId("abc"),
-//       emptyState = State(),
-//       commandHandler = (state, cmd) =>
-//         throw new NotImplementedError(
-//           "TODO: process the command & return an Effect"
-//         ),
-//       eventHandler = (state, evt) =>
-//         throw new NotImplementedError(
-//           "TODO: process the event return the next state"
-//         )
-//     )
-// }
-// class Main(context: ActorContext[String])
-//     extends AbstractBehavior[String](context) {
-//   override def onMessage(msg: String): Behavior[String] =
-//     msg match {
-//       case "start" =>
-//         (1 to 1000000).map { n =>
-//           context.spawn(MyPersistentBehavior(), n.toString())
-//         }
-//         this
-//     }
-// }
-// object Main {
-//   def apply(): Behavior[String] =
-//     Behaviors.setup(context => new Main(context))
-//
-//   @main def init: Unit = {
-//     Thread.sleep(5000)
-//     val testSystem = ActorSystem(
-//       Main(),
-//       "testSystem",
-//       ConfigFactory.load(
-//         ConfigFactory.parseString(
-//           """
-//           akka {
-//             extensions = [akka.persistence.Persistence]
-//             persistence {
-//               journal {
-//                 plugin = "akka.persistence.journal.leveldb"
-//               }
-//
-//               snapshot-store {
-//                 plugin = "akka.persistence.snapshot-store.local"
-//               }
-//
-//             }
-//
-//           }
-//           """
-//         )
-//       )
-//     )
-//     testSystem ! "start"
-//   }
-// }
-//
+import akka.persistence.typed.scaladsl.EventSourcedBehavior
+import akka.persistence.typed.PersistenceId
+import akka.actor.typed._
+import akka.actor.typed.scaladsl._
+import com.typesafe.config.ConfigFactory
+
+object MyPersistentBehavior {
+  sealed trait Command
+  sealed trait Event
+  final case class State()
+
+  def apply(): Behavior[Command] =
+    EventSourcedBehavior[Command, Event, State](
+      persistenceId = PersistenceId.ofUniqueId("abc"),
+      emptyState = State(),
+      commandHandler = (state, cmd) =>
+        throw new NotImplementedError(
+          "TODO: process the command & return an Effect"
+        ),
+      eventHandler = (state, evt) =>
+        throw new NotImplementedError(
+          "TODO: process the event return the next state"
+        )
+    )
+}
+class Main(context: ActorContext[String])
+    extends AbstractBehavior[String](context) {
+  override def onMessage(msg: String): Behavior[String] =
+    msg match {
+      case "start" =>
+        (1 to 1000000).map { n =>
+          context.spawn(MyPersistentBehavior(), n.toString())
+        }
+        this
+    }
+}
+object Main {
+  def apply(): Behavior[String] =
+    Behaviors.setup(context => new Main(context))
+
+  @main def init: Unit = {
+    System.out.println(ProcessHandle.current().pid())
+    Thread.sleep(5000)
+    val testSystem = ActorSystem(
+      Main(),
+      "testSystem",
+      ConfigFactory.load(
+        ConfigFactory.parseString(
+          """
+          akka {
+            extensions = [akka.persistence.Persistence]
+            persistence {
+              journal {
+                plugin = "akka.persistence.journal.leveldb"
+              }
+
+              snapshot-store {
+                plugin = "akka.persistence.snapshot-store.local"
+              }
+
+            }
+
+          }
+          """
+        )
+      )
+    )
+    testSystem ! "start"
+  }
+}
+
 // import org.graalvm.polyglot.{Engine, Context}
 //
 // @main def main: Unit = {

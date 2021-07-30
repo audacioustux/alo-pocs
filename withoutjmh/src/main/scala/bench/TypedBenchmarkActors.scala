@@ -21,31 +21,62 @@ import org.graalvm.polyglot._
 
 object TypedBenchmarkActors {
 
-  var engine: Engine = _
   // to avoid benchmark to be dominated by allocations of message
   // we pass the respondTo actor ref into the behavior
   case object Message
 
-  private def echoBehavior(
-      respondTo: ActorRef[Message.type]
+  // private def echoBehavior(
+  //     respondTo: ActorRef[Message.type],
+  //     pCtx: Context
+  // ): Behavior[Message.type] = Behaviors.receive { (_, _) =>
+  //   respondTo ! Message
+
+  //   pCtx.eval("js", "");
+
+  //   Behaviors.same
+  // }
+
+  def echoBehavior(
+      respondTo: ActorRef[Message.type],
+      polyCtx: Context,
+      jsSource: Source
   ): Behavior[Message.type] = Behaviors.receive { (_, _) =>
+    polyCtx.eval(jsSource)
+
     respondTo ! Message
-
-    val ctx = Context.newBuilder().engine(engine).build();
-    ctx.eval("js", "");
-    ctx.close();
-
-    Behaviors.same
+    echoBehavior(respondTo, polyCtx, jsSource)
   }
-
   private def echoSender(
       messagesPerPair: Int,
       onDone: ActorRef[Done],
       batchSize: Int,
-      childProps: Props
+      childProps: Props,
+      engine: Engine
   ): Behavior[Message.type] =
     Behaviors.setup { ctx =>
-      val echo = ctx.spawn(echoBehavior(ctx.self), "echo", childProps)
+      val polyCtx = Context
+        .newBuilder()
+        .allowAllAccess(true)
+        .engine(engine)
+        .build()
+      val jsSource =
+        Source
+          .newBuilder(
+            "js",
+            "'.'",
+            "dummymodule"
+          )
+          .build()
+      val echo =
+        ctx.spawn(
+          echoBehavior(
+            ctx.self,
+            polyCtx,
+            jsSource
+          ),
+          "echo",
+          childProps
+        )
       var left = messagesPerPair / 2
       var batch = 0
 
@@ -67,6 +98,7 @@ object TypedBenchmarkActors {
         batch -= 1
         if (batch <= 0 && !sendBatch()) {
           onDone ! Done
+          polyCtx.close()
           Behaviors.same
           // Behaviors.stopped
         } else {
@@ -113,8 +145,10 @@ object TypedBenchmarkActors {
 
     Behaviors
       .setup[Any] { ctx =>
-        engine = Engine.newBuilder().build()
-
+        val engine = Engine
+          .newBuilder()
+          .option("engine.Mode", "throughput")
+          .build()
         val props =
           Props.empty.withDispatcherFromConfig("akka.actor." + dispatcher)
         val pairs = (1 to numPairs).map { _ =>
@@ -123,7 +157,8 @@ object TypedBenchmarkActors {
               messagesPerPair,
               ctx.self.narrow[Done],
               batchSize,
-              props
+              props,
+              engine
             ),
             props
           )

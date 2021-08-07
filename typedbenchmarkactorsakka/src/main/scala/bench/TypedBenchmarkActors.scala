@@ -12,9 +12,7 @@ import akka.Done
 import akka.actor.typed.scaladsl.ActorContext
 import akka.actor.typed.scaladsl.Behaviors
 
-import akka.actor.typed.ActorRef
-import akka.actor.typed.Behavior
-import akka.actor.typed.Props
+import akka.actor.typed._
 
 object TypedBenchmarkActors {
 

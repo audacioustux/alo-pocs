@@ -1,0 +1,15 @@
+target
+*.class
+*.log
+
+project/*
+!project/plugins.sbt
+!project/build.properties
+
+.bloop
+.bsp
+.metals
+
+.DS_Store
+
+node_modules/

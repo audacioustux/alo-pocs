@@ -1,845 +1,0 @@
-
-Ωº/src/main/scala/bench/CtxReusePerActorPair.scala*5
-#bench/CtxReusePerActorPair/Command# *CommandÄ*@
-.bench/CtxReusePerActorPair/Command#`<init>`(). Ä@*<init>Ä*6
-#bench/CtxReusePerActorPair/Message.
- à*MessageÄ*9
-%bench/CtxReusePerActorPair/EchoActor.
- *	EchoActorÄ*B
-.bench/CtxReusePerActorPair/EchoActor.jsSource. Ä*jsSourceÄ*;
--bench/CtxReusePerActorPair/EchoActor.apply().*applyÄ*J
-8bench/CtxReusePerActorPair/EchoActor.apply().(respondTo)*	respondToÄ*D
-5bench/CtxReusePerActorPair/EchoActor.apply().(engine)*engineÄ*
-local0*contextÄ*7
-%bench/CtxReusePerActorPair/EchoActor#*	EchoActorÄ*B
-0bench/CtxReusePerActorPair/EchoActor#`<init>`(). Ä@*<init>Ä*I
-9bench/CtxReusePerActorPair/EchoActor#`<init>`().(context)*contextÄ*M
-;bench/CtxReusePerActorPair/EchoActor#`<init>`().(respondTo)*	respondToÄ*G
-8bench/CtxReusePerActorPair/EchoActor#`<init>`().(engine)*engineÄ*@
--bench/CtxReusePerActorPair/EchoActor#context. Ä*contextÄ*D
-/bench/CtxReusePerActorPair/EchoActor#respondTo. Ä*	respondToÄ*>
-,bench/CtxReusePerActorPair/EchoActor#engine. Ä*engineÄ*@
--bench/CtxReusePerActorPair/EchoActor#polyCtx. Ä*polyCtxÄ*C
-1bench/CtxReusePerActorPair/EchoActor#onMessage().*	onMessageÄ*B
-6bench/CtxReusePerActorPair/EchoActor#onMessage().(msg)*msgÄ*A
-0bench/CtxReusePerActorPair/EchoActor#onSignal().*onSignalÄ*
-local1*x$1Ä*P
-0bench/CtxReusePerActorPair/EchoSenderActorAttrs# Ä*EchoSenderActorAttrsÄ*M
-;bench/CtxReusePerActorPair/EchoSenderActorAttrs#`<init>`(). Ä@*<init>Ä*U
-Cbench/CtxReusePerActorPair/EchoSenderActorAttrs#`<init>`().(onDone) Ä*onDoneÄ*g
-Lbench/CtxReusePerActorPair/EchoSenderActorAttrs#`<init>`().(messagesPerPair) Ä*messagesPerPairÄ*[
-Fbench/CtxReusePerActorPair/EchoSenderActorAttrs#`<init>`().(batchSize) Ä*	batchSizeÄ*]
-Gbench/CtxReusePerActorPair/EchoSenderActorAttrs#`<init>`().(childProps) Ä*
-childPropsÄ*U
-Cbench/CtxReusePerActorPair/EchoSenderActorAttrs#`<init>`().(engine) Ä*engineÄ*I
-7bench/CtxReusePerActorPair/EchoSenderActorAttrs#onDone. Ä*onDoneÄ*[
-@bench/CtxReusePerActorPair/EchoSenderActorAttrs#messagesPerPair. Ä*messagesPerPairÄ*O
-:bench/CtxReusePerActorPair/EchoSenderActorAttrs#batchSize. Ä*	batchSizeÄ*Q
-;bench/CtxReusePerActorPair/EchoSenderActorAttrs#childProps. Ä*
-childPropsÄ*I
-7bench/CtxReusePerActorPair/EchoSenderActorAttrs#engine. Ä*engineÄ*D
-7bench/CtxReusePerActorPair/EchoSenderActorAttrs#copy().*copyÄ*N
-?bench/CtxReusePerActorPair/EchoSenderActorAttrs#copy().(onDone)*onDoneÄ*`
-Hbench/CtxReusePerActorPair/EchoSenderActorAttrs#copy().(messagesPerPair)*messagesPerPairÄ*T
-Bbench/CtxReusePerActorPair/EchoSenderActorAttrs#copy().(batchSize)*	batchSizeÄ*V
-Cbench/CtxReusePerActorPair/EchoSenderActorAttrs#copy().(childProps)*
-childPropsÄ*N
-?bench/CtxReusePerActorPair/EchoSenderActorAttrs#copy().(engine)*engineÄ*X
-Abench/CtxReusePerActorPair/EchoSenderActorAttrs#copy$default$1().*copy$default$1Ä*X
-Abench/CtxReusePerActorPair/EchoSenderActorAttrs#copy$default$2().*copy$default$2Ä*X
-Abench/CtxReusePerActorPair/EchoSenderActorAttrs#copy$default$3().*copy$default$3Ä*X
-Abench/CtxReusePerActorPair/EchoSenderActorAttrs#copy$default$4().*copy$default$4Ä*X
-Abench/CtxReusePerActorPair/EchoSenderActorAttrs#copy$default$5().*copy$default$5Ä*@
-5bench/CtxReusePerActorPair/EchoSenderActorAttrs#_1().*_1Ä*@
-5bench/CtxReusePerActorPair/EchoSenderActorAttrs#_2().*_2Ä*@
-5bench/CtxReusePerActorPair/EchoSenderActorAttrs#_3().*_3Ä*@
-5bench/CtxReusePerActorPair/EchoSenderActorAttrs#_4().*_4Ä*@
-5bench/CtxReusePerActorPair/EchoSenderActorAttrs#_5().*_5Ä*O
-0bench/CtxReusePerActorPair/EchoSenderActorAttrs.
- *EchoSenderActorAttrsÄ*F
-8bench/CtxReusePerActorPair/EchoSenderActorAttrs.apply().*applyÄ*O
-@bench/CtxReusePerActorPair/EchoSenderActorAttrs.apply().(onDone)*onDoneÄ*a
-Ibench/CtxReusePerActorPair/EchoSenderActorAttrs.apply().(messagesPerPair)*messagesPerPairÄ*U
-Cbench/CtxReusePerActorPair/EchoSenderActorAttrs.apply().(batchSize)*	batchSizeÄ*W
-Dbench/CtxReusePerActorPair/EchoSenderActorAttrs.apply().(childProps)*
-childPropsÄ*O
-@bench/CtxReusePerActorPair/EchoSenderActorAttrs.apply().(engine)*engineÄ*J
-:bench/CtxReusePerActorPair/EchoSenderActorAttrs.unapply().*unapplyÄ*K
-?bench/CtxReusePerActorPair/EchoSenderActorAttrs.unapply().(x$1)*x$1Ä*L
-;bench/CtxReusePerActorPair/EchoSenderActorAttrs.toString().*toStringÄ*E
-+bench/CtxReusePerActorPair/EchoSenderActor.
- *EchoSenderActorÄ*A
-3bench/CtxReusePerActorPair/EchoSenderActor.apply().*applyÄ*H
-:bench/CtxReusePerActorPair/EchoSenderActor.apply().(attrs)*attrsÄ*
-local2*contextÄ*C
-+bench/CtxReusePerActorPair/EchoSenderActor#*EchoSenderActorÄ*H
-6bench/CtxReusePerActorPair/EchoSenderActor#`<init>`(). Ä@*<init>Ä*O
-?bench/CtxReusePerActorPair/EchoSenderActor#`<init>`().(context)*contextÄ*K
-=bench/CtxReusePerActorPair/EchoSenderActor#`<init>`().(attrs)*attrsÄ*F
-3bench/CtxReusePerActorPair/EchoSenderActor#context. Ä*contextÄ*B
-1bench/CtxReusePerActorPair/EchoSenderActor#attrs. Ä*attrsÄ*@
-0bench/CtxReusePerActorPair/EchoSenderActor#echo. Ä*echoÄ*B
-2bench/CtxReusePerActorPair/EchoSenderActor#left(). Ä*leftÄ*H
-6bench/CtxReusePerActorPair/EchoSenderActor#`left_=`(). Ä*left_=Ä*G
-;bench/CtxReusePerActorPair/EchoSenderActor#`left_=`().(x$1)*x$1Ä*D
-3bench/CtxReusePerActorPair/EchoSenderActor#batch(). Ä*batchÄ*J
-7bench/CtxReusePerActorPair/EchoSenderActor#`batch_=`(). Ä*batch_=Ä*H
-<bench/CtxReusePerActorPair/EchoSenderActor#`batch_=`().(x$1)*x$1Ä*I
-7bench/CtxReusePerActorPair/EchoSenderActor#sendBatch().*	sendBatchÄ*
-local3 Ä*iÄ*I
-7bench/CtxReusePerActorPair/EchoSenderActor#onMessage().*	onMessageÄ*H
-<bench/CtxReusePerActorPair/EchoSenderActor#onMessage().(msg)*msgÄ*X
-4bench/CtxReusePerActorPair/EchoActorSupervisorAttrs# Ä*EchoActorSupervisorAttrsÄ*Q
-?bench/CtxReusePerActorPair/EchoActorSupervisorAttrs#`<init>`(). Ä@*<init>Ä*{
-Xbench/CtxReusePerActorPair/EchoActorSupervisorAttrs#`<init>`().(numMessagesPerActorPair) Ä*numMessagesPerActorPairÄ*_
-Jbench/CtxReusePerActorPair/EchoActorSupervisorAttrs#`<init>`().(numActors) Ä*	numActorsÄ*a
-Kbench/CtxReusePerActorPair/EchoActorSupervisorAttrs#`<init>`().(dispatcher) Ä*
-dispatcherÄ*_
-Jbench/CtxReusePerActorPair/EchoActorSupervisorAttrs#`<init>`().(batchSize) Ä*	batchSizeÄ*o
-Lbench/CtxReusePerActorPair/EchoActorSupervisorAttrs#numMessagesPerActorPair. Ä*numMessagesPerActorPairÄ*S
->bench/CtxReusePerActorPair/EchoActorSupervisorAttrs#numActors. Ä*	numActorsÄ*U
-?bench/CtxReusePerActorPair/EchoActorSupervisorAttrs#dispatcher. Ä*
-dispatcherÄ*S
->bench/CtxReusePerActorPair/EchoActorSupervisorAttrs#batchSize. Ä*	batchSizeÄ*H
-;bench/CtxReusePerActorPair/EchoActorSupervisorAttrs#copy().*copyÄ*t
-Tbench/CtxReusePerActorPair/EchoActorSupervisorAttrs#copy().(numMessagesPerActorPair)*numMessagesPerActorPairÄ*X
-Fbench/CtxReusePerActorPair/EchoActorSupervisorAttrs#copy().(numActors)*	numActorsÄ*Z
-Gbench/CtxReusePerActorPair/EchoActorSupervisorAttrs#copy().(dispatcher)*
-dispatcherÄ*X
-Fbench/CtxReusePerActorPair/EchoActorSupervisorAttrs#copy().(batchSize)*	batchSizeÄ*\
-Ebench/CtxReusePerActorPair/EchoActorSupervisorAttrs#copy$default$1().*copy$default$1Ä*\
-Ebench/CtxReusePerActorPair/EchoActorSupervisorAttrs#copy$default$2().*copy$default$2Ä*\
-Ebench/CtxReusePerActorPair/EchoActorSupervisorAttrs#copy$default$3().*copy$default$3Ä*\
-Ebench/CtxReusePerActorPair/EchoActorSupervisorAttrs#copy$default$4().*copy$default$4Ä*D
-9bench/CtxReusePerActorPair/EchoActorSupervisorAttrs#_1().*_1Ä*D
-9bench/CtxReusePerActorPair/EchoActorSupervisorAttrs#_2().*_2Ä*D
-9bench/CtxReusePerActorPair/EchoActorSupervisorAttrs#_3().*_3Ä*D
-9bench/CtxReusePerActorPair/EchoActorSupervisorAttrs#_4().*_4Ä*W
-4bench/CtxReusePerActorPair/EchoActorSupervisorAttrs.
- *EchoActorSupervisorAttrsÄ*J
-<bench/CtxReusePerActorPair/EchoActorSupervisorAttrs.apply().*applyÄ*u
-Ubench/CtxReusePerActorPair/EchoActorSupervisorAttrs.apply().(numMessagesPerActorPair)*numMessagesPerActorPairÄ*Y
-Gbench/CtxReusePerActorPair/EchoActorSupervisorAttrs.apply().(numActors)*	numActorsÄ*[
-Hbench/CtxReusePerActorPair/EchoActorSupervisorAttrs.apply().(dispatcher)*
-dispatcherÄ*Y
-Gbench/CtxReusePerActorPair/EchoActorSupervisorAttrs.apply().(batchSize)*	batchSizeÄ*N
->bench/CtxReusePerActorPair/EchoActorSupervisorAttrs.unapply().*unapplyÄ*O
-Cbench/CtxReusePerActorPair/EchoActorSupervisorAttrs.unapply().(x$1)*x$1Ä*P
-?bench/CtxReusePerActorPair/EchoActorSupervisorAttrs.toString().*toStringÄ*M
-/bench/CtxReusePerActorPair/EchoActorSupervisor.
- *EchoActorSupervisorÄ*N
-9bench/CtxReusePerActorPair/EchoActorSupervisor.Completed# Ä*	CompletedÄ*V
-Dbench/CtxReusePerActorPair/EchoActorSupervisor.Completed#`<init>`(). Ä@*<init>Ä*d
-Obench/CtxReusePerActorPair/EchoActorSupervisor.Completed#`<init>`().(respondTo) Ä*	respondToÄ*X
-Cbench/CtxReusePerActorPair/EchoActorSupervisor.Completed#respondTo. Ä*	respondToÄ*M
-@bench/CtxReusePerActorPair/EchoActorSupervisor.Completed#copy().*copyÄ*]
-Kbench/CtxReusePerActorPair/EchoActorSupervisor.Completed#copy().(respondTo)*	respondToÄ*a
-Jbench/CtxReusePerActorPair/EchoActorSupervisor.Completed#copy$default$1().*copy$default$1Ä*I
->bench/CtxReusePerActorPair/EchoActorSupervisor.Completed#_1().*_1Ä*M
-9bench/CtxReusePerActorPair/EchoActorSupervisor.Completed.
- *	CompletedÄ*O
-Abench/CtxReusePerActorPair/EchoActorSupervisor.Completed.apply().*applyÄ*^
-Lbench/CtxReusePerActorPair/EchoActorSupervisor.Completed.apply().(respondTo)*	respondToÄ*S
-Cbench/CtxReusePerActorPair/EchoActorSupervisor.Completed.unapply().*unapplyÄ*T
-Hbench/CtxReusePerActorPair/EchoActorSupervisor.Completed.unapply().(x$1)*x$1Ä*U
-Dbench/CtxReusePerActorPair/EchoActorSupervisor.Completed.toString().*toStringÄ*F
-5bench/CtxReusePerActorPair/EchoActorSupervisor.Start# Ä*StartÄ*R
-@bench/CtxReusePerActorPair/EchoActorSupervisor.Start#`<init>`(). Ä@*<init>Ä*`
-Kbench/CtxReusePerActorPair/EchoActorSupervisor.Start#`<init>`().(respondTo) Ä*	respondToÄ*T
-?bench/CtxReusePerActorPair/EchoActorSupervisor.Start#respondTo. Ä*	respondToÄ*I
-<bench/CtxReusePerActorPair/EchoActorSupervisor.Start#copy().*copyÄ*Y
-Gbench/CtxReusePerActorPair/EchoActorSupervisor.Start#copy().(respondTo)*	respondToÄ*]
-Fbench/CtxReusePerActorPair/EchoActorSupervisor.Start#copy$default$1().*copy$default$1Ä*E
-:bench/CtxReusePerActorPair/EchoActorSupervisor.Start#_1().*_1Ä*E
-5bench/CtxReusePerActorPair/EchoActorSupervisor.Start.
- *StartÄ*K
-=bench/CtxReusePerActorPair/EchoActorSupervisor.Start.apply().*applyÄ*Z
-Hbench/CtxReusePerActorPair/EchoActorSupervisor.Start.apply().(respondTo)*	respondToÄ*O
-?bench/CtxReusePerActorPair/EchoActorSupervisor.Start.unapply().*unapplyÄ*P
-Dbench/CtxReusePerActorPair/EchoActorSupervisor.Start.unapply().(x$1)*x$1Ä*Q
-@bench/CtxReusePerActorPair/EchoActorSupervisor.Start.toString().*toStringÄ*E
-7bench/CtxReusePerActorPair/EchoActorSupervisor.apply().*applyÄ*L
->bench/CtxReusePerActorPair/EchoActorSupervisor.apply().(attrs)*attrsÄ*
-local4*contextÄ*K
-/bench/CtxReusePerActorPair/EchoActorSupervisor#*EchoActorSupervisorÄ*L
-:bench/CtxReusePerActorPair/EchoActorSupervisor#`<init>`(). Ä@*<init>Ä*S
-Cbench/CtxReusePerActorPair/EchoActorSupervisor#`<init>`().(context)*contextÄ*O
-Abench/CtxReusePerActorPair/EchoActorSupervisor#`<init>`().(attrs)*attrsÄ*J
-7bench/CtxReusePerActorPair/EchoActorSupervisor#context. Ä*contextÄ*F
-5bench/CtxReusePerActorPair/EchoActorSupervisor#attrs. Ä*attrsÄ*M
-;bench/CtxReusePerActorPair/EchoActorSupervisor#onMessage().*	onMessageÄ*L
-@bench/CtxReusePerActorPair/EchoActorSupervisor#onMessage().(msg)*msgÄ*\
-6bench/CtxReusePerActorPair/EchoBenchSessionActorAttrs# Ä*EchoBenchSessionActorAttrsÄ*S
-Abench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#`<init>`(). Ä@*<init>Ä*a
-Lbench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#`<init>`().(respondTo) Ä*	respondToÄ*}
-Zbench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#`<init>`().(numMessagesPerActorPair) Ä*numMessagesPerActorPairÄ*a
-Lbench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#`<init>`().(numActors) Ä*	numActorsÄ*c
-Mbench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#`<init>`().(dispatcher) Ä*
-dispatcherÄ*a
-Lbench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#`<init>`().(batchSize) Ä*	batchSizeÄ*U
-@bench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#respondTo. Ä*	respondToÄ*q
-Nbench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#numMessagesPerActorPair. Ä*numMessagesPerActorPairÄ*U
-@bench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#numActors. Ä*	numActorsÄ*W
-Abench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#dispatcher. Ä*
-dispatcherÄ*U
-@bench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#batchSize. Ä*	batchSizeÄ*J
-=bench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#copy().*copyÄ*Z
-Hbench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#copy().(respondTo)*	respondToÄ*v
-Vbench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#copy().(numMessagesPerActorPair)*numMessagesPerActorPairÄ*Z
-Hbench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#copy().(numActors)*	numActorsÄ*\
-Ibench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#copy().(dispatcher)*
-dispatcherÄ*Z
-Hbench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#copy().(batchSize)*	batchSizeÄ*^
-Gbench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#copy$default$1().*copy$default$1Ä*^
-Gbench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#copy$default$2().*copy$default$2Ä*^
-Gbench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#copy$default$3().*copy$default$3Ä*^
-Gbench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#copy$default$4().*copy$default$4Ä*^
-Gbench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#copy$default$5().*copy$default$5Ä*F
-;bench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#_1().*_1Ä*F
-;bench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#_2().*_2Ä*F
-;bench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#_3().*_3Ä*F
-;bench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#_4().*_4Ä*F
-;bench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#_5().*_5Ä*[
-6bench/CtxReusePerActorPair/EchoBenchSessionActorAttrs.
- *EchoBenchSessionActorAttrsÄ*L
->bench/CtxReusePerActorPair/EchoBenchSessionActorAttrs.apply().*applyÄ*[
-Ibench/CtxReusePerActorPair/EchoBenchSessionActorAttrs.apply().(respondTo)*	respondToÄ*w
-Wbench/CtxReusePerActorPair/EchoBenchSessionActorAttrs.apply().(numMessagesPerActorPair)*numMessagesPerActorPairÄ*[
-Ibench/CtxReusePerActorPair/EchoBenchSessionActorAttrs.apply().(numActors)*	numActorsÄ*]
-Jbench/CtxReusePerActorPair/EchoBenchSessionActorAttrs.apply().(dispatcher)*
-dispatcherÄ*[
-Ibench/CtxReusePerActorPair/EchoBenchSessionActorAttrs.apply().(batchSize)*	batchSizeÄ*P
-@bench/CtxReusePerActorPair/EchoBenchSessionActorAttrs.unapply().*unapplyÄ*Q
-Ebench/CtxReusePerActorPair/EchoBenchSessionActorAttrs.unapply().(x$1)*x$1Ä*R
-Abench/CtxReusePerActorPair/EchoBenchSessionActorAttrs.toString().*toStringÄ*Q
-1bench/CtxReusePerActorPair/EchoBenchSessionActor.
- *EchoBenchSessionActorÄ*G
-9bench/CtxReusePerActorPair/EchoBenchSessionActor.apply().*applyÄ*N
-@bench/CtxReusePerActorPair/EchoBenchSessionActor.apply().(attrs)*attrsÄ*
-local5*contextÄ*W
-Abench/CtxReusePerActorPair/EchoBenchSessionActor.printProgress().*printProgressÄ*f
-Pbench/CtxReusePerActorPair/EchoBenchSessionActor.printProgress().(totalMessages)*totalMessagesÄ*^
-Lbench/CtxReusePerActorPair/EchoBenchSessionActor.printProgress().(numActors)*	numActorsÄ*f
-Pbench/CtxReusePerActorPair/EchoBenchSessionActor.printProgress().(startNanoTime)*startNanoTimeÄ* 
-local6 Ä*durationMicrosÄ*O
-1bench/CtxReusePerActorPair/EchoBenchSessionActor#*EchoBenchSessionActorÄ*N
-<bench/CtxReusePerActorPair/EchoBenchSessionActor#`<init>`(). Ä@*<init>Ä*U
-Ebench/CtxReusePerActorPair/EchoBenchSessionActor#`<init>`().(context)*contextÄ*Q
-Cbench/CtxReusePerActorPair/EchoBenchSessionActor#`<init>`().(attrs)*attrsÄ*L
-9bench/CtxReusePerActorPair/EchoBenchSessionActor#context. Ä*contextÄ*H
-7bench/CtxReusePerActorPair/EchoBenchSessionActor#attrs. Ä*attrsÄ*J
-8bench/CtxReusePerActorPair/EchoBenchSessionActor#engine. Ä*engineÄ*N
-:bench/CtxReusePerActorPair/EchoBenchSessionActor#numPairs. Ä*numPairsÄ*H
-7bench/CtxReusePerActorPair/EchoBenchSessionActor#props. Ä*propsÄ*H
-7bench/CtxReusePerActorPair/EchoBenchSessionActor#pairs. Ä*pairsÄ*X
-?bench/CtxReusePerActorPair/EchoBenchSessionActor#startNanoTime. Ä*startNanoTimeÄ*`
-Dbench/CtxReusePerActorPair/EchoBenchSessionActor#interactionsLeft(). Ä*interactionsLeftÄ*f
-Hbench/CtxReusePerActorPair/EchoBenchSessionActor#`interactionsLeft_=`(). Ä*interactionsLeft_=Ä*Y
-Mbench/CtxReusePerActorPair/EchoBenchSessionActor#`interactionsLeft_=`().(x$1)*x$1Ä*O
-=bench/CtxReusePerActorPair/EchoBenchSessionActor#onMessage().*	onMessageÄ*N
-Bbench/CtxReusePerActorPair/EchoBenchSessionActor#onMessage().(msg)*msgÄ*"
-local7 Ä*totalNumMessagesÄ*M
-<bench/CtxReusePerActorPair/EchoBenchSessionActor#onSignal().*onSignalÄ*
-local8*x$1Ä2%
- "bench/CtxReusePerActorPair/2
- bench/2,
- $java/util/concurrent/TimeUnit.2,
- $java/util/concurrent/TimeUnit#2#
- java/util/concurrent/2
- 
-java/util/2
- java/2%
- scala/concurrent/Await.2
- scala/concurrent/2
- scala/20
- ("com/typesafe/config/ConfigFactory.20
- ("com/typesafe/config/ConfigFactory#2"
- com/typesafe/config/2
- com/typesafe/2
- 
-com/23
-! +%akka/actor/typed/scaladsl/AskPattern.2(
-  akka/actor/typed/scaladsl/2
- akka/actor/typed/2
- akka/actor/2
- akka/2(
-  akka/actor/typed/scaladsl/2
- akka/actor/typed/2
- akka/actor/2
- akka/2
- akka/actor/typed/2
- akka/actor/2
- akka/2
- 
-akka/Done.2
- 
-akka/Done#2
- akka/2#
-
-
- org/graalvm/polyglot/2
-
-
- org/graalvm/2
-
-
- 
-org/21
- #bench/CtxReusePerActorPair/Command#28
-.bench/CtxReusePerActorPair/Command#`<init>`().21
- #bench/CtxReusePerActorPair/Message.21
- ##bench/CtxReusePerActorPair/Command#23
- %bench/CtxReusePerActorPair/EchoActor.2<
- .bench/CtxReusePerActorPair/EchoActor.jsSource.2:
- ,org/graalvm/polyglot/Source#Builder#build().27
- )org/graalvm/polyglot/Source#newBuilder().2*
- 
-org/graalvm/polyglot/Source#2;
- -bench/CtxReusePerActorPair/EchoActor.apply().2F
- 8bench/CtxReusePerActorPair/EchoActor.apply().(respondTo)2(
- akka/actor/typed/ActorRef#21
-  '#bench/CtxReusePerActorPair/Command#2C
-* 05bench/CtxReusePerActorPair/EchoActor.apply().(engine)2*
-2 8org/graalvm/polyglot/Engine#2(
-; Cakka/actor/typed/Behavior#21
-D K#bench/CtxReusePerActorPair/Command#2:
- ,akka/actor/typed/scaladsl/Behaviors.setup().22
- $akka/actor/typed/scaladsl/Behaviors.2
- local02>
-, ,0bench/CtxReusePerActorPair/EchoActor#`<init>`().23
-# ,%bench/CtxReusePerActorPair/EchoActor#2
-- 4local02F
-6 ?8bench/CtxReusePerActorPair/EchoActor.apply().(respondTo)2C
-A G5bench/CtxReusePerActorPair/EchoActor.apply().(engine)23
- %bench/CtxReusePerActorPair/EchoActor#2>
- 0bench/CtxReusePerActorPair/EchoActor#`<init>`().25
- 'akka/actor/typed/scaladsl/ActorContext#21
- !#bench/CtxReusePerActorPair/Command#2(
- akka/actor/typed/ActorRef#21
- #bench/CtxReusePerActorPair/Command#2*
- org/graalvm/polyglot/Engine#2D
- #  #6akka/actor/typed/scaladsl/AbstractBehavior#`<init>`().29
- 
-  +akka/actor/typed/scaladsl/AbstractBehavior#21
-   "#bench/CtxReusePerActorPair/Command#2;
- $  +-bench/CtxReusePerActorPair/EchoActor#context.2;
- -bench/CtxReusePerActorPair/EchoActor#context.2=
- /bench/CtxReusePerActorPair/EchoActor#respondTo.2:
- 
-,bench/CtxReusePerActorPair/EchoActor#engine.23
-!	! %bench/CtxReusePerActorPair/EchoActor.2;
-## -bench/CtxReusePerActorPair/EchoActor#polyCtx.2;
-'' 
--org/graalvm/polyglot/Context#Builder#build().2<
-&& .org/graalvm/polyglot/Context#Builder#engine().2D
-%% 6org/graalvm/polyglot/Context#Builder#allowAllAccess().28
-$$ *org/graalvm/polyglot/Context#newBuilder().2+
-## org/graalvm/polyglot/Context#2:
-&& ,bench/CtxReusePerActorPair/EchoActor#engine.2?
-)) 1bench/CtxReusePerActorPair/EchoActor#onMessage().2D
-)) 6bench/CtxReusePerActorPair/EchoActor#onMessage().(msg)21
-)) %#bench/CtxReusePerActorPair/Command#2(
-)() 0akka/actor/typed/Behavior#21
-)1) 8#bench/CtxReusePerActorPair/Command#22
-** $org/graalvm/polyglot/Context#eval().2;
-** -bench/CtxReusePerActorPair/EchoActor#polyCtx.2<
-** .bench/CtxReusePerActorPair/EchoActor.jsSource.2:
-++ ,akka/actor/typed/ActorRef.ActorRefOps#`!`().26
-++ (akka/actor/typed/ActorRef.ActorRefOps().2=
-++ /bench/CtxReusePerActorPair/EchoActor#respondTo.21
-++ #bench/CtxReusePerActorPair/Message.2>
-.. 0bench/CtxReusePerActorPair/EchoActor#onSignal().2$
-.. (scala/PartialFunction#2&
-.). /akka/actor/typed/Signal#2(
-.1. 9akka/actor/typed/Behavior#21
-.:. A#bench/CtxReusePerActorPair/Command#2
-// local12(
-/	/ akka/actor/typed/PostStop.25
-00 'org/graalvm/polyglot/Context#close(+1).2;
-00 -bench/CtxReusePerActorPair/EchoActor#polyCtx.2>
-44 0bench/CtxReusePerActorPair/EchoSenderActorAttrs#2I
-44 ;bench/CtxReusePerActorPair/EchoSenderActorAttrs#`<init>`().2(
-55 akka/actor/typed/ActorRef#2
-55 
-akka/Done#2
-66 
-scala/Int#2
-77 
-scala/Int#2%
-88 akka/actor/typed/Props#2*
-99 org/graalvm/polyglot/Engine#2E
-55 
-7bench/CtxReusePerActorPair/EchoSenderActorAttrs#onDone.2N
-66 @bench/CtxReusePerActorPair/EchoSenderActorAttrs#messagesPerPair.2H
-77 :bench/CtxReusePerActorPair/EchoSenderActorAttrs#batchSize.2I
-88 ;bench/CtxReusePerActorPair/EchoSenderActorAttrs#childProps.2E
-99 
-7bench/CtxReusePerActorPair/EchoSenderActorAttrs#engine.29
-;; +bench/CtxReusePerActorPair/EchoSenderActor.2A
-<< 3bench/CtxReusePerActorPair/EchoSenderActor.apply().2H
-<< :bench/CtxReusePerActorPair/EchoSenderActor.apply().(attrs)2>
-<< '0bench/CtxReusePerActorPair/EchoSenderActorAttrs#2(
-<*< 2akka/actor/typed/Behavior#21
-<3< :#bench/CtxReusePerActorPair/Command#2:
-== ,akka/actor/typed/scaladsl/Behaviors.setup().22
-== $akka/actor/typed/scaladsl/Behaviors.2
-== local22D
-=2= 26bench/CtxReusePerActorPair/EchoSenderActor#`<init>`().29
-=#= 2+bench/CtxReusePerActorPair/EchoSenderActor#2
-=3= :local22H
-=<= A:bench/CtxReusePerActorPair/EchoSenderActor.apply().(attrs)29
-?? +bench/CtxReusePerActorPair/EchoSenderActor#2D
-?? 6bench/CtxReusePerActorPair/EchoSenderActor#`<init>`().25
-@@ 'akka/actor/typed/scaladsl/ActorContext#21
-@@ !#bench/CtxReusePerActorPair/Command#2>
-AA 0bench/CtxReusePerActorPair/EchoSenderActorAttrs#2D
-B#B #6akka/actor/typed/scaladsl/AbstractBehavior#`<init>`().29
-B
-B +akka/actor/typed/scaladsl/AbstractBehavior#21
-BB "#bench/CtxReusePerActorPair/Command#2A
-B$B +3bench/CtxReusePerActorPair/EchoSenderActor#context.2A
-@@ 3bench/CtxReusePerActorPair/EchoSenderActor#context.2?
-AA 	1bench/CtxReusePerActorPair/EchoSenderActor#attrs.2?
-C	C 1bench/CtxReusePerActorPair/EchoSenderActor#attrs.2>
-EE 
-0bench/CtxReusePerActorPair/EchoSenderActor#echo.2=
-EE /akka/actor/typed/scaladsl/ActorContext#spawn().2A
-EE 3bench/CtxReusePerActorPair/EchoSenderActor#context.2;
-FF -bench/CtxReusePerActorPair/EchoActor.apply().23
-FF %bench/CtxReusePerActorPair/EchoActor.2<
-FF .akka/actor/typed/scaladsl/ActorContext#self().2A
-FF 3bench/CtxReusePerActorPair/EchoSenderActor#context.2E
-FF "7bench/CtxReusePerActorPair/EchoSenderActorAttrs#engine.2I
-HH ;bench/CtxReusePerActorPair/EchoSenderActorAttrs#childProps.2@
-KK 
-2bench/CtxReusePerActorPair/EchoSenderActor#left().2 
-KK scala/Int#`/`(+3).2N
-KK @bench/CtxReusePerActorPair/EchoSenderActorAttrs#messagesPerPair.2A
-LL 3bench/CtxReusePerActorPair/EchoSenderActor#batch().2E
-NN 7bench/CtxReusePerActorPair/EchoSenderActor#sendBatch().2
-NN scala/Boolean#2 
-OO scala/Int#`>`(+3).2@
-OO 2bench/CtxReusePerActorPair/EchoSenderActor#left().2
-P
-P local32 
-QQ scala/Int#`<`(+3).2
-QQ local32H
-QQ :bench/CtxReusePerActorPair/EchoSenderActorAttrs#batchSize.2:
-RR ,akka/actor/typed/ActorRef.ActorRefOps#`!`().26
-RR (akka/actor/typed/ActorRef.ActorRefOps().2>
-RR 0bench/CtxReusePerActorPair/EchoSenderActor#echo.21
-RR #bench/CtxReusePerActorPair/Message.2
-SS 	local32 
-S	S 	scala/Int#`+`(+4).2D
-UU 
-6bench/CtxReusePerActorPair/EchoSenderActor#`left_=`().2 
-U
-U 
-scala/Int#`-`(+3).2@
-UU 
-2bench/CtxReusePerActorPair/EchoSenderActor#left().2H
-UU :bench/CtxReusePerActorPair/EchoSenderActorAttrs#batchSize.2E
-VV 7bench/CtxReusePerActorPair/EchoSenderActor#`batch_=`().2H
-VV :bench/CtxReusePerActorPair/EchoSenderActorAttrs#batchSize.2E
-]] 7bench/CtxReusePerActorPair/EchoSenderActor#onMessage().2J
-]] <bench/CtxReusePerActorPair/EchoSenderActor#onMessage().(msg)21
-]] %#bench/CtxReusePerActorPair/Command#2(
-](] 0akka/actor/typed/Behavior#21
-]1] 8#bench/CtxReusePerActorPair/Command#2E
-^^ 	7bench/CtxReusePerActorPair/EchoSenderActor#`batch_=`().2 
-^	^ 	scala/Int#`-`(+3).2A
-^^ 	3bench/CtxReusePerActorPair/EchoSenderActor#batch().2#
-__ scala/Boolean#`&&`().2!
-__ scala/Int#`<=`(+3).2A
-__ 3bench/CtxReusePerActorPair/EchoSenderActor#batch().2(
-_"_ "scala/Boolean#`unary_!`().2E
-__  7bench/CtxReusePerActorPair/EchoSenderActor#sendBatch().2:
-`` ,akka/actor/typed/ActorRef.ActorRefOps#`!`().26
-`` (akka/actor/typed/ActorRef.ActorRefOps().2E
-`` 7bench/CtxReusePerActorPair/EchoSenderActorAttrs#onDone.2
-`` 
-akka/Done.2<
-aa .akka/actor/typed/scaladsl/Behaviors.stopped().22
-aa $akka/actor/typed/scaladsl/Behaviors.2B
-ff #4bench/CtxReusePerActorPair/EchoActorSupervisorAttrs#2M
-f#f #?bench/CtxReusePerActorPair/EchoActorSupervisorAttrs#`<init>`().2
-gg  
-scala/Int#2
-hh 
-scala/Int#2"
-ii scala/Predef.String#2
-jj 
-scala/Int#2Z
-gg Lbench/CtxReusePerActorPair/EchoActorSupervisorAttrs#numMessagesPerActorPair.2L
-hh >bench/CtxReusePerActorPair/EchoActorSupervisorAttrs#numActors.2M
-ii ?bench/CtxReusePerActorPair/EchoActorSupervisorAttrs#dispatcher.2L
-jj >bench/CtxReusePerActorPair/EchoActorSupervisorAttrs#batchSize.2=
-ll /bench/CtxReusePerActorPair/EchoActorSupervisor.2G
-mm 9bench/CtxReusePerActorPair/EchoActorSupervisor.Completed#2R
-mm Dbench/CtxReusePerActorPair/EchoActorSupervisor.Completed#`<init>`().2
-m"m &scala/Long#2Q
-mm  Cbench/CtxReusePerActorPair/EchoActorSupervisor.Completed#respondTo.2C
-nn 5bench/CtxReusePerActorPair/EchoActorSupervisor.Start#2N
-nn @bench/CtxReusePerActorPair/EchoActorSupervisor.Start#`<init>`().2(
-nn &akka/actor/typed/ActorRef#2G
-n'n 09bench/CtxReusePerActorPair/EchoActorSupervisor.Completed#2M
-nn ?bench/CtxReusePerActorPair/EchoActorSupervisor.Start#respondTo.2E
-oo 7bench/CtxReusePerActorPair/EchoActorSupervisor.apply().2L
-pp >bench/CtxReusePerActorPair/EchoActorSupervisor.apply().(attrs)2B
-pp %4bench/CtxReusePerActorPair/EchoActorSupervisorAttrs#2(
-qq akka/actor/typed/Behavior#2C
-qq 5bench/CtxReusePerActorPair/EchoActorSupervisor.Start#2:
-rr ,akka/actor/typed/scaladsl/Behaviors.setup().22
-rr $akka/actor/typed/scaladsl/Behaviors.2
-rr local42H
-r6r 6:bench/CtxReusePerActorPair/EchoActorSupervisor#`<init>`().2=
-r#r 6/bench/CtxReusePerActorPair/EchoActorSupervisor#2
-r7r >local42L
-r@r E>bench/CtxReusePerActorPair/EchoActorSupervisor.apply().(attrs)2=
-tt /bench/CtxReusePerActorPair/EchoActorSupervisor#2H
-tt :bench/CtxReusePerActorPair/EchoActorSupervisor#`<init>`().25
-uu 'akka/actor/typed/scaladsl/ActorContext#2C
-u.u 35bench/CtxReusePerActorPair/EchoActorSupervisor.Start#2=
-uu -/bench/CtxReusePerActorPair/EchoActorSupervisor.2B
-vv #4bench/CtxReusePerActorPair/EchoActorSupervisorAttrs#2D
-w5w 56akka/actor/typed/scaladsl/AbstractBehavior#`<init>`().29
-w
-w +akka/actor/typed/scaladsl/AbstractBehavior#2C
-w/w 45bench/CtxReusePerActorPair/EchoActorSupervisor.Start#2=
-ww ./bench/CtxReusePerActorPair/EchoActorSupervisor.2E
-w6w =7bench/CtxReusePerActorPair/EchoActorSupervisor#context.2E
-uu 7bench/CtxReusePerActorPair/EchoActorSupervisor#context.2C
-vv 	5bench/CtxReusePerActorPair/EchoActorSupervisor#attrs.2C
-x	x 5bench/CtxReusePerActorPair/EchoActorSupervisor#attrs.2=
-y	y /bench/CtxReusePerActorPair/EchoActorSupervisor.2I
-zz ;bench/CtxReusePerActorPair/EchoActorSupervisor#onMessage().2N
-zz @bench/CtxReusePerActorPair/EchoActorSupervisor#onMessage().(msg)2C
-zz #5bench/CtxReusePerActorPair/EchoActorSupervisor.Start#2F
-{{ 8akka/actor/typed/scaladsl/ActorContext#spawnAnonymous().2E
-{{ 7bench/CtxReusePerActorPair/EchoActorSupervisor#context.2G
-|| 9bench/CtxReusePerActorPair/EchoBenchSessionActor.apply().2?
-|| 1bench/CtxReusePerActorPair/EchoBenchSessionActor.2L
-}"} ">bench/CtxReusePerActorPair/EchoBenchSessionActorAttrs.apply().2D
-}} "6bench/CtxReusePerActorPair/EchoBenchSessionActorAttrs.2M
-~~ ?bench/CtxReusePerActorPair/EchoActorSupervisor.Start#respondTo.2N
-~
-~ @bench/CtxReusePerActorPair/EchoActorSupervisor#onMessage().(msg)2Z
-
- !Lbench/CtxReusePerActorPair/EchoActorSupervisorAttrs#numMessagesPerActorPair.2N
-
-Ä
-Ä >bench/CtxReusePerActorPair/EchoActorSupervisorAttrs#numActors.2O
-
-Å
-Å ?bench/CtxReusePerActorPair/EchoActorSupervisorAttrs#dispatcher.2N
-
-Ç
-Ç >bench/CtxReusePerActorPair/EchoActorSupervisorAttrs#batchSize.2F
-
-ää %6bench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#2Q
-
-ä%ä %Abench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#`<init>`().2*
-
-ãã akka/actor/typed/ActorRef#2I
-
-ã,ã 59bench/CtxReusePerActorPair/EchoActorSupervisor.Completed#2?
-
-ãã +/bench/CtxReusePerActorPair/EchoActorSupervisor.2
-
-åå  
-scala/Int#2
-
-çç 
-scala/Int#2$
-
-éé scala/Predef.String#2
-
-èè 
-scala/Int#2P
-
-ãã @bench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#respondTo.2^
-
-åå Nbench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#numMessagesPerActorPair.2P
-
-çç @bench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#numActors.2Q
-
-éé Abench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#dispatcher.2P
-
-èè @bench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#batchSize.2A
-
-ëë 1bench/CtxReusePerActorPair/EchoBenchSessionActor.2I
-
-íí 9bench/CtxReusePerActorPair/EchoBenchSessionActor.apply().2P
-
-ìì @bench/CtxReusePerActorPair/EchoBenchSessionActor.apply().(attrs)2F
-
-ìì '6bench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#2*
-
-îî akka/actor/typed/Behavior#2
-
-îî 
-akka/Done#2<
-
-ïï ,akka/actor/typed/scaladsl/Behaviors.setup().24
-
-ïï $akka/actor/typed/scaladsl/Behaviors.2
-
-ïï local52L
-
-ï8ï 8<bench/CtxReusePerActorPair/EchoBenchSessionActor#`<init>`().2A
-
-ï#ï 81bench/CtxReusePerActorPair/EchoBenchSessionActor#2
-
-ï9ï @local52P
-
-ïBï G@bench/CtxReusePerActorPair/EchoBenchSessionActor.apply().(attrs)2Q
-
-óó Abench/CtxReusePerActorPair/EchoBenchSessionActor.printProgress().2`
-
-òò Pbench/CtxReusePerActorPair/EchoBenchSessionActor.printProgress().(totalMessages)2
-
-òò scala/Long#2\
-
-ôô Lbench/CtxReusePerActorPair/EchoBenchSessionActor.printProgress().(numActors)2
-
-ôô 
-scala/Int#2`
-
-öö Pbench/CtxReusePerActorPair/EchoBenchSessionActor.printProgress().(startNanoTime)2
-
-öö scala/Long#2
-
-úú local62#
-
-ú=ú >scala/Long#`/`(+3).2#
-
-ú,ú -scala/Long#`-`(+4).2,
-
-ú!ú )java/lang/System#nanoTime().2!
-
-úú  java/lang/System#2`
-
-ú.ú ;Pbench/CtxReusePerActorPair/EchoBenchSessionActor.printProgress().(startNanoTime)2)
-
-ùù scala/Predef.println(+1).2'
-
-û[û \java/lang/String#`+`().2(
-
-ûYû Zscala/StringContext#f().2,
-
-ûû scala/StringContext.apply().2`
-
-ûû Pbench/CtxReusePerActorPair/EchoBenchSessionActor.printProgress().(totalMessages)2\
-
-û&û /Lbench/CtxReusePerActorPair/EchoBenchSessionActor.printProgress().(numActors)2#
-
-ûMû Nscala/Long#`/`(+3).2
-
-û>û Llocal62(
-
-üAü Bscala/StringContext#f().2,
-
-ü
-ü 
-scala/StringContext.apply().2%
-
-ü#ü $scala/Double#`/`(+4).2&
-
-üü "scala/Long#toDouble().2`
-
-üü Pbench/CtxReusePerActorPair/EchoBenchSessionActor.printProgress().(totalMessages)2
-
-ü%ü 3local62A
-
-££ 1bench/CtxReusePerActorPair/EchoBenchSessionActor#2L
-
-££ <bench/CtxReusePerActorPair/EchoBenchSessionActor#`<init>`().27
-
-§§ 'akka/actor/typed/scaladsl/ActorContext#2
-
-§§ 
-akka/Done#2F
-
-•• %6bench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#2F
-
-¶ ¶  6akka/actor/typed/scaladsl/AbstractBehavior#`<init>`().2;
-
-¶
-¶ +akka/actor/typed/scaladsl/AbstractBehavior#2
-
-¶¶ 
-akka/Done#2I
-
-¶!¶ (9bench/CtxReusePerActorPair/EchoBenchSessionActor#context.2I
-
-§§ 9bench/CtxReusePerActorPair/EchoBenchSessionActor#context.2G
-
-•• 	7bench/CtxReusePerActorPair/EchoBenchSessionActor#attrs.2G
-
-ß	ß 7bench/CtxReusePerActorPair/EchoBenchSessionActor#attrs.2A
-
-®	® 1bench/CtxReusePerActorPair/EchoBenchSessionActor.2H
-
-™™ 8bench/CtxReusePerActorPair/EchoBenchSessionActor#engine.2<
-
-≠≠ 
-,org/graalvm/polyglot/Engine#Builder#build().2=
-
-¨¨ -org/graalvm/polyglot/Engine#Builder#option().29
-
-´´ )org/graalvm/polyglot/Engine#newBuilder().2,
-
-™™ org/graalvm/polyglot/Engine#2J
-
-ØØ :bench/CtxReusePerActorPair/EchoBenchSessionActor#numPairs.2"
-
-ØØ scala/Int#`/`(+3).2P
-
-ØØ @bench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#numActors.2G
-
-∞∞ 7bench/CtxReusePerActorPair/EchoBenchSessionActor#props.2B
-
-±± (2akka/actor/typed/Props#withDispatcherFromConfig().2-
-
-±
-± akka/actor/typed/Props.empty.2'
-
-±± 	akka/actor/typed/Props.2'
-
-±7± 8java/lang/String#`+`().2Q
-
-±9± CAbench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#dispatcher.2G
-
-≤≤ 7bench/CtxReusePerActorPair/EchoBenchSessionActor#pairs.27
-
-≤≤ !'scala/collection/immutable/Range#map().2+
-
-≤≤ scala/runtime/RichInt#to().28
-
-≤≤ (scala/LowPriorityImplicits#intWrapper().2J
-
-≤≤ :bench/CtxReusePerActorPair/EchoBenchSessionActor#numPairs.2H
-
-≥≥ 8akka/actor/typed/scaladsl/ActorContext#spawnAnonymous().2I
-
-≥≥ 9bench/CtxReusePerActorPair/EchoBenchSessionActor#context.2C
-
-¥¥ 3bench/CtxReusePerActorPair/EchoSenderActor.apply().2;
-
-¥¥ +bench/CtxReusePerActorPair/EchoSenderActor.2H
-
-µµ 8bench/CtxReusePerActorPair/EchoSenderActorAttrs.apply().2@
-
-µµ 0bench/CtxReusePerActorPair/EchoSenderActorAttrs.2>
-
-∂∂ .akka/actor/typed/scaladsl/ActorContext#self().2I
-
-∂
-∂ 9bench/CtxReusePerActorPair/EchoBenchSessionActor#context.2^
-
-∑
-∑ !Nbench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#numMessagesPerActorPair.2P
-
-∏
-∏ @bench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#batchSize.2G
-
-π
-π 7bench/CtxReusePerActorPair/EchoBenchSessionActor#props.2H
-
-∫
-∫ 8bench/CtxReusePerActorPair/EchoBenchSessionActor#engine.2G
-
-ΩΩ 7bench/CtxReusePerActorPair/EchoBenchSessionActor#props.2O
-
-¿¿ ?bench/CtxReusePerActorPair/EchoBenchSessionActor#startNanoTime.2,
-
-¿¿ %java/lang/System#nanoTime().2!
-
-¿¿ java/lang/System#2;
-
-¡¡ +scala/collection/IterableOnceOps#foreach().2G
-
-¡¡ 7bench/CtxReusePerActorPair/EchoBenchSessionActor#pairs.2<
-
-¡¡ ,akka/actor/typed/ActorRef.ActorRefOps#`!`().28
-
-¡¡ (akka/actor/typed/ActorRef.ActorRefOps().23
-
-¡¡ #bench/CtxReusePerActorPair/Message.2T
-
-¬¬ Dbench/CtxReusePerActorPair/EchoBenchSessionActor#interactionsLeft().2J
-
-¬¬ !:bench/CtxReusePerActorPair/EchoBenchSessionActor#numPairs.2M
-
-ƒƒ =bench/CtxReusePerActorPair/EchoBenchSessionActor#onMessage().2R
-
-ƒƒ Bbench/CtxReusePerActorPair/EchoBenchSessionActor#onMessage().(msg)2
-
-ƒƒ "
-akka/Done#2X
-
-≈≈ Hbench/CtxReusePerActorPair/EchoBenchSessionActor#`interactionsLeft_=`().2"
-
-≈≈ scala/Int#`-`(+3).2T
-
-≈≈ Dbench/CtxReusePerActorPair/EchoBenchSessionActor#interactionsLeft().2#
-
-∆∆ scala/Int#`==`(+3).2T
-
-∆∆ Dbench/CtxReusePerActorPair/EchoBenchSessionActor#interactionsLeft().2
-
-«
-« local72"
-
-«&« 'scala/Int#`*`(+3).2J
-
-«« %:bench/CtxReusePerActorPair/EchoBenchSessionActor#numPairs.2^
-
-«(« ?Nbench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#numMessagesPerActorPair.2Q
-
-»» Abench/CtxReusePerActorPair/EchoBenchSessionActor.printProgress().2%
-
-»» scala/Int.int2long().2
-
-»» $local72P
-
-»&» /@bench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#numActors.2O
-
-»1» >?bench/CtxReusePerActorPair/EchoBenchSessionActor#startNanoTime.2<
-
-…… ,akka/actor/typed/ActorRef.ActorRefOps#`!`().28
-
-…… (akka/actor/typed/ActorRef.ActorRefOps().2P
-
-…… @bench/CtxReusePerActorPair/EchoBenchSessionActorAttrs#respondTo.2Q
-
-…/… /Abench/CtxReusePerActorPair/EchoActorSupervisor.Completed.apply().2I
-
-…&… /9bench/CtxReusePerActorPair/EchoActorSupervisor.Completed.2?
-
-…… %/bench/CtxReusePerActorPair/EchoActorSupervisor.2O
-
-…0… =?bench/CtxReusePerActorPair/EchoBenchSessionActor#startNanoTime.2>
-
-   .akka/actor/typed/scaladsl/Behaviors.stopped().24
-
-   $akka/actor/typed/scaladsl/Behaviors.2L
-
-œœ <bench/CtxReusePerActorPair/EchoBenchSessionActor#onSignal().2&
-
-œœ (scala/PartialFunction#2(
-
-œ)œ /akka/actor/typed/Signal#2*
-
-œ1œ 9akka/actor/typed/Behavior#2
-
-œ:œ >
-akka/Done#2
-
-–– local82*
-
-–	– akka/actor/typed/PostStop.26
-
-—— &org/graalvm/polyglot/Engine#close(+1).2H
-
-—— 8bench/CtxReusePerActorPair/EchoBenchSessionActor#engine.PZ 3A0D78E9BF70BCD43A92F1A95A7C3D1C

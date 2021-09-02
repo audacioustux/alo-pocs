@@ -20,17 +20,12 @@ object CtxReusePerActorPairJMH {
 
   @main def start(): Unit = {
     System.out.println(ProcessHandle.current().pid())
-    Thread.sleep(10000)
     (1 to 10).map { n =>
       System.out.println(n)
       val system = new CtxReusePerActorPairJMH
       system.setup()
       system.echo()
-      System.gc()
-      Thread.sleep(5000)
       system.shutdown()
-      System.gc()
-      Thread.sleep(2000)
     }
   }
 }

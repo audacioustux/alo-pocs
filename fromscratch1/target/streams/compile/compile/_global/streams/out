@@ -1,0 +1,22 @@
+[0m[[0m[31merror[0m] [0m[0m[31m-- [E006] Not Found Error: /Users/tanjimhossain/Bytes/poc-wormhole/fromscratch1/src/main/scala/Main.scala:20:23 [0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m20 |[0m      [33mval[0m [36msystem[0m = [33mnew[0m [35mTypedActorBenchmark[0m[0m
+[0m[[0m[31merror[0m] [0m[0m   |                       [31m^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[[0m[31merror[0m] [0m[0m   |                       Not found: type TypedActorBenchmark[0m
+[0m[[0m[31merror[0m] [0m[0m[31m-- [E006] Not Found Error: /Users/tanjimhossain/Bytes/poc-wormhole/fromscratch1/src/main/scala/Main.scala:39:26 [0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m39 |[0m  [33mvar[0m [36msystem[0m: [35mActorSystem[Start][0m = _[0m
+[0m[[0m[31merror[0m] [0m[0m   |                          [31m^^^^^[0m[0m
+[0m[[0m[31merror[0m] [0m[0m   |                          Not found: type Start[0m
+[0m[[0m[31merror[0m] [0m[0m[31m-- [E006] Not Found Error: /Users/tanjimhossain/Bytes/poc-wormhole/fromscratch1/src/main/scala/Main.scala:43:4 [0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m43 |[0m    BenchmarkActors.requireRightNumberOfCores(threads)[0m
+[0m[[0m[31merror[0m] [0m[0m   |    [31m^^^^^^^^^^^^^^^[0m[0m
+[0m[[0m[31merror[0m] [0m[0m   |    Not found: BenchmarkActors[0m
+[0m[[0m[31merror[0m] [0m[0m[31m-- [E006] Not Found Error: /Users/tanjimhossain/Bytes/poc-wormhole/fromscratch1/src/main/scala/Main.scala:45:6 [0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m45 |[0m      TypedBenchmarkActors.echoActorsSupervisor([0m
+[0m[[0m[31merror[0m] [0m[0m   |      [31m^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[[0m[31merror[0m] [0m[0m   |      Not found: TypedBenchmarkActors[0m
+[0m[[0m[31merror[0m] [0m[0m[31m-- [E006] Not Found Error: /Users/tanjimhossain/Bytes/poc-wormhole/fromscratch1/src/main/scala/Main.scala:92:17 [0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m92 |[0m      system.ask(TypedBenchmarkActors),[0m
+[0m[[0m[31merror[0m] [0m[0m   |                 [31m^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[[0m[31merror[0m] [0m[0m   |                 Not found: TypedBenchmarkActors[0m
+[0m[[0m[31merror[0m] [0m[0m5 errors found[0m
+[0m[[0m[31merror[0m] [0m[0m5 errors found[0m

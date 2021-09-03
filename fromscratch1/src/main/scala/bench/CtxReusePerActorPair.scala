@@ -15,7 +15,7 @@ case object Message extends Command
 
 object EchoActor {
   private val aoc2020d20 =
-    "import { part1 } from '/Users/tanjimhossain/Bytes/poc-wormhole/fromscratch1/src/main/js/aoc2020d20.mjs';" + "console.log(part1())"
+    "import { part1, part2 } from '/Users/tanjimhossain/Bytes/poc-wormhole/fromscratch1/src/main/js/aoc2020d20.mjs';" + "part2"
   private val jsSource =
     Source
       .newBuilder(
@@ -41,15 +41,18 @@ class EchoActor(
     .engine(engine)
     .build()
 
-  override def onMessage(msg: Command): Behavior[Command] =
-    polyCtx.eval(jsSource)
+  override def onMessage(msg: Command): Behavior[Command] = {
+    val result = polyCtx.eval(jsSource)
+    result.execute()
     respondTo ! Message
     this
+  }
 
-  override def onSignal: PartialFunction[Signal, Behavior[Command]] =
+  override def onSignal: PartialFunction[Signal, Behavior[Command]] = {
     case PostStop =>
       polyCtx.close()
       this
+  }
 }
 
 case class EchoSenderActorAttrs(
@@ -207,8 +210,9 @@ class EchoBenchSessionActor(
       this
     }
   }
-  override def onSignal: PartialFunction[Signal, Behavior[Done]] =
+  override def onSignal: PartialFunction[Signal, Behavior[Done]] = {
     case PostStop =>
       engine.close()
       this
+  }
 }

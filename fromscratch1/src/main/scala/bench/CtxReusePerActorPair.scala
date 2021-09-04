@@ -14,14 +14,14 @@ sealed trait Command
 case object Message extends Command
 
 object EchoActor {
-  private val aoc2020d20 =
-    "import { part1, part2 } from '/Users/tanjimhossain/Bytes/poc-wormhole/fromscratch1/src/main/js/aoc2020d20.mjs';" + "part2"
+  private val realworldJsSrc =
+    "import { createArticle } from '/Users/tanjimhossain/Bytes/poc-wormhole/fromscratch1/src/main/js/realworld.mjs';" + "createArticle"
   private val jsSource =
     Source
       .newBuilder(
         "js",
-        aoc2020d20,
-        "aoc2020d20.mjs"
+        realworldJsSrc,
+        "realworld.mjs"
       )
       .build()
 

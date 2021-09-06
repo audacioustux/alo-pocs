@@ -1,0 +1,15 @@
+{
+  "name": "nodeperf",
+  "version": "1.0.0",
+  "description": "",
+  "main": "simplehttp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ansispan": "0.0.4",
+    "colors": "^1.4.0"
+  }
+}

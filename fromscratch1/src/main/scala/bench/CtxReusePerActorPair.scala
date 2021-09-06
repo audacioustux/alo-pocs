@@ -15,7 +15,7 @@ case object Message extends Command
 
 object EchoActor {
   private val realworldJsSrc =
-    "import { createArticle } from '/Users/tanjimhossain/Bytes/poc-wormhole/fromscratch1/src/main/js/realworld.mjs';" + "createArticle"
+    "import { run } from '/Users/tanjimhossain/Bytes/poc-wormhole/fromscratch1/src/main/js/realworld.mjs';" + "run"
   private val jsSource =
     Source
       .newBuilder(

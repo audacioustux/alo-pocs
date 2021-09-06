@@ -9,6 +9,7 @@ lazy val root = project
     version := "0.1.0",
     scalaVersion := scala3Version,
     Compile / run / fork := true,
+    javaOptions ++= Seq("-Xmx16G"),
     libraryDependencies ++= Seq(
       "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
       "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % Test

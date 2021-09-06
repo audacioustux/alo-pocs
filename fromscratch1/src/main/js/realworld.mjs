@@ -57,7 +57,7 @@ function create(event) {
   return { article: _article };
 }
 
-export function createArticle() {
+function createArticle() {
   return JSON.stringify(
     create({
       authtoken: "audacioustux",
@@ -71,4 +71,9 @@ export function createArticle() {
       },
     })
   );
+}
+
+export function run() {
+  createArticle();
+  inmemorydb.articles = [];
 }

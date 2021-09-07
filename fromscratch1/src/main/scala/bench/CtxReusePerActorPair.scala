@@ -16,19 +16,29 @@ sealed trait Command
 case object Message extends Command
 
 object EchoActor {
-  // private val realworldJsSrc =
-  //   "import { run } from 'src/main/js/realworld.mjs';" + "run"
+  private val realworldJsSrc =
+    "import { run } from 'src/main/js/realworld.mjs';" + "run"
+  private val jsSource =
+    Source
+      .newBuilder(
+        "js",
+        realworldJsSrc,
+        "realworld.mjs"
+      )
+      .build()
+  // private val floydJsSrc =
+  //   "import { floyd } from 'src/main/js/floyd.mjs';" + "floyd"
   // private val jsSource =
   //   Source
   //     .newBuilder(
   //       "js",
-  //       realworldJsSrc,
-  //       "realworld.mjs"
+  //       floydJsSrc,
+  //       "floyd.mjs"
   //     )
   //     .build()
-  val wasmBinary = Files.readAllBytes(Path.of("src/main/wasm/floyd.wasm"));
-  val wasmSource =
-    Source.newBuilder("wasm", ByteSequence.create(wasmBinary), "floyd").build();
+  // val wasmBinary = Files.readAllBytes(Path.of("src/main/wasm/floyd.wasm"));
+  // val wasmSource =
+  //   Source.newBuilder("wasm", ByteSequence.create(wasmBinary), "floyd").build();
 
   def apply(respondTo: ActorRef[Command], engine: Engine): Behavior[Command] =
     Behaviors.setup(context => new EchoActor(context, respondTo, engine))
@@ -47,16 +57,17 @@ class EchoActor(
     .option("wasm.Builtins", "wasi_snapshot_preview1")
     .build()
 
-  override def onMessage(msg: Command): Behavior[Command] = {
-    // val result = polyCtx.eval(jsSource)
-    polyCtx.eval(wasmSource)
-    val wasmMainFn =
-      polyCtx
-        .getBindings("wasm")
-        .getMember("main")
-        .getMember("floyd")
+  // polyCtx.eval(wasmSource)
+  // private val wasmMainFn =
+  //   polyCtx
+  //     .getBindings("wasm")
+  //     .getMember("main")
+  //     .getMember("floyd")
+  private val jsMainFn = polyCtx.eval(jsSource)
 
-    wasmMainFn.execute()
+  override def onMessage(msg: Command): Behavior[Command] = {
+    // wasmMainFn.execute()
+    jsMainFn.execute()
     respondTo ! Message
     this
   }

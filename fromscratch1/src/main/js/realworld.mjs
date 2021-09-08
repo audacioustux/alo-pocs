@@ -1,3 +1,4 @@
+// https://github.com/anishkny/realworld-dynamodb-lambda/tree/master/src
 import slugify from "./slugify.mjs";
 
 let inmemorydb = {

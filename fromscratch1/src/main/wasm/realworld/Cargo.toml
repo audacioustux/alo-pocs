@@ -1,0 +1,13 @@
+[package]
+name = "realworld"
+version = "0.1.0"
+authors = ["Tanjim Hossain <tangimhossain1@gmail.com>"]
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib"]
+
+[profile.release]
+lto = true
+codegen-units = 1
+panic = 'abort' 

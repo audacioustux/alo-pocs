@@ -1,0 +1,19 @@
+[package]
+name = "rust"
+version = "0.1.0"
+edition = "2018"
+authors = ["MD Gaziur Rahman Noor <mdgaziurrahmannoor@gmail.com>"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["cdylib"]
+
+[profile.release]
+lto = true
+codegen-units = 1
+panic = 'abort'
+
+[dependencies]
+rand = "0.8.0"
+slugify = "0.1.0"

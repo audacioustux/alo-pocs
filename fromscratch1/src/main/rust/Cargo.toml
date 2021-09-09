@@ -15,5 +15,5 @@ codegen-units = 1
 panic = 'abort'
 
 [dependencies]
-rand = "0.8.0"
-slugify = "0.1.0"
+uuid = { version = "0.8", features = ["v1"] }
+slugify = "0.1"

@@ -1,40 +1,37 @@
-use std::time::SystemTime;
 use slugify::slugify;
+use std::time::SystemTime;
+use uuid::v1::{Context, Timestamp};
+use uuid::Uuid;
 
 #[derive(Clone)]
 struct User {
-    pub username: String,
-    pub bio: String
+    username: String,
+    bio: String,
 }
 
 #[derive(Clone)]
 struct Article {
-    pub id: Option<i32>,
-    pub slug: Option<String>,
-    pub title: String,
-    pub description: String,
-    pub body: String,
-    pub created_at: Option<SystemTime>,
-    pub updated_at: Option<SystemTime>,
-    pub author: Option<String>,
-    pub taglist: Vec<String>,
-    pub favorited: Option<bool>,
-    pub favorites_count: Option<i32>
+    id: Option<Uuid>,
+    slug: Option<String>,
+    title: String,
+    description: String,
+    body: String,
+    created_at: Option<SystemTime>,
+    updated_at: Option<SystemTime>,
+    author: Option<String>,
+    taglist: Vec<String>,
+    favorited: Option<bool>,
+    favorites_count: Option<i32>,
 }
 
 #[derive(Debug)]
 struct Error {
-    pub error: String,
-    pub error_code: i32
+    error: String,
+    error_code: i32,
 }
 
 impl Article {
-    pub fn for_event(
-            title: &str,
-            description: &str,
-            body: &str,
-            taglist: &Vec<String>
-        ) -> Self {
+    fn for_event(title: &str, description: &str, body: &str, taglist: &Vec<String>) -> Self {
         Self {
             id: None,
             slug: None,
@@ -46,16 +43,11 @@ impl Article {
             description: description.to_string(),
             body: body.to_string(),
             taglist: taglist.clone(),
-            author: None
+            author: None,
         }
     }
 
-    pub fn for_inserting(
-        event_article: &Article,
-        id: i32,
-        slug: &str,
-        author: &str
-    ) -> Self {
+    fn for_inserting(event_article: &Article, id: Uuid, slug: &str, author: &str) -> Self {
         Self {
             author: Some(author.to_string()),
             id: Some(id),
@@ -67,7 +59,7 @@ impl Article {
             description: event_article.description.clone(),
             favorited: Some(false),
             favorites_count: Some(0),
-            taglist: event_article.taglist.clone() 
+            taglist: event_article.taglist.clone(),
         }
     }
 }
@@ -82,45 +74,52 @@ fn authenticate_and_get_user(event: &Event, inmemorydb: &InmemoryDB) -> Option<U
     None
 }
 
-fn generate_id() -> i32 {
-    rand::random()
+fn generate_id() -> Uuid {
+    let context = Context::new(42);
+    let ts = Timestamp::from_unix(&context, 1497624119, 1234);
+    Uuid::new_v1(ts, &[1, 2, 3, 4, 5, 6]).expect("failed to generate UUID")
 }
 
 struct InmemoryDB {
     users: Vec<User>,
-    articles: Vec<Article>
+    articles: Vec<Article>,
 }
-    
+
 struct Event {
-    pub access_token: String,
-    pub article: Article
+    access_token: String,
+    article: Article,
 }
 
 impl InmemoryDB {
-    pub fn new() -> Self {
+    fn new() -> Self {
         Self {
             users: Vec::new(),
-            articles: Vec::new()
+            articles: Vec::new(),
         }
     }
 
-    pub fn create_article(&mut self, event: Event) -> Result<Article, Error> {
+    fn create_article(&mut self, event: Event) -> Result<Article, Error> {
         let authenticated_user = authenticate_and_get_user(&event, self);
         if authenticated_user.is_none() {
             return Err(Error {
                 error: String::from("Must be logged in."),
-                error_code: 422
-            })
+                error_code: 422,
+            });
         }
-        
+
         let article = event.article;
         let id = generate_id();
         let slug = slugify!(&article.title);
-        let new_article = Article::for_inserting(&article, id, &slug, &authenticated_user.unwrap().username);
+        let new_article =
+            Article::for_inserting(&article, id, &slug, &authenticated_user.unwrap().username);
 
         // insert article to inmemorydb
         self.articles.push(new_article.clone());
         Ok(new_article)
+    }
+
+    fn empty(&mut self) {
+        self.articles = vec![];
     }
 }
 
@@ -134,9 +133,9 @@ fn create_article(inmemorydb: &mut InmemoryDB) -> Result<Article, Error> {
             &{
                 let taglist: Vec<String> = vec![String::from("Yo"), String::from("Bloom!!!")];
                 taglist
-            }
-        )
-    })
+            },
+        ),
+    });
 }
 
 #[no_mangle]
@@ -144,7 +143,8 @@ pub extern "C" fn run() {
     let mut imdb = InmemoryDB::new();
     imdb.users.push(User {
         username: String::from("audacioustux"),
-        bio: String::from("a tehc enthusiast")
+        bio: String::from("a tehc enthusiast"),
     });
     create_article(&mut imdb).unwrap();
+    imdb.empty();
 }

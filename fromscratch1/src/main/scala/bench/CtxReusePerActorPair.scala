@@ -49,13 +49,24 @@ object EchoActor {
   //     )
   //     .build()
 
+  // private val dummyPySrc =
+  //   "lambda: 1 + 2"
+  // private val pySource =
+  //   Source
+  //     .newBuilder(
+  //       "python",
+  //       dummyPySrc,
+  //       "dummy.py"
+  //     )
+  //     .build()
+
   val wasmBinary = Files.readAllBytes(
     Path.of(
-      "src/main/wasm/realworld/target/wasm32-wasi/release/realworld.opt.wasm"
+      "src/main/rust/target/wasm32-wasi/release/rust.opt.wasm"
     )
   );
   val wasmSource =
-    Source.newBuilder("wasm", ByteSequence.create(wasmBinary), "floyd").build();
+    Source.newBuilder("wasm", ByteSequence.create(wasmBinary), "realworld.wasm").build();
 
   def apply(respondTo: ActorRef[Command], engine: Engine): Behavior[Command] =
     Behaviors.setup(context => new EchoActor(context, respondTo, engine))
@@ -79,12 +90,14 @@ class EchoActor(
     polyCtx
       .getBindings("wasm")
       .getMember("main")
-      .getMember("floyd")
+      .getMember("run")
   // private val jsMainFn = polyCtx.eval(jsSource)
+  // private val pyMainFn = polyCtx.eval(pySource)
 
   override def onMessage(msg: Command): Behavior[Command] = {
     wasmMainFn.execute()
     // jsMainFn.execute()
+    // pyMainFn.execute()
     respondTo ! Message
     this
   }

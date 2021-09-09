@@ -11,6 +11,7 @@ import akka.Done
 import org.graalvm.polyglot._
 import org.graalvm.polyglot.io.ByteSequence;
 import java.nio.file.{Files, Path}
+import java.io._
 
 sealed trait Command
 case object Message extends Command
@@ -49,24 +50,23 @@ object EchoActor {
   //     )
   //     .build()
 
-  // private val dummyPySrc =
-  //   "lambda: 1 + 2"
-  // private val pySource =
-  //   Source
-  //     .newBuilder(
-  //       "python",
-  //       dummyPySrc,
-  //       "dummy.py"
-  //     )
-  //     .build()
+  private val srcFile = new File("src/main/python/realworld.py");
+  private val language = Source.findLanguage(srcFile);
+  private val source =
+    Source
+      .newBuilder(
+        language,
+        srcFile
+      )
+      .build()
 
-  val wasmBinary = Files.readAllBytes(
-    Path.of(
-      "src/main/rust/target/wasm32-wasi/release/rust.opt.wasm"
-    )
-  );
-  val wasmSource =
-    Source.newBuilder("wasm", ByteSequence.create(wasmBinary), "realworld.wasm").build();
+  // val wasmBinary = Files.readAllBytes(
+  //   Path.of(
+  //     "src/main/rust/target/wasm32-wasi/release/rust.opt.wasm"
+  //   )
+  // );
+  // val wasmSource =
+  //   Source.newBuilder("wasm", ByteSequence.create(wasmBinary), "realworld.wasm").build();
 
   def apply(respondTo: ActorRef[Command], engine: Engine): Behavior[Command] =
     Behaviors.setup(context => new EchoActor(context, respondTo, engine))
@@ -85,19 +85,20 @@ class EchoActor(
     .option("wasm.Builtins", "wasi_snapshot_preview1")
     .build()
 
-  polyCtx.eval(wasmSource)
-  private val wasmMainFn =
-    polyCtx
-      .getBindings("wasm")
-      .getMember("main")
-      .getMember("run")
+  // polyCtx.eval(wasmSource)
+  // private val wasmMainFn =
+  //   polyCtx
+  //     .getBindings("wasm")
+  //     .getMember("main")
+  //     .getMember("run")
   // private val jsMainFn = polyCtx.eval(jsSource)
-  // private val pyMainFn = polyCtx.eval(pySource)
+  polyCtx.eval(source)
+  private val mainFn = polyCtx.getBindings("python").getMember("run")
 
   override def onMessage(msg: Command): Behavior[Command] = {
-    wasmMainFn.execute()
+    // wasmMainFn.execute()
     // jsMainFn.execute()
-    // pyMainFn.execute()
+    mainFn.execute()
     respondTo ! Message
     this
   }

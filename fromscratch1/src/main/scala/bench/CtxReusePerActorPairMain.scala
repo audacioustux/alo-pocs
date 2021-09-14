@@ -8,48 +8,44 @@ import akka.actor.typed.scaladsl.AskPattern._
 import akka.actor.typed.scaladsl._
 import akka.actor.typed._
 import akka.Done
-import org.openjdk.jmh.annotations._
 import CtxReusePerActorPair._
 
-object CtxReusePerActorPairJMH {
+object CtxReusePerActorPairMain {
   final val threads = Runtime.getRuntime.availableProcessors
-  final val numMessagesPerActorPair = 20
-  final val numActors = 200000
+  final val numMessagesPerActorPair = 2
+  final val numActors = 2
   final val totalMessages = numMessagesPerActorPair * (numActors / 2)
   final val timeout = 60.minutes
+
+  @main def start(): Unit = {
+    System.out.println(ProcessHandle.current().pid())
+    Thread.sleep(20000)
+    (1 to 1).map { n =>
+      System.out.println(n)
+      val system = new CtxReusePerActorPairMain
+      system.setup()
+      system.echo()
+      System.gc()
+      Thread.sleep(5000)
+      system.shutdown()
+      System.gc()
+      Thread.sleep(2000)
+    }
+  }
 }
-@State(Scope.Benchmark)
-@BenchmarkMode(Array(Mode.Throughput))
-@Fork(1)
-@Threads(1)
-@Warmup(iterations = 10, time = 5, timeUnit = TimeUnit.SECONDS, batchSize = 1)
-@Measurement(
-  iterations = 10,
-  time = 15,
-  timeUnit = TimeUnit.SECONDS,
-  batchSize = 1
-)
-class CtxReusePerActorPairJMH {
-  import CtxReusePerActorPairJMH.*
+class CtxReusePerActorPairMain {
+  import CtxReusePerActorPairMain.*
 
-  var tpt = 20
-  var batchSize = 20
+  var tpt = 1
+  var batchSize = 1
 
-  @Param(
-    Array(
-      "akka.dispatch.SingleConsumerOnlyUnboundedMailbox",
-      "akka.dispatch.UnboundedMailbox"
-    )
-  )
-  var mailbox = ""
+  var mailbox = "akka.dispatch.SingleConsumerOnlyUnboundedMailbox"
 
-  @Param(Array("fjp-dispatcher", "affinity-dispatcher"))
-  var dispatcher = ""
+  var dispatcher = "fjp-dispatcher"
 
   implicit var system: ActorSystem[EchoActorSupervisor.Start] = _
   implicit val askTimeout: akka.util.Timeout = akka.util.Timeout(timeout)
 
-  @Setup(Level.Trial)
   def setup(): Unit = {
     system = ActorSystem(
       EchoActorSupervisor(
@@ -94,14 +90,11 @@ class CtxReusePerActorPairJMH {
     )
   }
 
-  @TearDown(Level.Trial)
   def shutdown(): Unit = {
     system.terminate()
     Await.ready(system.whenTerminated, 5.minutes)
   }
 
-  @Benchmark
-  @OperationsPerInvocation(totalMessages)
   def echo(): Unit = {
     Await.result(
       system.ask(EchoActorSupervisor.Start.apply),

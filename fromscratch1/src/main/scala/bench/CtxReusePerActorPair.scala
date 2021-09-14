@@ -17,16 +17,14 @@ sealed trait Command
 case object Message extends Command
 
 object EchoActor {
-  // private val realworldJsSrc =
-  //   "import { run } from 'src/main/js/realworld.mjs';" + "run"
-  // private val jsSource =
-  //   Source
-  //     .newBuilder(
-  //       "js",
-  //       realworldJsSrc,
-  //       "realworld.mjs"
-  //     )
-  //     .build()
+  private val source =
+    Source
+      .newBuilder(
+        "js",
+        "import { run } from 'src/main/js/realworld.mjs';" + "run",
+        "realworld.mjs"
+      )
+      .build()
 
   // private val floydJsSrc =
   //   "import { floyd } from 'src/main/js/floyd.mjs';" + "floyd"
@@ -39,26 +37,16 @@ object EchoActor {
   //     )
   //     .build()
 
-  // private val dummyJsSrc =
+  // private val src =
   //   "import { dummyFn } from 'src/main/js/dummy.mjs';" + "dummyFn"
-  // private val jsSource =
+  // private val source =
   //   Source
   //     .newBuilder(
   //       "js",
-  //       dummyJsSrc,
+  //       src,
   //       "dummy.mjs"
   //     )
   //     .build()
-
-  private val srcFile = new File("src/main/python/realworld.py");
-  private val language = Source.findLanguage(srcFile);
-  private val source =
-    Source
-      .newBuilder(
-        language,
-        srcFile
-      )
-      .build()
 
   // val wasmBinary = Files.readAllBytes(
   //   Path.of(
@@ -91,9 +79,7 @@ class EchoActor(
   //     .getBindings("wasm")
   //     .getMember("main")
   //     .getMember("run")
-  // private val jsMainFn = polyCtx.eval(jsSource)
-  polyCtx.eval(source)
-  private val mainFn = polyCtx.getBindings("python").getMember("run")
+  private val mainFn = polyCtx.eval(source)
 
   override def onMessage(msg: Command): Behavior[Command] = {
     // wasmMainFn.execute()

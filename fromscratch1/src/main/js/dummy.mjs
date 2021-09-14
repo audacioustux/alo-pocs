@@ -1,3 +1,3 @@
-export function dummyFn() {
+export function run() {
   return 0;
 }

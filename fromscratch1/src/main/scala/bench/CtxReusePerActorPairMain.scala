@@ -12,21 +12,22 @@ import CtxReusePerActorPair._
 
 object CtxReusePerActorPairMain {
   final val threads = Runtime.getRuntime.availableProcessors
-  final val numMessagesPerActorPair = 2
-  final val numActors = 2
+  final val numMessagesPerActorPair = 20
+  final val numActors = 200000
   final val totalMessages = numMessagesPerActorPair * (numActors / 2)
   final val timeout = 60.minutes
 
   @main def start(): Unit = {
     System.out.println(ProcessHandle.current().pid())
-    Thread.sleep(20000)
-    (1 to 1).map { n =>
+    Thread.sleep(10000)
+    (1 to 5).map { n =>
       System.out.println(n)
       val system = new CtxReusePerActorPairMain
       system.setup()
       system.echo()
+      Thread.sleep(2000)
       System.gc()
-      Thread.sleep(5000)
+      Thread.sleep(2000)
       system.shutdown()
       System.gc()
       Thread.sleep(2000)
@@ -36,8 +37,8 @@ object CtxReusePerActorPairMain {
 class CtxReusePerActorPairMain {
   import CtxReusePerActorPairMain.*
 
-  var tpt = 1
-  var batchSize = 1
+  var tpt = 20
+  var batchSize = 20
 
   var mailbox = "akka.dispatch.SingleConsumerOnlyUnboundedMailbox"
 

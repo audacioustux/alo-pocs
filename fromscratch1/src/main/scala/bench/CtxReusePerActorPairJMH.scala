@@ -37,13 +37,18 @@ class CtxReusePerActorPairJMH {
 
   @Param(
     Array(
-      "akka.dispatch.SingleConsumerOnlyUnboundedMailbox",
-      "akka.dispatch.UnboundedMailbox"
+      "akka.dispatch.SingleConsumerOnlyUnboundedMailbox"
+      // "akka.dispatch.UnboundedMailbox"
     )
   )
   var mailbox = ""
 
-  @Param(Array("fjp-dispatcher", "affinity-dispatcher"))
+  @Param(
+    Array(
+      "fjp-dispatcher"
+      // "affinity-dispatcher"
+    )
+  )
   var dispatcher = ""
 
   implicit var system: ActorSystem[EchoActorSupervisor.Start] = _

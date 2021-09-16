@@ -16,15 +16,16 @@ import java.io._
 sealed trait Command
 case object Message extends Command
 
+val source =
+  Source
+    .newBuilder(
+      "js",
+      "import { run } from 'src/main/js/realworld.mjs';" + "run",
+      "realworld.mjs"
+    )
+    .build()
+
 object EchoActor {
-  private val source =
-    Source
-      .newBuilder(
-        "js",
-        "import { run } from 'src/main/js/realworld.mjs';" + "run",
-        "realworld.mjs"
-      )
-      .build()
 
   // private val floydJsSrc =
   //   "import { floyd } from 'src/main/js/floyd.mjs';" + "floyd"
@@ -72,6 +73,8 @@ class EchoActor(
     .engine(engine)
     .option("wasm.Builtins", "wasi_snapshot_preview1")
     .build()
+  private val mainFn = polyCtx.eval(source)
+  mainFn.execute()
 
   // polyCtx.eval(wasmSource)
   // private val wasmMainFn =
@@ -79,7 +82,6 @@ class EchoActor(
   //     .getBindings("wasm")
   //     .getMember("main")
   //     .getMember("run")
-  private val mainFn = polyCtx.eval(source)
 
   override def onMessage(msg: Command): Behavior[Command] = {
     // wasmMainFn.execute()
@@ -136,6 +138,13 @@ class EchoSenderActor(
       false
     }
   }
+
+  // polyCtx.eval(wasmSource)
+  // private val wasmMainFn =
+  //   polyCtx
+  //     .getBindings("wasm")
+  //     .getMember("main")
+  //     .getMember("run")
 
   override def onMessage(msg: Command): Behavior[Command] =
     batch -= 1
@@ -236,6 +245,9 @@ class EchoBenchSessionActor(
       props
     )
   }
+  context.log.debug("sleeping...")
+  Thread.sleep(2 * 60 * 1000)
+  context.log.debug("awaken...")
   val startNanoTime = System.nanoTime()
   pairs.foreach(_ ! Message)
   var interactionsLeft = numPairs
@@ -247,9 +259,8 @@ class EchoBenchSessionActor(
       printProgress(totalNumMessages, numActors, startNanoTime)
       respondTo ! EchoActorSupervisor.Completed(startNanoTime)
       Behaviors.stopped
-    } else {
-      this
     }
+    this
   }
   override def onSignal: PartialFunction[Signal, Behavior[Done]] = {
     case PostStop =>

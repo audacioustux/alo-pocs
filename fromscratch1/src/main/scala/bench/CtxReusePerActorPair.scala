@@ -24,7 +24,6 @@ val source =
       "realworld.mjs"
     )
     .build()
-
 object EchoActor {
 
   // private val floydJsSrc =

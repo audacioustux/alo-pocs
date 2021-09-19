@@ -1,4 +1,4 @@
-package bench.CtxReusePerActorPair
+package bench.CtxPool
 
 import scala.concurrent.duration._
 import java.util.concurrent.TimeUnit
@@ -10,12 +10,12 @@ import akka.actor.typed._
 import akka.Done
 import org.openjdk.jmh.annotations._
 
-object CtxReusePerActorPairJMH {
+object CtxPoolJMH {
   final val threads = Runtime.getRuntime.availableProcessors
-  final val numMessagesPerActorPair = 20
-  final val numActors = 200000
-  final val totalMessages = numMessagesPerActorPair * (numActors / 2)
-  final val timeout = 60.minutes
+  final val numOfNPA = 100000
+  final val numOfTimeScheduleNPA = 20
+  final val timeout = 5.minutes
+  final val totalMessages = numOfTimeScheduleNPA * numOfNPA
 }
 @State(Scope.Benchmark)
 @BenchmarkMode(Array(Mode.Throughput))
@@ -28,11 +28,11 @@ object CtxReusePerActorPairJMH {
   timeUnit = TimeUnit.SECONDS,
   batchSize = 1
 )
-class CtxReusePerActorPairJMH {
-  import CtxReusePerActorPairJMH.*
+class CtxPoolJMH {
+  import CtxPoolJMH.*
 
-  var tpt = 20
-  var batchSize = 20
+  var tpt = numOfTimeScheduleNPA
+  var batchSize = numOfTimeScheduleNPA
 
   @Param(
     Array(
@@ -50,20 +50,13 @@ class CtxReusePerActorPairJMH {
   )
   var dispatcher = ""
 
-  implicit var system: ActorSystem[EchoActorSupervisor.Start] = _
+  implicit var system: ActorSystem[BenchGuardian.Start] = _
   implicit val askTimeout: akka.util.Timeout = akka.util.Timeout(timeout)
 
   @Setup(Level.Trial)
   def setup(): Unit = {
     system = ActorSystem(
-      EchoActorSupervisor(
-        EchoActorSupervisorAttrs(
-          numMessagesPerActorPair,
-          numActors,
-          dispatcher,
-          batchSize
-        )
-      ),
+      BenchGuardian(numOfNPA, numOfTimeScheduleNPA, threads),
       "TypedActorBenchmark",
       ConfigFactory.parseString(s"""
        akka.actor {
@@ -100,7 +93,6 @@ class CtxReusePerActorPairJMH {
 
   @TearDown(Level.Trial)
   def shutdown(): Unit = {
-    system.terminate()
     Await.ready(system.whenTerminated, 5.minutes)
   }
 
@@ -108,7 +100,7 @@ class CtxReusePerActorPairJMH {
   @OperationsPerInvocation(totalMessages)
   def echo(): Unit = {
     Await.result(
-      system.ask(EchoActorSupervisor.Start.apply),
+      system.ask(BenchGuardian.Start.apply),
       timeout
     )
   }

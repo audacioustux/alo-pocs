@@ -16,15 +16,14 @@ import java.io._
 sealed trait Command
 case object Message extends Command
 
-val source =
-  Source
+object EchoActor {
+  val source = Source
     .newBuilder(
       "js",
       "import { run } from 'src/main/js/realworld.mjs';" + "run",
       "realworld.mjs"
     )
     .build()
-object EchoActor {
 
   // private val floydJsSrc =
   //   "import { floyd } from 'src/main/js/floyd.mjs';" + "floyd"
@@ -90,10 +89,9 @@ class EchoActor(
     this
   }
 
-  override def onSignal: PartialFunction[Signal, Behavior[Command]] = {
-    case PostStop =>
-      polyCtx.close()
-      this
+  override def onSignal: PartialFunction[Signal, Behavior[Command]] = { case PostStop =>
+    polyCtx.close()
+    this
   }
 }
 
@@ -261,9 +259,8 @@ class EchoBenchSessionActor(
     }
     this
   }
-  override def onSignal: PartialFunction[Signal, Behavior[Done]] = {
-    case PostStop =>
-      engine.close()
-      this
+  override def onSignal: PartialFunction[Signal, Behavior[Done]] = { case PostStop =>
+    engine.close()
+    this
   }
 }

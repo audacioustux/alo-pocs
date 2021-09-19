@@ -8,7 +8,6 @@ lazy val root = project
     name := "fromscratch1",
     version := "0.1.0",
     scalaVersion := scala3Version,
-    Compile / run / fork := true,
     javaOptions ++= Seq("-Xmx16G"),
     libraryDependencies ++= Seq(
       "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,

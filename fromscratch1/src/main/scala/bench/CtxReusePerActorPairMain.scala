@@ -1,4 +1,4 @@
-package bench
+package bench.CtxReusePerActorPair
 
 import scala.concurrent.duration._
 import java.util.concurrent.TimeUnit
@@ -8,7 +8,6 @@ import akka.actor.typed.scaladsl.AskPattern._
 import akka.actor.typed.scaladsl._
 import akka.actor.typed._
 import akka.Done
-import CtxReusePerActorPair._
 
 object CtxReusePerActorPairMain {
   final val threads = Runtime.getRuntime.availableProcessors

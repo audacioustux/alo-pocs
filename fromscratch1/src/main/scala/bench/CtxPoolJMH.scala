@@ -12,9 +12,9 @@ import org.openjdk.jmh.annotations._
 
 object CtxPoolJMH {
   final val threads = Runtime.getRuntime.availableProcessors
-  final val numOfNPA = 100000
-  final val numOfTimeScheduleNPA = 20
-  final val timeout = 5.minutes
+  final val numOfNPA = 100 * 1000
+  final val numOfTimeScheduleNPA = 100
+  final val timeout = 1.hour
   final val totalMessages = numOfTimeScheduleNPA * numOfNPA
 }
 @State(Scope.Benchmark)
@@ -33,22 +33,9 @@ class CtxPoolJMH {
 
   var tpt = numOfTimeScheduleNPA
   var batchSize = numOfTimeScheduleNPA
+  var mailbox = "akka.dispatch.SingleConsumerOnlyUnboundedMailbox"
 
-  @Param(
-    Array(
-      "akka.dispatch.SingleConsumerOnlyUnboundedMailbox"
-      // "akka.dispatch.UnboundedMailbox"
-    )
-  )
-  var mailbox = ""
-
-  @Param(
-    Array(
-      "fjp-dispatcher"
-      // "affinity-dispatcher"
-    )
-  )
-  var dispatcher = ""
+  var dispatcher = "fjp-dispatcher"
 
   implicit var system: ActorSystem[BenchGuardian.Start] = _
   implicit val askTimeout: akka.util.Timeout = akka.util.Timeout(timeout)

@@ -50,19 +50,20 @@ class NPAgent(
   def onMessage(msg: Request): Behavior[Request] = {
     msg match {
       case Run =>
-        if (n <= numOfTimeScheduleNPA) {
-          execValue.execute()
-          n += 1
+        execValue.execute()
+        n += 1
+        if (n < numOfTimeScheduleNPA) {
           context.self ! Run
         } else {
           respondTo ! Done
         }
-        this
       case Start =>
-        n = numOfTimeScheduleNPA
-        context.self ! Run
-        this
+        if (numOfTimeScheduleNPA > 0)
+          context.self ! Run
+        else
+          respondTo ! Done
     }
+    this
   }
 
   override def onSignal: PartialFunction[Signal, Behavior[Request]] = {
@@ -209,7 +210,6 @@ class NPAgentSupervisor(
 
   override def onSignal: PartialFunction[Signal, Behavior[Request]] = {
     case PostStop => {
-      context.log.debug("henlo")
       engine.close()
       this
     }

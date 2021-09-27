@@ -12,7 +12,8 @@ lazy val root = project
     javaOptions ++= Seq("-Xmx16G"),
     libraryDependencies ++= Seq(
       "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
-      "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % Test
+      "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % Test,
+      "io.jvm.uuid" %% "scala-uuid" % "0.3.1"
     ).map(_.cross(CrossVersion.for3Use2_13)),
     libraryDependencies ++= Seq(
       "ch.qos.logback" % "logback-classic" % "1.2.3"

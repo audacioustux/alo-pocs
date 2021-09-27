@@ -12,8 +12,8 @@ import org.openjdk.jmh.annotations._
 
 object CtxPoolJMH {
   final val threads = Runtime.getRuntime.availableProcessors
-  final val numOfNPA = 100 * 1000
-  final val numOfTimeScheduleNPA = 100
+  final val numOfNPA = 4
+  final val numOfTimeScheduleNPA = 1000 * 1000
   final val timeout = 1.hour
   final val totalMessages = numOfTimeScheduleNPA * numOfNPA
 }

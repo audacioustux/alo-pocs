@@ -1,5 +1,6 @@
 package bench.CtxPool
 
+import examples.Realworld._
 import akka.actor.typed._
 import akka.actor.typed.scaladsl._
 import org.graalvm.polyglot._
@@ -32,16 +33,17 @@ class NPAgent(
 ) extends AbstractBehavior[NPAgent.Request](context) {
   import NPAgent._
 
-  val source =
-    Source
-      .newBuilder(
-        "js",
-        "import { run } from 'src/main/js/realworld.mjs';" + "run",
-        "realworld.mjs"
-      )
-      .build()
-  val execValue = polyCtx.eval(source)
-  execValue.execute()
+  // val source =
+  //   Source
+  //     .newBuilder(
+  //       "js",
+  //       "import { run } from 'src/main/js/realworld.mjs';" + "run",
+  //       "realworld.mjs"
+  //     )
+  //     .build()
+  // val execValue = polyCtx.eval(source)
+  // execValue.execute()
+  val articles = new ArticleController
 
   respondTo ! Ready
 
@@ -50,7 +52,22 @@ class NPAgent(
   def onMessage(msg: Request): Behavior[Request] = {
     msg match {
       case Run =>
-        execValue.execute()
+        // execValue.execute()
+        // Article.Main.run()
+        articles.create(
+          Event(
+            Some("audacioustux"),
+            Some(
+              Article(
+                "testing blabla",
+                "testing bloom phew phew",
+                "lorem *ipsum* sit amet dolor am jam kathal",
+                Set("test", "test", "bloom", "lorem-ipsum")
+              )
+            )
+          )
+        )
+
         n += 1
         if (n < numOfTimeScheduleNPA) {
           context.self ! Run
@@ -68,7 +85,8 @@ class NPAgent(
 
   override def onSignal: PartialFunction[Signal, Behavior[Request]] = {
     case PostStop => {
-      polyCtx.close()
+      // polyCtx.close()
+      articles.reset()
       this
     }
   }

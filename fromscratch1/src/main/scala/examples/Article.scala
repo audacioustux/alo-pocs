@@ -11,7 +11,10 @@ object Slug {
     import java.text.Normalizer
     Normalizer
       .normalize(input, Normalizer.Form.NFD)
-      .replaceAll("[^\\w\\s-]", "") // Remove all non-word, non-space or non-dash characters
+      .replaceAll(
+        "[^\\w\\s-]",
+        ""
+      ) // Remove all non-word, non-space or non-dash characters
       .replace('-', ' ') // Replace dashes with spaces
       .trim // Trim leading/trailing whitespace (including what used to be leading/trailing dashes)
       .replaceAll(
@@ -27,10 +30,12 @@ case class Event(authToken: Option[String], body: Option[Article])
 
 case class User(username: String, bio: String)
 object User {
-  var users: mutable.ArraySeq[User] = Array(User("audacioustux", "henlo meh tangim"))
+  var users = mutable.Seq(User("audacioustux", "henlo meh tangim"))
 
   def authenticateAndGetUser(event: Event): Option[User] = {
-    event.authToken.flatMap(authToken => users.find(user => user.username == authToken))
+    event.authToken.flatMap(authToken =>
+      users.find(user => user.username == authToken)
+    )
   }
 }
 case class Article(
@@ -47,7 +52,7 @@ case class Article(
     favorited: Option[Boolean] = None
 )
 class ArticleController {
-  // var articles: mutable.Seq[Article] = mutable.Seq()
+  var articles: mutable.Seq[Article] = mutable.Seq()
 
   def create(event: Event): Error | Article = {
     val authenticatedUser = User.authenticateAndGetUser(event) match {
@@ -68,9 +73,9 @@ class ArticleController {
       favorited = Some(false),
       favoritesCount = Some(2)
     )
-    // article +: articles
+    article +: articles
 
     article
   }
-  // def reset = articles = mutable.Seq()
+  def reset() = articles = mutable.Seq()
 }

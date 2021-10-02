@@ -16,6 +16,7 @@ object CtxPoolMain {
   final val timeout = 60.minutes
 
   def main(args: Array[String]): Unit = {
+    Thread.sleep(10000)
     (1 to 1).foreach { n =>
       val system = new CtxPoolMain
       system.setup()

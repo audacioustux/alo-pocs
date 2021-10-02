@@ -1,6 +1,6 @@
 package bench.CtxPool
 
-import examples.Realworld._
+import examples.Realworld.*
 import akka.actor.typed._
 import akka.actor.typed.scaladsl._
 import org.graalvm.polyglot._
@@ -20,9 +20,12 @@ object NPAgent {
       numOfTimeScheduleNPA: Int,
       engine: Engine
   ): Behavior[Request] = {
-    val polyCtx = Context.newBuilder().allowAllAccess(true).engine(engine).build()
+    val polyCtx =
+      Context.newBuilder().allowAllAccess(true).engine(engine).build()
 
-    Behaviors.setup(context => new NPAgent(context, respondTo, polyCtx, numOfTimeScheduleNPA))
+    Behaviors.setup(context =>
+      new NPAgent(context, respondTo, polyCtx, numOfTimeScheduleNPA)
+    )
   }
 }
 class NPAgent(
@@ -43,7 +46,7 @@ class NPAgent(
   //     .build()
   // val execValue = polyCtx.eval(source)
   // execValue.execute()
-  val articles = new ArticleController
+  val articles = new ArticleController()
 
   respondTo ! Ready
 
@@ -62,7 +65,7 @@ class NPAgent(
                 "testing blabla",
                 "testing bloom phew phew",
                 "lorem *ipsum* sit amet dolor am jam kathal",
-                Set("test", "test", "bloom", "lorem-ipsum")
+                tagList = Some(Set("test", "test", "bloom", "lorem-ipsum"))
               )
             )
           )
@@ -95,7 +98,8 @@ class NPAgent(
 object NPAgentScheduler {
   sealed trait Request
   case object Start extends Request
-  private final case class AdaptedNPAgentResponse(response: NPAgent.Response) extends Request
+  private final case class AdaptedNPAgentResponse(response: NPAgent.Response)
+      extends Request
 
   sealed trait Response
   case object Ready extends Response
@@ -108,7 +112,13 @@ object NPAgentScheduler {
       engine: Engine
   ): Behavior[Request] =
     Behaviors.setup(context =>
-      new NPAgentScheduler(context, respondTo, numOfNPA, numOfTimeScheduleNPA, engine)
+      new NPAgentScheduler(
+        context,
+        respondTo,
+        numOfNPA,
+        numOfTimeScheduleNPA,
+        engine
+      )
     )
 }
 class NPAgentScheduler(
@@ -124,7 +134,10 @@ class NPAgentScheduler(
     context.messageAdapter(rsp => AdaptedNPAgentResponse(rsp))
 
   val npagents = (1 to numOfNPA).map { n =>
-    context.spawn(NPAgent(NPAgentResponseAdapter, numOfTimeScheduleNPA, engine), "npagent_" + n)
+    context.spawn(
+      NPAgent(NPAgentResponseAdapter, numOfTimeScheduleNPA, engine),
+      "npagent_" + n
+    )
   }
 
   var numOfNPAgentReady = 0
@@ -170,7 +183,14 @@ object NPAgentSupervisor {
       .build()
 
     Behaviors.setup(context =>
-      new NPAgentSupervisor(context, respondTo, numOfNPA, numOfTimeScheduleNPA, threads, engine)
+      new NPAgentSupervisor(
+        context,
+        respondTo,
+        numOfNPA,
+        numOfTimeScheduleNPA,
+        threads,
+        engine
+      )
     )
   }
 }
@@ -216,7 +236,11 @@ class NPAgentSupervisor(
           case NPAgentScheduler.Done => {
             numOfNPAgentSchedulerDone += 1
             if (numOfNPAgentSchedulerDone == threads) {
-              BenchGuardian.printProgress(numOfTimeScheduleNPA, numOfNPA, startNanoTime)
+              BenchGuardian.printProgress(
+                numOfTimeScheduleNPA,
+                numOfNPA,
+                startNanoTime
+              )
               respondTo ! BenchGuardian.Completed()
               return Behaviors.stopped
             }
@@ -238,8 +262,14 @@ object BenchGuardian {
   case class Completed()
   final case class Start(respondTo: ActorRef[Completed])
 
-  def apply(numOfNPA: Int, numOfTimeScheduleNPA: Int, threads: Int): Behavior[Start] =
-    Behaviors.setup(context => new BenchGuardian(context, numOfNPA, numOfTimeScheduleNPA, threads))
+  def apply(
+      numOfNPA: Int,
+      numOfTimeScheduleNPA: Int,
+      threads: Int
+  ): Behavior[Start] =
+    Behaviors.setup(context =>
+      new BenchGuardian(context, numOfNPA, numOfTimeScheduleNPA, threads)
+    )
 
   def printProgress(
       numOfTimeScheduleNPA: Long,

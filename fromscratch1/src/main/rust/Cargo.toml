@@ -13,6 +13,7 @@ crate-type = ["cdylib"]
 lto = true
 codegen-units = 1
 panic = 'abort'
+overflow-checks = false
 
 [dependencies]
 uuid = { version = "0.8", features = ["v1"] }

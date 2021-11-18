@@ -126,7 +126,7 @@
                             </descriptorRefs>
                             <archive>
                                 <manifest>
-                                    <mainClass>graalisolatehello</mainClass>
+                                    <mainClass>PolyglotEval</mainClass>
                                 </manifest>
                             </archive>
                         </configuration>

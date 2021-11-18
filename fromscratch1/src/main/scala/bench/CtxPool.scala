@@ -5,6 +5,8 @@ import akka.actor.typed._
 import akka.actor.typed.scaladsl._
 import org.graalvm.polyglot._
 import concurrent.duration._
+import java.nio.file.{Files, Path}
+import org.graalvm.polyglot.io.ByteSequence;
 
 object NPAgent {
   sealed trait Request
@@ -15,13 +17,29 @@ object NPAgent {
   case object Ready extends Response
   case object Done extends Response
 
+  val wasmBinary = Files.readAllBytes(
+    Path.of(
+      "src/main/rust/target/wasm32-wasi/release/rust.opt.wasm"
+    )
+  );
+  val wasmSource =
+    Source
+      .newBuilder("wasm", ByteSequence.create(wasmBinary), "realworld.wasm")
+      .build();
+
   def apply(
       respondTo: ActorRef[Response],
       numOfTimeScheduleNPA: Int,
       engine: Engine
   ): Behavior[Request] = {
-    val polyCtx =
-      Context.newBuilder().allowAllAccess(true).engine(engine).build()
+    // val polyCtx = Context.newBuilder().allowAllAccess(true).engine(engine).build()
+
+    val polyCtx = Context
+      .newBuilder()
+      .allowAllAccess(true)
+      .engine(engine)
+      .option("wasm.Builtins", "wasi_snapshot_preview1")
+      .build()
 
     Behaviors.setup(context =>
       new NPAgent(context, respondTo, polyCtx, numOfTimeScheduleNPA)
@@ -46,30 +64,39 @@ class NPAgent(
   //     .build()
   // val execValue = polyCtx.eval(source)
   // execValue.execute()
-  val articles = new ArticleController()
+
+  // val articles = new ArticleController()
+
+  polyCtx.eval(wasmSource)
+  private val wasmMainFn =
+    polyCtx
+      .getBindings("wasm")
+      .getMember("main")
+      .getMember("run")
 
   respondTo ! Ready
-
   var n = 0
 
   def onMessage(msg: Request): Behavior[Request] = {
     msg match {
       case Run =>
+        wasmMainFn.execute()
+
         // execValue.execute()
-        // Article.Main.run()
-        articles.create(
-          Event(
-            Some("audacioustux"),
-            Some(
-              Article(
-                "testing blabla",
-                "testing bloom phew phew",
-                "lorem *ipsum* sit amet dolor am jam kathal",
-                tagList = Some(Set("test", "test", "bloom", "lorem-ipsum"))
-              )
-            )
-          )
-        )
+
+        // articles.create(
+        //   Event(
+        //     Some("audacioustux"),
+        //     Some(
+        //       Article(
+        //         "testing blabla",
+        //         "testing bloom phew phew",
+        //         "lorem *ipsum* sit amet dolor am jam kathal",
+        //         tagList = Some(Set("test", "test", "bloom", "lorem-ipsum"))
+        //       )
+        //     )
+        //   )
+        // )
 
         n += 1
         if (n < numOfTimeScheduleNPA) {
@@ -77,6 +104,7 @@ class NPAgent(
         } else {
           respondTo ! Done
         }
+      // articles.reset()
       case Start =>
         if (numOfTimeScheduleNPA > 0)
           context.self ! Run
@@ -88,8 +116,7 @@ class NPAgent(
 
   override def onSignal: PartialFunction[Signal, Behavior[Request]] = {
     case PostStop => {
-      // polyCtx.close()
-      articles.reset()
+      polyCtx.close()
       this
     }
   }
@@ -207,11 +234,13 @@ class NPAgentSupervisor(
   val NPAgentSchedulerResponseAdapter: ActorRef[NPAgentScheduler.Response] =
     context.messageAdapter(rsp => AdaptedNPAgentSupResponse(rsp))
 
-  val NPASupervisors = (1 to (threads min numOfNPA)).map(n => {
+  val numOfNPAgentScheduler = threads min numOfNPA
+
+  val NPASupervisors = (1 to numOfNPAgentScheduler).map(n => {
     context.spawn(
       NPAgentScheduler(
         NPAgentSchedulerResponseAdapter,
-        numOfNPA / threads,
+        numOfNPA / numOfNPAgentScheduler,
         numOfTimeScheduleNPA,
         engine
       ),
@@ -229,13 +258,13 @@ class NPAgentSupervisor(
         rsp match {
           case NPAgentScheduler.Ready =>
             numOfNPAgentSchedulerReady += 1
-            if (numOfNPAgentSchedulerReady == threads) {
+            if (numOfNPAgentSchedulerReady == numOfNPAgentScheduler) {
               startNanoTime = System.nanoTime()
               NPASupervisors.foreach(npa => npa ! NPAgentScheduler.Start)
             }
           case NPAgentScheduler.Done => {
             numOfNPAgentSchedulerDone += 1
-            if (numOfNPAgentSchedulerDone == threads) {
+            if (numOfNPAgentSchedulerDone == numOfNPAgentScheduler) {
               BenchGuardian.printProgress(
                 numOfTimeScheduleNPA,
                 numOfNPA,

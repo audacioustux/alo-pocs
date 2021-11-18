@@ -11,7 +11,7 @@ import akka.Done
 
 object CtxPoolMain {
   final val threads = Runtime.getRuntime.availableProcessors
-  final val numOfNPA = 100 * 1000
+  final val numOfNPA = 1000
   final val numOfTimeScheduleNPA = 20
   final val timeout = 60.minutes
 

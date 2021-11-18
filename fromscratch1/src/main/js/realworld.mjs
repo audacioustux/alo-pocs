@@ -59,19 +59,17 @@ function create(event) {
 }
 
 function createArticle() {
-  return JSON.stringify(
-    create({
-      authtoken: "audacioustux",
-      body: {
-        article: {
-          title: "testing blabla",
-          description: "testing bloom phew phew",
-          body: "lorem *ipsum* sit amet dolor am jam kathal",
-          tagList: ["test", "test", "bloom", "lorem-ipsum"],
-        },
+  return create({
+    authtoken: "audacioustux",
+    body: {
+      article: {
+        title: "testing blabla",
+        description: "testing bloom phew phew",
+        body: "lorem *ipsum* sit amet dolor am jam kathal",
+        tagList: ["test", "test", "bloom", "lorem-ipsum"],
       },
-    })
-  );
+    },
+  });
 }
 
 export function run() {

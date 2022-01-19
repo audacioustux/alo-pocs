@@ -8,9 +8,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>16</maven.compiler.source>
-        <maven.compiler.target>16</maven.compiler.target>
-        <graalvm.version>21.1.0</graalvm.version>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <graalvm.version>21.2.0</graalvm.version>
     </properties>
     <dependencies>
         <dependency>
@@ -59,7 +59,7 @@
                             <mainClass>PolyglotEval</mainClass>
                             <skip>false</skip>
                             <imageName>native-poly</imageName>
-                            <buildArgs>--no-fallback --no-server -R:MinHeapSize=18G -R:MaxHeapSize=18G -R:MaxNewSize=18G --language:js</buildArgs>
+                            <buildArgs>--initialize-at-build-time --no-fallback --pgo=default.iprof --no-server -R:MinHeapSize=16G -R:MaxHeapSize=16G -R:MaxNewSize=16G --language:wasm</buildArgs>
                         </configuration>
                         <executions>
                             <execution>

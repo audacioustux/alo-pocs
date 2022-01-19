@@ -19,7 +19,7 @@ object NPAgent {
 
   val wasmBinary = Files.readAllBytes(
     Path.of(
-      "src/main/rust/target/wasm32-wasi/release/rust.opt.wasm"
+      "/Users/tanjimhossain/Bytes/poc-wormhole/fromscratch1/src/main/rust/target/wasm32-wasi/release/rust.opt.wasm"
     )
   );
   val wasmSource =

@@ -16,5 +16,6 @@ panic = 'abort'
 overflow-checks = false
 
 [dependencies]
-uuid = { version = "0.8", features = ["v1"] }
+chrono = "0.4"
+uuid = { version = "0.8", features = ["v4"] }
 slugify = "0.1"

@@ -17,27 +17,8 @@
         "out": "/Users/tanjimhossain/Bytes/poc-wormhole/javatests/target",
         "classesDir": "/Users/tanjimhossain/Bytes/poc-wormhole/javatests/target/classes",
         "resources": [
-            
+            "/Users/tanjimhossain/Bytes/poc-wormhole/javatests/src/main/resources"
         ],
-        "scala": {
-            "organization": "org.scala-lang",
-            "name": "scala-compiler",
-            "version": "0.0.0",
-            "options": [
-                
-            ],
-            "jars": [
-                
-            ],
-            "setup": {
-                "order": "java->scala",
-                "addLibraryToBootClasspath": true,
-                "addCompilerToClasspath": false,
-                "addExtraJarsToClasspath": false,
-                "manageBootClasspath": true,
-                "filterLibraryFromClasspath": true
-            }
-        },
         "java": {
             "options": [
                 "-g",
@@ -107,7 +88,7 @@
         "platform": {
             "name": "jvm",
             "config": {
-                "home": "/Library/Java/JavaVirtualMachines/graalvm-ee-java16-21.1.0/Contents/Home",
+                "home": "/Users/tanjimhossain/.asdf/installs/java/openjdk-16",
                 "options": [
                     
                 ]

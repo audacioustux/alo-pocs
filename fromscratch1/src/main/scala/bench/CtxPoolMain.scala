@@ -11,13 +11,12 @@ import akka.Done
 
 object CtxPoolMain {
   final val threads = Runtime.getRuntime.availableProcessors
-  final val numOfNPA = 1000
-  final val numOfTimeScheduleNPA = 20
+  final val numOfNPA = 4
+  final val numOfTimeScheduleNPA = 100000
   final val timeout = 60.minutes
 
   def main(args: Array[String]): Unit = {
-    Thread.sleep(10000)
-    (1 to 1).foreach { n =>
+    (1 to 10).foreach { n =>
       val system = new CtxPoolMain
       system.setup()
       system.echo()

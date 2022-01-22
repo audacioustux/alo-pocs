@@ -16,6 +16,7 @@ import scala.collection.mutable.ArrayBuffer
 import org.graalvm.polyglot.io.ByteSequence;
 import java.nio.file.Files
 import java.nio.file.Path
+import java.io.File
 
 object Agent {
   sealed trait Event
@@ -39,6 +40,11 @@ object Agent {
         .newBuilder()
         .allowAllAccess(true)
         .engine(engine)
+      if source.getLanguage().equals("python") then
+        polyCtxBuilder.option(
+          "python.Executable",
+          "/Users/tanjimhossain/Bytes/poc-wormhole/bloom/env/bin/graalpython"
+        )
       if source.getLanguage().equals("wasm") then
         polyCtxBuilder.option("wasm.Builtins", "wasi_snapshot_preview1")
 
@@ -132,7 +138,7 @@ object AgentBench {
 
     system ! Shutdown
 
-    val timeout = 5.minutes
+    val timeout = 30.minutes
     given askTimeout: Timeout = Timeout(timeout)
 
     Await.ready(system.whenTerminated, timeout)
@@ -141,34 +147,41 @@ object AgentBench {
   def main(args: Array[String]): Unit = {
     // Thread.sleep(10000)
     var sources = Array(
-      Source
-        .newBuilder(
-          "js",
-          "() => 1 + 2",
-          "dummy.mjs"
-        )
-        .build(),
-      Source
-        .newBuilder(
-          "js",
-          "import { run } from '../fromscratch1/src/main/js/realworld.mjs';" + "run",
-          "article.mjs"
-        )
-        .build(),
-      Source
-        .newBuilder(
-          "wasm",
-          ByteSequence
-            .create(
-              Files.readAllBytes(
-                Path.of(
-                  "../fromscratch1/src/main/rust/target/wasm32-wasi/release/rust.opt.wasm"
-                )
-              )
-            ),
-          "article.wasm"
-        )
-        .build()
+      Source.newBuilder("python", "lambda : 1 + 2", "dummy.py").build()
+      // Source
+      //   .newBuilder(
+      //     "python",
+      //     new File("src/main/python/article.py")
+      //   )
+      //   .build(),
+      // Source
+      //   .newBuilder(
+      //     "js",
+      //     "() => 1 + 2",
+      //     "dummy.mjs"
+      //   )
+      //   .build(),
+      // Source
+      //   .newBuilder(
+      //     "js",
+      //     "import { run } from '../fromscratch1/src/main/js/realworld.mjs';" + "run",
+      //     "article.mjs"
+      //   )
+      //   .build(),
+      // Source
+      //   .newBuilder(
+      //     "wasm",
+      //     ByteSequence
+      //       .create(
+      //         Files.readAllBytes(
+      //           Path.of(
+      //             "../fromscratch1/src/main/rust/target/wasm32-wasi/release/rust.opt.wasm"
+      //           )
+      //         )
+      //       ),
+      //     "article.wasm"
+      //   )
+      //   .build()
     )
 
     sources.foreach(source =>

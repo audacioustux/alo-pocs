@@ -12,13 +12,16 @@ lazy val root = project
     nativeImageGraalHome := file(sys.env("GRAALVM_HOME")).toPath,
     nativeImageOptions += s"-H:ReflectionConfigurationFiles=${target.value / "native-image-configs" / "reflect-config.json"}",
     nativeImageOptions += s"-H:ConfigurationFileDirectories=${target.value / "native-image-configs"}",
+    // nativeImageOptions += s"-H:+PrintClassInitialization",
     nativeImageOptions += "-H:+JNI",
     nativeImageOptions ++=
       Seq(
         "--no-fallback",
         "--no-server",
-        "--language:wasm",
-        "--language:js"
+        // "--language:wasm",
+        // "--language:js",
+        "--language:python"
+        // "--initialize-at-build-time"
       ),
     javaOptions ++= Seq(
       "-Xmx16G"

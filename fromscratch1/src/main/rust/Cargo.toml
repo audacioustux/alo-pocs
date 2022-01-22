@@ -17,5 +17,5 @@ overflow-checks = false
 
 [dependencies]
 chrono = "0.4"
-uuid = { version = "0.8", features = ["v4"] }
+uuid = { version = "0.8", features = ["v1"] }
 slugify = "0.1"

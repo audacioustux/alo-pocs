@@ -1,27 +1,27 @@
-use std::collections::{HashMap, HashSet};
+mod models;
 
-use chrono::prelude::*;
+use std::collections::HashSet;
+use std::iter::FromIterator;
 
-use slugify::slugify;
-use uuid::Uuid;
+use crate::models::article::{event_handler, CreateArticle, Event, InmemoryDB};
 
-#[derive(Default)]
-struct Article {
-    id: Option<Uuid>,
-    pub title: String,
-    slug: String,
-    body: String,
-    author: Uuid,
-    created_at: Option<DateTime<Utc>>,
-    updated_at: Option<DateTime<Utc>>,
-    taglist: HashSet<String>,
-}
+#[no_mangle]
+pub extern "C" fn run() {
+    let mut store = InmemoryDB::new();
 
-struct InmemoryDB {
-    articles: Vec<Article>,
-}
+    event_handler(
+        Event {
+            access_token: "audacioustux".to_owned(),
+            request: CreateArticle::new(
+                "test article".to_owned(),
+                "some test article".to_owned(),
+                HashSet::from_iter(vec!["test".to_owned(), "bloom".to_owned()]),
+            ),
+        },
+        &mut store,
+    )
+    .unwrap();
 
-struct Error {
-    error: String,
-    error_code: u16,
+    println!(".");
+    store.empty();
 }

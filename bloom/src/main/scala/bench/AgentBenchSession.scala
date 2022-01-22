@@ -13,6 +13,9 @@ import akka.util.Timeout
 import scala.concurrent.{Await, ExecutionContext, Future}
 import akka.actor.typed.scaladsl.AskPattern._
 import scala.collection.mutable.ArrayBuffer
+import org.graalvm.polyglot.io.ByteSequence;
+import java.nio.file.Files
+import java.nio.file.Path
 
 object Agent {
   sealed trait Event
@@ -32,13 +35,23 @@ object Agent {
       source: Source
   ): Behavior[Request] =
     Behaviors.setup(ctx =>
-      val polyCtx = Context
+      val polyCtxBuilder = Context
         .newBuilder()
         .allowAllAccess(true)
         .engine(engine)
-        .option("wasm.Builtins", "wasi_snapshot_preview1")
-        .build()
-      val executable = polyCtx.eval(source)
+      if source.getLanguage().equals("wasm") then
+        polyCtxBuilder.option("wasm.Builtins", "wasi_snapshot_preview1")
+
+      val polyCtx = polyCtxBuilder.build()
+
+      val evalResult = polyCtx.eval(source)
+      var executable =
+        if source.getLanguage().equals("wasm") then
+          polyCtx
+            .getBindings("wasm")
+            .getMember("main")
+            .getMember("run")
+        else evalResult
 
       replyTo ! Ready(ctx.self)
 
@@ -71,7 +84,7 @@ class Agent(
 
 object AgentBench {
   sealed trait Request
-  case object Close extends Request
+  case object Shutdown extends Request
   final case class Execute(times: Int) extends Request { assert(times > 0) }
   private final case class AdaptedAgentEvent(res: Agent.Event) extends Request
 
@@ -105,25 +118,70 @@ object AgentBench {
       }
     }
 
-  def main(args: Array[String]): Unit =
+  private def bench(
+      source: Source,
+      numOfAgent: Int,
+      executeTimes: Int,
+      iterateTimes: Int
+  ) = {
+    println(source.getName())
+    val system: ActorSystem[Request] =
+      ActorSystem(AgentBench(source, numOfAgent), "bench")
+
+    (1 to iterateTimes).foreach(n => system ! Execute(executeTimes))
+
+    system ! Shutdown
+
     val timeout = 5.minutes
     given askTimeout: Timeout = Timeout(timeout)
 
-    val dummyJsSource = Source
-      .newBuilder(
-        "js",
-        "() => 1 + 2",
-        "dummy.mjs"
-      )
-      .build()
-    val system1: ActorSystem[Request] =
-      ActorSystem(AgentBench(dummyJsSource, 100000), "AgentBench")
+    Await.ready(system.whenTerminated, timeout)
+  }
 
-    Thread.sleep(10000)
-    system1 ! Execute(100000)
-    system1 ! Execute(100000)
-    // TODO: hmmm... any other cleaner option to shutdown gracefully?
-    system1 ! Close
+  def main(args: Array[String]): Unit = {
+    // Thread.sleep(10000)
+    var sources = Array(
+      Source
+        .newBuilder(
+          "js",
+          "() => 1 + 2",
+          "dummy.mjs"
+        )
+        .build(),
+      Source
+        .newBuilder(
+          "js",
+          "import { run } from '../fromscratch1/src/main/js/realworld.mjs';" + "run",
+          "article.mjs"
+        )
+        .build(),
+      Source
+        .newBuilder(
+          "wasm",
+          ByteSequence
+            .create(
+              Files.readAllBytes(
+                Path.of(
+                  "../fromscratch1/src/main/rust/target/wasm32-wasi/release/rust.opt.wasm"
+                )
+              )
+            ),
+          "article.wasm"
+        )
+        .build()
+    )
+
+    sources.foreach(source =>
+      System.gc()
+      Thread.sleep(5000)
+      bench(
+        source,
+        4,
+        10_000_000,
+        10
+      )
+    )
+  }
 }
 class AgentBench(
     ctx: ActorContext[AgentBench.Request],
@@ -149,7 +207,7 @@ class AgentBench(
           agent ! new Agent.Execute(times / numOfAgent)
         )
         waitForCompletion(System.nanoTime(), times)
-      case Close => Behaviors.stopped
+      case Shutdown => Behaviors.stopped
     }
 
   private def waitForCompletion(

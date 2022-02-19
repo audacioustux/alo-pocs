@@ -18,21 +18,25 @@ lazy val root = project
       Seq(
         "--no-fallback",
         "--no-server",
-        // "--language:wasm",
+        "--language:wasm",
         // "--language:js",
-        "--language:python"
-        // "--initialize-at-build-time"
+        // "--language:python",
+        "--initialize-at-build-time",
+        // "--pgo-instrument"
+        "--pgo=/Users/tanjimhossain/Bytes/poc-wormhole/bloom/default.iprof"
       ),
     javaOptions ++= Seq(
       "-Xmx16G"
     ),
     libraryDependencies ++= Seq(
       "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
-      "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % Test
+      "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % Test,
+      "io.jvm.uuid" %% "scala-uuid" % "0.3.1"
     ).map(_.cross(CrossVersion.for3Use2_13)),
     libraryDependencies ++= Seq(
       "com.novocode" % "junit-interface" % "0.11" % "test",
-      "ch.qos.logback" % "logback-classic" % "1.3.0-alpha12"
+      "ch.qos.logback" % "logback-classic" % "1.3.0-alpha12",
+      "org.graalvm.sdk" % "graal-sdk" % "22.0.0.2"
     )
   )
   .enablePlugins(NativeImagePlugin)

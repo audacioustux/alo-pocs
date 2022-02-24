@@ -14,13 +14,13 @@ object Slug {
       .replaceAll(
         "[^\\w\\s-]",
         ""
-      )                  // Remove all non-word, non-space or non-dash characters
+      ) // Remove all non-word, non-space or non-dash characters
       .replace('-', ' ') // Replace dashes with spaces
       .trim // Trim leading/trailing whitespace (including what used to be leading/trailing dashes)
       .replaceAll(
         "\\s+",
         "-"
-      )            // Replace whitespace (including newlines and repetitions) with single dashes
+      ) // Replace whitespace (including newlines and repetitions) with single dashes
       .toLowerCase // Lowercase the final results
   }
 }
@@ -30,10 +30,13 @@ case class Event(authToken: Option[String], body: Option[Article])
 
 case class User(username: String, bio: String)
 object User {
-  var users: mutable.Seq[User] = mutable.Seq(User("audacioustux", "henlo meh tangim"))
+  var users: mutable.Seq[User] =
+    mutable.Seq(User("audacioustux", "henlo meh tangim"))
 
   def authenticateAndGetUser(event: Event): Option[User] = {
-    event.authToken.flatMap(authToken => users.find(user => user.username == authToken))
+    event.authToken.flatMap(authToken =>
+      users.find(user => user.username == authToken)
+    )
   }
 }
 final case class Article(
@@ -77,6 +80,22 @@ class Articles {
     article
   }
   def reset(): Unit = articles = mutable.Seq()
+
+  def run(): Unit =
+    create(
+      Event(
+        Some("audacioustux"),
+        Some(
+          Article(
+            "testing blabla",
+            "testing bloom phew phew",
+            "lorem *ipsum* sit amet dolor am jam kathal",
+            tagList = Some(Set("test", "test", "bloom", "lorem-ipsum"))
+          )
+        )
+      )
+    )
+    reset()
 }
 
 //given Runnable[Articles] with

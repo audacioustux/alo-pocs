@@ -7,7 +7,7 @@ lazy val root = project
     name := "bloom",
     version := "0.1.0-SNAPSHOT",
     scalaVersion := scala3Version,
-    Compile / mainClass := Some("bench.AgentBench"),
+    Compile / mainClass := Some("bench.AgentBenchScala"),
     Compile / run / fork := true,
     nativeImageGraalHome := file(sys.env("GRAALVM_HOME")).toPath,
     nativeImageOptions += s"-H:ReflectionConfigurationFiles=${target.value / "native-image-configs" / "reflect-config.json"}",

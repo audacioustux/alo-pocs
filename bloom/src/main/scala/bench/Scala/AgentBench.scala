@@ -21,19 +21,20 @@ import example.Articles
 object Agent {
   sealed trait Event
   case class Ready(replyTo: ActorRef[Request]) extends Event
-  case object Completed extends Event
+  case object Completed                        extends Event
   sealed trait Request
   final case class Execute(times: Int) extends Request { assert(times > 0) }
-  private case object Execute extends Request
+  private case object Execute          extends Request
 
   def apply(
       replyTo: ActorRef[Event],
-      source: Articles
+      source: Articles.type
   ): Behavior[Request] =
     Behaviors.setup(ctx =>
       replyTo ! Ready(ctx.self)
 
-      new Agent(ctx, replyTo, source.run).ready
+      val articles: Articles = source.apply()
+      new Agent(ctx, replyTo, articles.run).ready
     )
 }
 class Agent(
@@ -63,8 +64,8 @@ class Agent(
 object AgentBench {
 
   sealed trait Request
-  case object Shutdown extends Request
-  final case class Execute(times: Int) extends Request { assert(times > 0) }
+  case object Shutdown                                         extends Request
+  final case class Execute(times: Int)                         extends Request { assert(times > 0) }
   private final case class AdaptedAgentEvent(res: Agent.Event) extends Request
 
   def printProgress(
@@ -81,7 +82,7 @@ object AgentBench {
   }
 
   def apply(
-      source: Articles,
+      source: Articles.type,
       numOfAgent: Int
   ): Behavior[Request] =
     Behaviors.withStash(100) { buffer =>
@@ -89,20 +90,21 @@ object AgentBench {
         val agentEventAdapter: ActorRef[Agent.Event] =
           ctx.messageAdapter(AdaptedAgentEvent.apply)
 
-        (1 to numOfAgent).foreach(n =>
-          ctx.spawnAnonymous(Agent(agentEventAdapter, source))
-        )
+        (1 to numOfAgent).foreach(n => ctx.spawnAnonymous(Agent(agentEventAdapter, source)))
 
         new AgentBench(ctx, buffer, numOfAgent).starting
       }
     }
 
   private def bench(
-      source: Articles,
+      source: Articles.type,
       numOfAgent: Int,
       executeTimes: Int,
       iterateTimes: Int
   ) = {
+    if executeTimes % numOfAgent != 0 then
+      throw Error("executeTimes should be evenly distributed among numOfAgent")
+
     val system: ActorSystem[Request] =
       ActorSystem(AgentBench(source, numOfAgent), "bench")
 
@@ -110,7 +112,7 @@ object AgentBench {
 
     system ! Shutdown
 
-    val timeout = 30.minutes
+    val timeout               = 30.minutes
     given askTimeout: Timeout = Timeout(timeout)
 
     Await.ready(system.whenTerminated, timeout)
@@ -120,8 +122,16 @@ object AgentBench {
     System.gc()
     Thread.sleep(5000)
     bench(
-      new Articles(),
+      Articles,
       4,
+      10_000_000,
+      10
+    )
+    System.gc()
+    Thread.sleep(5000)
+    bench(
+      Articles,
+      100_000,
       10_000_000,
       10
     )
@@ -149,9 +159,7 @@ class AgentBench(
   private def ready: Behavior[Request] =
     Behaviors.receiveMessagePartial {
       case Execute(times) =>
-        readyAgents.foreach(agent =>
-          agent ! new Agent.Execute(times / numOfAgent)
-        )
+        readyAgents.foreach(agent => agent ! new Agent.Execute(times / numOfAgent))
         waitForCompletion(System.nanoTime(), times)
       case Shutdown => Behaviors.stopped
     }

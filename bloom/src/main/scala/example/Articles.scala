@@ -14,13 +14,13 @@ object Slug {
       .replaceAll(
         "[^\\w\\s-]",
         ""
-      ) // Remove all non-word, non-space or non-dash characters
+      )                  // Remove all non-word, non-space or non-dash characters
       .replace('-', ' ') // Replace dashes with spaces
       .trim // Trim leading/trailing whitespace (including what used to be leading/trailing dashes)
       .replaceAll(
         "\\s+",
         "-"
-      ) // Replace whitespace (including newlines and repetitions) with single dashes
+      )            // Replace whitespace (including newlines and repetitions) with single dashes
       .toLowerCase // Lowercase the final results
   }
 }
@@ -34,9 +34,7 @@ object User {
     mutable.Seq(User("audacioustux", "henlo meh tangim"))
 
   def authenticateAndGetUser(event: Event): Option[User] = {
-    event.authToken.flatMap(authToken =>
-      users.find(user => user.username == authToken)
-    )
+    event.authToken.flatMap(authToken => users.find(user => user.username == authToken))
   }
 }
 final case class Article(
@@ -53,6 +51,9 @@ final case class Article(
     favorite: Option[Boolean] = None
 )
 
+object Articles {
+  def apply(): Articles = new Articles
+}
 class Articles {
   var articles: mutable.Seq[Article] = mutable.Seq()
 

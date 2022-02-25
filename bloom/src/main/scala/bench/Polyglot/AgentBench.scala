@@ -21,10 +21,10 @@ import java.io.File
 object Agent {
   sealed trait Event
   case class Ready(replyTo: ActorRef[Request]) extends Event
-  case object Completed extends Event
+  case object Completed                        extends Event
   sealed trait Request
   final case class Execute(times: Int) extends Request { assert(times > 0) }
-  private case object Execute extends Request
+  private case object Execute          extends Request
 
   private val engine = Engine
     .newBuilder()
@@ -90,8 +90,8 @@ class Agent(
 
 object AgentBench {
   sealed trait Request
-  case object Shutdown extends Request
-  final case class Execute(times: Int) extends Request { assert(times > 0) }
+  case object Shutdown                                         extends Request
+  final case class Execute(times: Int)                         extends Request { assert(times > 0) }
   private final case class AdaptedAgentEvent(res: Agent.Event) extends Request
 
   def printProgress(
@@ -103,7 +103,7 @@ object AgentBench {
 
     println(
       f"  $totalTimesExecuted times executed by $numOfAgent Agent took ${durationMicros / 1000} ms, " +
-        f"${totalTimesExecuted.toDouble / durationMicros}%,.2f M msg/s"
+        f"${totalTimesExecuted.toDouble / durationMicros}%,.2f M event-reaction/sec"
     )
   }
 
@@ -116,9 +116,7 @@ object AgentBench {
         val agentEventAdapter: ActorRef[Agent.Event] =
           ctx.messageAdapter(AdaptedAgentEvent.apply)
 
-        (1 to numOfAgent).foreach(n =>
-          ctx.spawnAnonymous(Agent(agentEventAdapter, source))
-        )
+        (1 to numOfAgent).foreach(n => ctx.spawnAnonymous(Agent(agentEventAdapter, source)))
 
         new AgentBench(ctx, buffer, numOfAgent).starting
       }
@@ -138,7 +136,7 @@ object AgentBench {
 
     system ! Shutdown
 
-    val timeout = 30.minutes
+    val timeout               = 30.minutes
     given askTimeout: Timeout = Timeout(timeout)
 
     Await.ready(system.whenTerminated, timeout)
@@ -216,9 +214,7 @@ class AgentBench(
   private def ready: Behavior[Request] =
     Behaviors.receiveMessagePartial {
       case Execute(times) =>
-        readyAgents.foreach(agent =>
-          agent ! new Agent.Execute(times / numOfAgent)
-        )
+        readyAgents.foreach(agent => agent ! new Agent.Execute(times / numOfAgent))
         waitForCompletion(System.nanoTime(), times)
       case Shutdown => Behaviors.stopped
     }

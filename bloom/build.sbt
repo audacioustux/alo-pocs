@@ -3,11 +3,12 @@ val AkkaVersion   = "2.6.18"
 
 lazy val root = project
   .in(file("."))
+  .enablePlugins(JmhPlugin)
   .settings(
     name                 := "bloom",
     version              := "0.1.0-SNAPSHOT",
     scalaVersion         := scala3Version,
-    Compile / mainClass  := Some("bench.Scala.AgentBench"),
+    Compile / mainClass  := Some("bench.Polyglot.AgentBench"),
     Compile / run / fork := true,
     nativeImageGraalHome := file(sys.env("GRAALVM_HOME")).toPath,
     nativeImageOptions += s"-H:ReflectionConfigurationFiles=${target.value / "native-image-configs" / "reflect-config.json"}",
@@ -27,6 +28,8 @@ lazy val root = project
       ),
     javaOptions ++= Seq(
       "-Xmx16G"
+      // "-truffle"
+      // "--cpusampler"
     ),
     libraryDependencies ++= Seq(
       "com.typesafe.akka" %% "akka-actor-typed"         % AkkaVersion,

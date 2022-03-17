@@ -77,7 +77,7 @@ object AgentBench {
 
     println(
       f"  $totalTimesExecuted times executed by $numOfAgent Agent took ${durationMicros / 1000} ms, " +
-        f"${totalTimesExecuted.toDouble / durationMicros}%,.2f M Event-Reaction/sec"
+        f"${totalTimesExecuted.toDouble / durationMicros}%,.2f M Event-Reactions/sec"
     )
   }
 
@@ -119,22 +119,22 @@ object AgentBench {
   }
 
   def main(args: Array[String]): Unit = {
-//    System.gc()
-//    Thread.sleep(5000)
-//    bench(
-//      Articles,
-//      4,
-//      10_000_000,
-//      10
-//    )
     System.gc()
     Thread.sleep(5000)
     bench(
       Articles,
-      1_000_000,
-      10_000_000,
+      4,
+      100_000,
       10
     )
+//    System.gc()
+//    Thread.sleep(5000)
+//    bench(
+//      Articles,
+//      1_000_000,
+//      10_000_000,
+//      10
+//    )
   }
 }
 class AgentBench(

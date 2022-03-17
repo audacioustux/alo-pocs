@@ -122,15 +122,18 @@ object AgentBench {
       }
     }
 
-  private def bench(
+  def bench(
       source: Source,
       numOfAgent: Int,
       executeTimes: Int,
       iterateTimes: Int
-  ) = {
-    println(source.getName())
-    val system: ActorSystem[Request] =
-      ActorSystem(AgentBench(source, numOfAgent), "bench")
+  ): Future[Done] = {
+    if executeTimes % numOfAgent != 0 then
+      throw Error("executeTimes should be evenly distributed among numOfAgent")
+
+    println(source.getName)
+
+    val system = ActorSystem(AgentBench(source, numOfAgent), "bench")
 
     (1 to iterateTimes).foreach(n => system ! Execute(executeTimes))
 
@@ -144,8 +147,8 @@ object AgentBench {
 
   def main(args: Array[String]): Unit = {
     // Thread.sleep(10000)
-    var sources = Array(
-      Source.newBuilder("python", "lambda : 1 + 2", "dummy.py").build()
+    val sources = Seq(
+      // Source.newBuilder("python", "lambda : 1 + 2", "dummy.py").build(),
       // Source
       //   .newBuilder(
       //     "python",
@@ -159,13 +162,13 @@ object AgentBench {
       //     "dummy.mjs"
       //   )
       //   .build(),
-      // Source
-      //   .newBuilder(
-      //     "js",
-      //     "import { run } from '../fromscratch1/src/main/js/realworld.mjs';" + "run",
-      //     "article.mjs"
-      //   )
-      //   .build(),
+      Source
+        .newBuilder(
+          "js",
+          "import { run } from '../fromscratch1/src/main/js/realworld.mjs';" + "run",
+          "article.mjs"
+        )
+        .build()
       // Source
       //   .newBuilder(
       //     "wasm",
@@ -187,25 +190,25 @@ object AgentBench {
       Thread.sleep(5000)
       bench(
         source,
-        4,
+        100_000,
         10_000_000,
         10
       )
     )
   }
 }
-class AgentBench(
+private class AgentBench(
     ctx: ActorContext[AgentBench.Request],
     buffer: StashBuffer[AgentBench.Request],
     numOfAgent: Int
 ) {
   import AgentBench._
 
-  var readyAgents = ArrayBuffer[ActorRef[Agent.Request]]()
+  private val readyAgents = ArrayBuffer[ActorRef[Agent.Request]]()
   private def starting: Behavior[Request] =
     Behaviors.receiveMessage {
       case AdaptedAgentEvent(Agent.Ready(ref)) =>
-        readyAgents += ref;
+        readyAgents += ref
         if readyAgents.length == numOfAgent then buffer.unstashAll(ready)
         else Behaviors.same
       case other => buffer.stash(other); Behaviors.same
@@ -226,7 +229,7 @@ class AgentBench(
     var completedAgents = 0
     Behaviors.receiveMessage {
       case AdaptedAgentEvent(Agent.Completed) =>
-        completedAgents += 1;
+        completedAgents += 1
         if completedAgents == numOfAgent then
           printProgress(numOfAgent, totalTimesExecute, startedAt)
           buffer.unstashAll(ready)

@@ -96,12 +96,12 @@ object AgentBench {
       }
     }
 
-  private def bench(
+  def bench(
       source: Articles.type,
       numOfAgent: Int,
       executeTimes: Int,
       iterateTimes: Int
-  ) = {
+  ): Future[Done] = {
     if executeTimes % numOfAgent != 0 then
       throw Error("executeTimes should be evenly distributed among numOfAgent")
 
@@ -123,8 +123,8 @@ object AgentBench {
     Thread.sleep(5000)
     bench(
       Articles,
-      4,
       100_000,
+      10_000_000,
       10
     )
 //    System.gc()
@@ -137,7 +137,7 @@ object AgentBench {
 //    )
   }
 }
-class AgentBench(
+private class AgentBench(
     ctx: ActorContext[AgentBench.Request],
     buffer: StashBuffer[AgentBench.Request],
     numOfAgent: Int

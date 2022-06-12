@@ -1,4 +1,2 @@
 #[no_mangle]
-pub extern "C" fn run3() -> u32 {
-    3
-}
+pub extern "C" fn run() {}

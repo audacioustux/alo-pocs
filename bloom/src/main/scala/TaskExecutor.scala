@@ -1,12 +1,15 @@
-import org.graalvm.polyglot._
+import org.graalvm.polyglot.*
+import org.graalvm.polyglot.io.ByteSequence
+
+import java.nio.file.{Files, Path}
 
 @main def testMultiple(): Unit =
-  val polyglotCtx = Context.create()
-  val eval1 = polyglotCtx.eval(Source.newBuilder("js", "() => 'hello 1'", "test1.mjs").build())
-  val eval2 = polyglotCtx.eval(Source.newBuilder("js", "() => 'hello 2'", "test2.mjs").build())
+  val wasmBinary1 = Files.readAllBytes(Path.of("./src/main/wasm/dummy1.opt.wasm"))
+  val wasmSource1 = Source.newBuilder("wasm", ByteSequence.create(wasmBinary1), "dummy1.wasm").build()
 
-  println(eval1.execute())
-  println(eval2.execute())
+  val executor = new TaskExecutor
+  executor.eval(wasmSource1)
+  print(executor.execute("main", "run"))
 
 class TaskExecutor {
 
@@ -19,7 +22,10 @@ class TaskExecutor {
       .build())
 
   def eval(source: Source): Object =
-    ???
+    threadLocalCtx.get().eval(source)
+
+  def execute(sourceName: String, methodName: String): Object =
+    threadLocalCtx.get().getBindings("wasm").getMember(sourceName).getMember(methodName).execute()
 
 }
 

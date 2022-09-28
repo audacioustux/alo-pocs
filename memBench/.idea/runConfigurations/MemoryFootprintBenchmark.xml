@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="MemoryFootprintBenchmark" type="JarApplication">
+    <option name="JAR_PATH" value="$PROJECT_DIR$/target/memBench-1.0-SNAPSHOT-jar-with-dependencies.jar" />
+    <option name="VM_PARAMETERS" value="-XX:ConcGCThreads=1 -XX:+EnableJVMCI -XX:+EnableJVMCIProduct -XX:G1ConcRefinementThreads=4 -XX:GCDrainStackTargetSize=64 -XX:InitialHeapSize=402653184 -XX:MarkStackSize=4194304 -XX:MaxHeapSize=6442450944 -XX:MinHeapSize=6815736 -XX:+PrintCommandLineFlags -XX:ReservedCodeCacheSize=251658240 -XX:+SegmentedCodeCache -XX:ThreadPriorityPolicy=1 -XX:+UnlockExperimentalVMOptions -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseG1GC" />
+    <option name="PROGRAM_PARAMETERS" value="--warmup-iterations 10 --result-iterations 5" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    <option name="ALTERNATIVE_JRE_PATH" />
+    <method v="2">
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="memBench [package]" run_configuration_type="MavenRunConfiguration" />
+    </method>
+  </configuration>
+</component>

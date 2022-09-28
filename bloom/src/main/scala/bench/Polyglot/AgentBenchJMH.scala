@@ -18,7 +18,7 @@ import AgentBench._
   batchSize = 1
 )
 class AgentBenchJMH {
-  val sources = Seq(
+  val sources: Seq[Source] = Seq(
     Source
       .newBuilder(
         "js",
@@ -27,6 +27,7 @@ class AgentBenchJMH {
       )
       .build()
   )
+
   @Benchmark
   @OperationsPerInvocation(10_000_000)
   def agentBench(): Unit = {

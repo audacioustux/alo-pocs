@@ -1,150 +1,158 @@
-use slugify::slugify;
-use std::time::SystemTime;
-use uuid::v1::{Context, Timestamp};
-use uuid::Uuid;
+// mod utils;
 
-#[derive(Clone)]
-struct User {
-    username: String,
-    bio: String,
+use js_sys::Math;
+use wasm_bindgen::prelude::*;
+
+// When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
+// allocator.
+#[cfg(feature = "wee_alloc")]
+#[global_allocator]
+static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
+
+#[wasm_bindgen]
+#[repr(u8)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Cell {
+    Dead = 0,
+    Alive = 1,
 }
 
-#[derive(Clone)]
-struct Article {
-    id: Option<Uuid>,
-    slug: Option<String>,
-    title: String,
-    description: String,
-    body: String,
-    created_at: Option<SystemTime>,
-    updated_at: Option<SystemTime>,
-    author: Option<String>,
-    taglist: Vec<String>,
-    favorited: Option<bool>,
-    favorites_count: Option<i32>,
+#[wasm_bindgen]
+pub struct Universe {
+    width: u32,
+    height: u32,
+    cells: Vec<Cell>,
 }
 
-#[derive(Debug)]
-struct Error {
-    error: String,
-    error_code: i32,
-}
+/// Public methods, exported to JavaScript.
+#[wasm_bindgen]
+impl Universe {
+    pub fn new() -> Universe {
+        let width = 64 as u32;
+        let height = 64 as u32;
 
-impl Article {
-    fn for_event(title: &str, description: &str, body: &str, taglist: &Vec<String>) -> Self {
-        Self {
-            id: None,
-            slug: None,
-            created_at: None,
-            updated_at: None,
-            favorited: None,
-            favorites_count: None,
-            title: title.to_string(),
-            description: description.to_string(),
-            body: body.to_string(),
-            taglist: taglist.clone(),
-            author: None,
+        Universe {
+            width,
+            height,
+            cells: vec![Cell::Dead; (width * height) as usize],
         }
     }
 
-    fn for_inserting(event_article: &Article, id: Uuid, slug: &str, author: &str) -> Self {
-        Self {
-            author: Some(author.to_string()),
-            id: Some(id),
-            slug: Some(slug.to_string()),
-            created_at: Some(SystemTime::now()),
-            updated_at: Some(SystemTime::now()),
-            title: event_article.title.clone(),
-            body: event_article.body.clone(),
-            description: event_article.description.clone(),
-            favorited: Some(false),
-            favorites_count: Some(0),
-            taglist: event_article.taglist.clone(),
+    pub fn add_glider(&mut self) {
+        // Glider or Featherweight spaceship:
+        // https://conwaylife.com/wiki/Glider
+        //       1
+        // 1     1
+        //    1  1
+        self.set_cell(0, 2, Cell::Alive);
+
+        self.set_cell(1, 0, Cell::Alive);
+        self.set_cell(1, 2, Cell::Alive);
+
+        self.set_cell(2, 1, Cell::Alive);
+        self.set_cell(2, 2, Cell::Alive);
+    }
+
+    pub fn kill_all(&mut self) {
+        self.cells = vec![Cell::Dead; (self.width() * self.height()) as usize];
+    }
+
+    pub fn reset_random(&mut self) {
+        self.cells = (0..self.width() * self.height())
+            .map(|_i| {
+                if Math::random() >= 0.5 {
+                    Cell::Dead
+                } else {
+                    Cell::Alive
+                }
+            })
+            .collect();
+    }
+
+    pub fn reset_mod2_mod7(&mut self) {
+        self.cells = (0..self.width() * self.height())
+            .map(|i| {
+                if i % 2 == 0 || i % 7 == 0 {
+                    Cell::Alive
+                } else {
+                    Cell::Dead
+                }
+            })
+            .collect();
+    }
+
+    pub fn width(&self) -> u32 {
+        self.width
+    }
+
+    pub fn height(&self) -> u32 {
+        self.height
+    }
+
+    // This returns and unsafe pointer!
+    pub fn cells(&self) -> *const Cell {
+        self.cells.as_ptr()
+    }
+
+    pub fn tick(&mut self) {
+        let mut next = self.cells.clone();
+
+        for row in 0..self.height {
+            for col in 0..self.width {
+                let idx = self.get_index(row, col);
+                let cell = self.cells[idx];
+                let live_neighbors = self.live_neighbor_count(row, col);
+
+                let next_cell = match (cell, live_neighbors) {
+                    // Rule 1: Any live cell with fewer than two live neighbours
+                    // dies, as if caused by underpopulation.
+                    (Cell::Alive, x) if x < 2 => Cell::Dead,
+                    // Rule 2: Any live cell with two or three live neighbours
+                    // lives on to the next generation.
+                    (Cell::Alive, 2) | (Cell::Alive, 3) => Cell::Alive,
+                    // Rule 3: Any live cell with more than three live
+                    // neighbours dies, as if by overpopulation.
+                    (Cell::Alive, x) if x > 3 => Cell::Dead,
+                    // Rule 4: Any dead cell with exactly three live neighbours
+                    // becomes a live cell, as if by reproduction.
+                    (Cell::Dead, 3) => Cell::Alive,
+                    // All other cells remain in the same state.
+                    (otherwise, _) => otherwise,
+                };
+
+                next[idx] = next_cell;
+            }
         }
-    }
-}
 
-fn authenticate_and_get_user(event: &Event, inmemorydb: &InmemoryDB) -> Option<User> {
-    for user in &inmemorydb.users {
-        if user.username == event.access_token {
-            return Some(user.clone());
+        self.cells = next;
+    }
+
+    // Given a zero based row and column coordinates, a linear index into the
+    // cells vector is returned.
+    fn get_index(&self, row: u32, column: u32) -> usize {
+        (row * self.width + column) as usize
+    }
+
+    // Sets a cell value for the given zero based row and column.
+    fn set_cell(&mut self, row: u32, column: u32, new_val: Cell) {
+        let idx = self.get_index(row, column);
+        self.cells[idx] = new_val;
+    }
+
+    fn live_neighbor_count(&self, row: u32, column: u32) -> u8 {
+        let mut count = 0;
+        for delta_row in [self.height - 1, 0, 1].iter().cloned() {
+            for delta_col in [self.width - 1, 0, 1].iter().cloned() {
+                if delta_row == 0 && delta_col == 0 {
+                    continue;
+                }
+
+                let neighbor_row = (row + delta_row) % self.height;
+                let neighbor_col = (column + delta_col) % self.width;
+                let idx = self.get_index(neighbor_row, neighbor_col);
+                count += self.cells[idx] as u8;
+            }
         }
+        count
     }
-
-    None
-}
-
-fn generate_id() -> Uuid {
-    let context = Context::new(42);
-    let ts = Timestamp::from_unix(&context, 1497624119, 1234);
-    Uuid::new_v1(ts, &[1, 2, 3, 4, 5, 6]).expect("failed to generate UUID")
-}
-
-struct InmemoryDB {
-    users: Vec<User>,
-    articles: Vec<Article>,
-}
-
-struct Event {
-    access_token: String,
-    article: Article,
-}
-
-impl InmemoryDB {
-    fn new() -> Self {
-        Self {
-            users: Vec::new(),
-            articles: Vec::new(),
-        }
-    }
-
-    fn create_article(&mut self, event: Event) -> Result<Article, Error> {
-        let authenticated_user = authenticate_and_get_user(&event, self);
-        if authenticated_user.is_none() {
-            return Err(Error {
-                error: String::from("Must be logged in."),
-                error_code: 422,
-            });
-        }
-
-        let article = event.article;
-        let id = generate_id();
-        let slug = slugify!(&article.title);
-        let new_article =
-            Article::for_inserting(&article, id, &slug, &authenticated_user.unwrap().username);
-
-        // insert article to inmemorydb
-        self.articles.push(new_article.clone());
-        Ok(new_article)
-    }
-
-    fn empty(&mut self) {
-        self.articles = vec![];
-    }
-}
-
-fn create_article(inmemorydb: &mut InmemoryDB) -> Result<Article, Error> {
-    return inmemorydb.create_article(Event {
-        access_token: String::from("audacioustux"),
-        article: Article::for_event(
-            "Test article",
-            "Some test article AAAAAAAAAAAAAAAAAAAAA",
-            "who's lorem? I don't care about lorem",
-            &{
-                let taglist: Vec<String> = vec![String::from("Yo"), String::from("Bloom!!!")];
-                taglist
-            },
-        ),
-    });
-}
-
-#[no_mangle]
-pub extern "C" fn run() {
-    let mut imdb = InmemoryDB::new();
-    imdb.users.push(User {
-        username: String::from("audacioustux"),
-        bio: String::from("a tehc enthusiast"),
-    });
-    create_article(&mut imdb).unwrap();
-    imdb.empty();
 }

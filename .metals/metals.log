@@ -1,0 +1,49 @@
+2022.06.03 22:51:04 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /Users/tanjimhossain/Bytes/poc-wormhole/.metals/lsp.trace.json or /Users/tanjimhossain/Library/Caches/org.scalameta.metals/lsp.trace.json
+2022.06.03 22:51:48 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /Users/tanjimhossain/Bytes/poc-wormhole/.metals/lsp.trace.json or /Users/tanjimhossain/Library/Caches/org.scalameta.metals/lsp.trace.json
+2022.06.03 22:51:51 INFO  logging to file /Users/tanjimhossain/Bytes/poc-wormhole/.metals/metals.log
+2022.06.03 22:51:51 INFO  Started: Metals version 0.11.5 in workspace '/Users/tanjimhossain/Bytes/poc-wormhole' for client Visual Studio Code - Insiders 1.68.0-insider.
+2022.06.03 22:51:59 INFO  time: initialize in 8.12s
+2022.06.03 22:52:02 WARN  Flyway upgrade recommended: H2 2.1.212 is newer than this version of Flyway and support has not been tested. The latest supported version of H2 is 2.1.210.
+2022.06.03 22:52:03 WARN  Build server is not auto-connectable.
+2022.06.03 22:52:06 WARN  no build target for: /Users/tanjimhossain/Bytes/poc-wormhole/javatests/src/main/java/PolyglotEval.java
+Jun 03, 2022 10:52:07 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1
+Jun 03, 2022 10:52:08 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 2
+2022.06.03 22:52:10 INFO  time: code lens generation in 2.06s
+2022.06.03 22:52:10 INFO  time: code lens generation in 2.06s
+2022.06.03 22:52:10 INFO  time: code lens generation in 2.26s
+2022.06.03 22:52:10 INFO  time: code lens generation in 2.26s
+2022.06.04 15:58:48 INFO  shutting down Metals
+2022.07.24 21:05:09 INFO  Started: Metals version 0.11.2 in workspace '/Users/tanjimhossain/Bytes/poc-wormhole' for client coc.nvim 0.0.81.[0m
+2022.07.24 21:05:09 INFO  Parse release: 17.0.3[0m
+2022.07.24 21:05:13 INFO  time: initialize in 3.42s[0m
+2022.07.24 21:05:14 WARN  Build server is not auto-connectable.[0m
+2022.07.24 21:05:14 INFO  skipping build import with status 'Requested'[0m
+2022.09.07 11:58:21 INFO  Started: Metals version 0.11.2 in workspace '/Users/tanjimhossain/Bytes/poc-wormhole' for client coc.nvim 0.0.82.[0m
+2022.09.07 11:58:21 INFO  Parse release: 11.0.14.1[0m
+2022.09.07 11:58:26 INFO  time: initialize in 4.69s[0m
+2022.09.07 11:58:27 WARN  Build server is not auto-connectable.[0m
+2022.09.07 11:58:27 INFO  skipping build import with status 'Requested'[0m
+2022.09.18 21:33:15 INFO  Started: Metals version 0.11.2 in workspace '/Users/tanjimhossain/Bytes/poc-wormhole' for client coc.nvim 0.0.82.[0m
+2022.09.18 21:33:15 INFO  Parse release: 17.0.3[0m
+2022.09.18 21:33:19 INFO  time: initialize in 4.24s[0m
+2022.09.18 21:33:21 WARN  Build server is not auto-connectable.[0m
+2022.09.18 21:33:22 INFO  skipping build import with status 'Requested'[0m
+2022.09.18 21:38:15 INFO  Started: Metals version 0.11.2 in workspace '/Users/tanjimhossain/Bytes/poc-wormhole' for client coc.nvim 0.0.82.[0m
+2022.09.18 21:38:15 INFO  Parse release: 17.0.3[0m
+2022.09.18 21:38:17 INFO  time: initialize in 2.19s[0m
+2022.09.18 21:38:17 WARN  Build server is not auto-connectable.[0m
+2022.09.18 21:38:18 INFO  skipping build import with status 'Requested'[0m
+2022.09.18 21:54:38 INFO  Started: Metals version 0.11.2 in workspace '/Users/tanjimhossain/Bytes/poc-wormhole' for client coc.nvim 0.0.82.[0m
+2022.09.18 21:54:38 INFO  Parse release: 17.0.3[0m
+2022.09.18 22:06:12 INFO  Started: Metals version 0.11.2 in workspace '/Users/tanjimhossain/Bytes/poc-wormhole' for client coc.nvim 0.0.82.[0m
+2022.09.18 22:06:12 INFO  Parse release: 17.0.3[0m
+2022.09.18 22:06:16 INFO  time: initialize in 4.15s[0m
+2022.09.18 22:06:18 WARN  Build server is not auto-connectable.[0m
+2022.09.18 22:06:19 INFO  skipping build import with status 'Requested'[0m
+2022.09.18 22:14:50 INFO  Started: Metals version 0.11.2 in workspace '/Users/tanjimhossain/Bytes/poc-wormhole' for client coc.nvim 0.0.82.[0m
+2022.09.18 22:14:50 INFO  Parse release: 17.0.3[0m
+2022.09.18 22:14:53 INFO  time: initialize in 2.93s[0m
+2022.09.18 22:14:54 WARN  Build server is not auto-connectable.[0m
+2022.09.18 22:14:54 INFO  skipping build import with status 'Requested'[0m

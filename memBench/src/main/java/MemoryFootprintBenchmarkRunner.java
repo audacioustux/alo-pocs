@@ -25,13 +25,14 @@ public class MemoryFootprintBenchmarkRunner {
 
         final String caseSpec = "test2.mjs";
 
-        final Engine engine = Engine.newBuilder("js").build();
+//        final Engine engine = Engine.newBuilder("js").build();
 //        final Engine engine = Engine.newBuilder("wasm").build();
 //        final Context.Builder contextBuilder = Context.newBuilder("wasm").engine(engine);
         final Context.Builder contextBuilder = Context.newBuilder("js")
-                .engine(engine)
+//                .engine(engine)
                 .option("js.esm-eval-returns-exports", "true");
 
+        final List<Double> resultsParse = new ArrayList<>();
         final List<Double> resultsEval = new ArrayList<>();
         final List<Double> resultsExec = new ArrayList<>();
 
@@ -50,31 +51,39 @@ public class MemoryFootprintBenchmarkRunner {
                     .allowAllAccess(true)
                     .build()
             ) {
-                final double heapSizeBeforeEval = getHeapSize();
-                if (i == warmup_iterations + result_iterations - 1)
-                    new ProcessBuilder("jcmd", Long.toString(ProcessHandle.current().pid()), "VM.native_memory", "baseline")
-                            .start()
-                            .waitFor();
-                final List<Value> vals = benchmarkSources.stream().map(context::eval).toList();
-                final double heapSizeAfterEval = getHeapSize();
-                final double resultEval = heapSizeAfterEval - heapSizeBeforeEval;
+                final double heapSizeBeforeParse = getHeapSize();
+                final List<Value> parsedSources = benchmarkSources.stream().map(context::parse).toList();
+                final double heapSizeAfterParse = getHeapSize();
+                final double resultParse = heapSizeAfterParse - heapSizeBeforeParse;
 
 //                context.getBindings("wasm").getMember("main").getMember("todos_create").execute();
 //                vals.forEach(value -> System.out.println(value.getMember("_main").execute().asString()));
+                final List<Value> vals = parsedSources.stream().map(Value::execute).toList();
+                final double heapSizeAfterEval = getHeapSize();
+                final double resultEval = heapSizeAfterEval - heapSizeAfterParse;
+
                 vals.forEach(value -> value.getMember("_main").execute().asInt());
                 final double heapSizeAfterExec = getHeapSize();
                 final double resultExec = heapSizeAfterExec - heapSizeAfterEval;
 
                 if (i < warmup_iterations) {
-                    System.out.format("%s: warmup iteration[%d]: %.3f MB, %.3f MB%n", caseSpec, i, resultEval,
+                    System.out.format("%s: warmup iteration[%d]: %.3f MB, %.3f MB, %.3f MB%n", caseSpec, i, resultParse, resultEval,
                             resultExec);
                 } else {
+                    resultsParse.add(resultParse);
                     resultsEval.add(resultEval);
                     resultsExec.add(resultExec);
-                    System.out.format("%s: iteration[%d]: %.3f MB, %.3f MB%n", caseSpec, i, resultEval, resultExec);
+                    System.out.format("%s: iteration[%d]: %.3f MB, %.3f MB, %.3f MB%n", caseSpec, i, resultParse, resultEval, resultExec);
                 }
             }
         }
+
+        Collections.sort(resultsParse);
+
+        System.out.format("%s: median: %.3f MB%n", caseSpec, median(resultsParse));
+        System.out.format("%s: min: %.3f MB%n", caseSpec, resultsParse.get(0));
+        System.out.format("%s: max: %.3f MB%n", caseSpec, resultsParse.get(resultsParse.size() - 1));
+        System.out.format("%s: average: %.3f MB%n", caseSpec, average(resultsParse));
 
         Collections.sort(resultsEval);
 

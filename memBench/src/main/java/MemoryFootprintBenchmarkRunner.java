@@ -41,22 +41,9 @@ public class MemoryFootprintBenchmarkRunner {
         benchmarkSources.add(Source
                 .newBuilder(
                         "js",
-//                        "export { todos_create as _main } from '/Users/tanjimhossain/Bytes/poc-wormhole/memBench/src/main/js/test2.mjs';",
                         "export const _main = () => 42",
                         "test2-0.mjs"
                 ).mimeType("application/javascript+module").build());
-//        benchmarkSources.add(Source
-//                .newBuilder(
-//                        "js",
-//                        "export { todos_create as _main } from '/Users/tanjimhossain/Bytes/poc-wormhole/memBench/src/main/js/test2-1.mjs';",
-//                        "test2-1.mjs"
-//                ).mimeType("application/javascript+module").build());
-//        benchmarkSources.add(Source
-//                .newBuilder(
-//                        "js",
-//                        "export { todos_create as _main } from '/Users/tanjimhossain/Bytes/poc-wormhole/memBench/src/main/js/test2-2.mjs';",
-//                        "test2-2.mjs"
-//                ).mimeType("application/javascript+module").build());
 
         for (int i = 0; i < warmup_iterations + result_iterations; ++i) {
             try (final Context context = contextBuilder
@@ -70,28 +57,12 @@ public class MemoryFootprintBenchmarkRunner {
                             .waitFor();
                 final List<Value> vals = benchmarkSources.stream().map(context::eval).toList();
                 final double heapSizeAfterEval = getHeapSize();
-                if (i == warmup_iterations + result_iterations - 1)
-                    new ProcessBuilder("jcmd", Long.toString(ProcessHandle.current().pid()), "VM.native_memory", "summary.diff")
-                            .redirectOutput(ProcessBuilder.Redirect.INHERIT)
-                            .redirectError(ProcessBuilder.Redirect.INHERIT)
-                            .start()
-                            .waitFor();
                 final double resultEval = heapSizeAfterEval - heapSizeBeforeEval;
 
 //                context.getBindings("wasm").getMember("main").getMember("todos_create").execute();
 //                vals.forEach(value -> System.out.println(value.getMember("_main").execute().asString()));
-                if (i == warmup_iterations + result_iterations - 1)
-                    new ProcessBuilder("jcmd", Long.toString(ProcessHandle.current().pid()), "VM.native_memory", "baseline")
-                            .start()
-                            .waitFor();
                 vals.forEach(value -> value.getMember("_main").execute().asInt());
                 final double heapSizeAfterExec = getHeapSize();
-                if (i == warmup_iterations + result_iterations - 1)
-                    new ProcessBuilder("jcmd", Long.toString(ProcessHandle.current().pid()), "VM.native_memory", "summary.diff")
-                            .redirectOutput(ProcessBuilder.Redirect.INHERIT)
-                            .redirectError(ProcessBuilder.Redirect.INHERIT)
-                            .start()
-                            .waitFor();
                 final double resultExec = heapSizeAfterExec - heapSizeAfterEval;
 
                 if (i < warmup_iterations) {

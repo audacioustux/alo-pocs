@@ -25,11 +25,11 @@ public class MemoryFootprintBenchmarkRunner {
 
         final String caseSpec = "test2.mjs";
 
-//        final Engine engine = Engine.newBuilder("js").build();
+        final Engine engine = Engine.newBuilder("js").build();
 //        final Engine engine = Engine.newBuilder("wasm").build();
 //        final Context.Builder contextBuilder = Context.newBuilder("wasm").engine(engine);
         final Context.Builder contextBuilder = Context.newBuilder("js")
-//                .engine(engine)
+                .engine(engine)
                 .option("js.esm-eval-returns-exports", "true");
 
         final List<Double> resultsEval = new ArrayList<>();
@@ -41,7 +41,8 @@ public class MemoryFootprintBenchmarkRunner {
         benchmarkSources.add(Source
                 .newBuilder(
                         "js",
-                        "export { todos_create as _main } from '/Users/tanjimhossain/Bytes/poc-wormhole/memBench/src/main/js/test2.mjs';",
+//                        "export { todos_create as _main } from '/Users/tanjimhossain/Bytes/poc-wormhole/memBench/src/main/js/test2.mjs';",
+                        "export const _main = () => 42",
                         "test2-0.mjs"
                 ).mimeType("application/javascript+module").build());
 //        benchmarkSources.add(Source
@@ -83,7 +84,7 @@ public class MemoryFootprintBenchmarkRunner {
                     new ProcessBuilder("jcmd", Long.toString(ProcessHandle.current().pid()), "VM.native_memory", "baseline")
                             .start()
                             .waitFor();
-                vals.forEach(value -> value.getMember("_main").execute().asString());
+                vals.forEach(value -> value.getMember("_main").execute().asInt());
                 final double heapSizeAfterExec = getHeapSize();
                 if (i == warmup_iterations + result_iterations - 1)
                     new ProcessBuilder("jcmd", Long.toString(ProcessHandle.current().pid()), "VM.native_memory", "summary.diff")
